@@ -3,6 +3,12 @@
 
 #include "robot.h"
 
+Robot::Robot(int x, int y, float theta){
+	position_[0] = x;
+	position_[1] = y;
+	direction_angle_ = theta;
+}
+
 void Robot::MoveForward(int distance) {
   position_[0] = position_[0] + distance*cos(direction_angle_);
   position_[1] = position_[1] + distance*sin(direction_angle_);

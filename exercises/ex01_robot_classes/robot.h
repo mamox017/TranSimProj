@@ -3,6 +3,7 @@
 
 class Robot {
   public:
+		Robot(int x=0, int y=0, float theta=0);
     void MoveForward( int distance );
     void Display();
 		// setters and getters
