@@ -1,6 +1,6 @@
 ### Feedback for Lab 03
 
-Run on September 14, 20:13:00 PM.
+Run on September 14, 20:24:49 PM.
 
 
 #### Necessary Files and Structure
@@ -53,15 +53,8 @@ Run on September 14, 20:13:00 PM.
     make successful.
     Check point2_unittest exists...OK: result point2_unittest found
 
-+ Fail: Check that a GoogleTest test passes.
-    fails the test: Point2Test.DistBtwnBothPositive.
-<pre>
-[ RUN      ] Point2Test.DistBtwnBothPositive
-./point2_unittest.cc:50: Failure
-      Expected: p00.DistanceBetween(pPI45)
-      Which is: 0
-To be equal to: 1.0
-      Which is: 1</pre>
++ Pass: Check that a GoogleTest test passes.
+    passes the test: Point2Test.DistBtwnBothPositive.
 
 
 
