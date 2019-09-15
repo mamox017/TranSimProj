@@ -1,9 +1,11 @@
 ### Feedback for Lab 03
 
-Run on September 12, 17:50:18 PM.
+Run on September 14, 20:13:00 PM.
 
 
 #### Necessary Files and Structure
+
++ Pass: Check that directory "googletest" exists.
 
 + Pass: Check that directory "labs" exists.
 
@@ -16,11 +18,15 @@ Run on September 12, 17:50:18 PM.
 
 + Pass: Check that file "Makefile" exists.
 
++ Pass: Check that file "Makefile.test" exists.
+
 + Pass: Check that file ".gitignore" exists.
 
 + Pass: Check that file "point2.cc" exists.
 
 + Pass: Check that file "point2.h" exists.
+
++ Pass: Check that file "point2_unittest.cc" exists.
 
 
 #### .gitignore set up properly
