@@ -4,7 +4,7 @@
 #include "point2.h"
 using namespace std;
 
-Point2::Point2(int x, int y){
+Point2::Point2(float x, float y){
 	xcoord = x;
 	ycoord = y;
 }
@@ -33,7 +33,7 @@ void Point2::Print(){
 }
 
 float Point2::DistanceBetween(Point2 p2){
-	int a = p2.get_x() - this->get_x();
-	int b = p2.get_y() - this->get_y();
+	float a = p2.get_x() - this->get_x();
+	float b = p2.get_y() - this->get_y();
 	return sqrt(pow(a,2.0)+pow(b,2.0));
 }
