@@ -13,7 +13,7 @@ using std::cout;
 using std::endl;
 
 Duck::Duck() : name_("Duck"), array_number_(0) {
-
+ 
 }
 
 Duck::Duck(std::string name, int number) : name_(name), array_number_(number) {
