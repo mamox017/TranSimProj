@@ -13,6 +13,7 @@
 class Delivery {
   static int delivery_count_;
 public:
+  Delivery(const Delivery &package); //copy constructor
   Delivery(std::string package = "Default Package.");
   virtual ~Delivery();
   virtual void Transport();
@@ -23,7 +24,8 @@ public:
   void set_days(int d) {days_to_deliver_ = d;}
   int get_days() { return days_to_deliver_; }
   static int get_count() { return delivery_count_;}
-
+  
+  
 protected:
   int protected_variable_;
 

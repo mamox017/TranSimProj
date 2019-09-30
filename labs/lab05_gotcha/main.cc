@@ -132,7 +132,7 @@ void RunPointerDemo() {
 // A helper function that creates objects dynamically
 void ReadyForTransport(Object ** dynamic, Object ** local ) {
   // A function to help demonstrate memory leaks and dangling pointers.
-
+  
   std::cout << "Entered ReadyForTransport()." << std::endl;
   std::cout << "Objects have an array of 2 overnight deliveries" << std::endl;
   std::cout << "About to create dynamic object." << std::endl;
@@ -144,9 +144,9 @@ void ReadyForTransport(Object ** dynamic, Object ** local ) {
   std::cout << "About to copy local object into passed object." << std::endl;
   *local = &local_object;
   std::cout << "When uncommented, about to delete." << std::endl;
-  // delete *dynamic;
+  if (*dynamic != NULL) {delete *dynamic;}
   // delete dynamic;
-  // delete *local;
+  //delete *local;
   // delete local;
 }
 
@@ -167,8 +167,8 @@ void RunMemoryDemo() {
     std::cout << "dyn_object address " << (int64_t) dyn_object << std::endl;
     std::cout << std::endl;
   }
-  // delete dyn_object;
-  // delete &dyn_object;
-  // delete local_object;
-  // delete &local_object;
+   //delete dyn_object;
+   //delete &dyn_object;
+   //delete local_object;
+   //delete &local_object;
 }

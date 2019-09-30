@@ -15,10 +15,10 @@ ArrayPointerTest::ArrayPointerTest(int count) {
   // using the 4 arrays ducks1, ducks2, ducks3, and ducks4.
   // FILL IN the code below to create these ducks.
   // Here again are the declarations of the duck arrays:
-  //     Duck ducks1_[kMaxDuckCount];
-  //     Duck * ducks2_;
-  //     Duck * ducks3_[kMaxDuckCount];
-  //     Duck ** ducks4_;
+  //     Duck ducks1_[kMaxDuckCount]; normal array
+  //     Duck * ducks2_; pointer to duck
+  //     Duck * ducks3_[kMaxDuckCount]; pointer array of pointers to ducks (array of 2)
+  //     Duck ** ducks4_; pointer to pointer (which points to duck) (pointer to 2)
   
   cout << "Initializing ducks1." << endl;
   // Write code here to create count_ ducks for array ducks1 (if required)

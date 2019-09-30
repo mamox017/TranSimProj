@@ -14,6 +14,8 @@ public:
     cout << "in ObjectClass. ";
     cout << "priv, prot =  " << var_a_ << ' '<< var_b_ << endl;
   }
+	int get_var_a_(){return var_a_;}
+	int get_var_b_(){return var_b_;}
 private:
   int var_a_;
 protected:
