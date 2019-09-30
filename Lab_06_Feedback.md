@@ -1,6 +1,6 @@
-### Feedback for Lab 06
+### Fuller Feedback for Lab 06
 
-Run on September 25, 20:14:06 PM.
+Run on September 30, 13:40:05 PM.
 
 
 #### System Files and Lab Directory Structure
@@ -57,6 +57,42 @@ Run on September 25, 20:14:06 PM.
 
 
 #### Results
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
+
++ Skip: Check that a GoogleTest test passes.
+
+  This test was not run because of an earlier failing test.
 
 + Skip: Check that a GoogleTest test passes.
 
