@@ -114,6 +114,7 @@ TEST_F(DateTest, PrintLeadingZeros){
   EXPECT_EQ(output3, expected_out_3);
 }
 
+
 TEST_F(DateTest, EpochTest){
 	Date a(99999999);
 	Date b(1569897148);
@@ -133,6 +134,39 @@ TEST_F(DateTest, EpochTest){
   EXPECT_EQ(output2, expected_out_2);
 }
 
+TEST_F(DateTest, JanMarchDaysBetween){
+	Date a(2016, 1, 1);
+	Date b(2016, 3, 1);
+  EXPECT_EQ(a.GetUsDate(), "01-01-2016") << "wrong date";
+	EXPECT_EQ(b.GetUsDate(), "03-01-2016") << "wrong date";
+	EXPECT_EQ(a.DaysBetween(b), 60) << "Days Between Jan & March Incorrect";
+}
+
+TEST_F(DateTest, MissingCharGetDate){
+	Date a(2016, 1, 1);
+  EXPECT_EQ(a.GetDate(), "2016-01-01") << "wrong date format or missing character";
+}
+
+TEST_F(DateTest, FormatGetUsDate){
+	Date a(2016, 1, 1);
+  EXPECT_EQ(a.GetUsDate(), "01-01-2016") << "wrong date format or missing character";
+}
+
+TEST_F(DateTest, MonthIndex){
+	Date a(2019, 9, 30);
+	EXPECT_EQ(a.GetDate(), "2019-09-30") << "wrong month index or format";
+}
+
+TEST_F(DateTest, todayTest){
+	Date today(2019, 9, 30);
+	EXPECT_EQ(today.GetUsDate(), "09-30-2019") << "month may be off by one";
+}
+
+TEST_F(DateTest, operateTest){
+	Date a(2016, 1, 5);
+	a = a - 1;
+	EXPECT_EQ(a.GetDate(), "2016-01-04") << "subtraction operator implemented incorrectly";
+}
 /**
   *
   * NOPE!  Can't test PRIVATE methods
