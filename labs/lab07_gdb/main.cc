@@ -51,11 +51,12 @@ void doInterestingThing(int yr) {
   }
   
   cout << "the first date is: " << birthday_list[0]->show() << endl;
+  delete[] birthday_list;
 }
 
 int main() {
   doInterestingThing(1998);
   doInterestingThing(1999);
   cout << endl << "... Goodbye ..." << endl;
-  exit(1);
+  return 0;
 }
