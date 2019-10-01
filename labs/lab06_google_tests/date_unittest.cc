@@ -81,13 +81,15 @@ TEST_F(DateTest, PrintDateTestsWithoutNewline) {
   * However, it is illegal to mix TEST() and TEST_F() in the same test case (file).
   *
   */
-  
+
+//mutant 2
 TEST_F(DateTest, DaysBetweenTests) {
   EXPECT_EQ(first_day.GetUsDate(), "09-04-2018") << "First day of class not setup properly";
   EXPECT_EQ(last_day.GetUsDate(), "12-11-2018") << "Last day of class not setup properly";
   EXPECT_EQ(first_day.DaysBetween(last_day), 98) << "Days between is not calculated properly";
 }
 
+//mutant 9
 TEST_F(DateTest, PrintLeadingZeros){
 	Date a(1999, 3, 7);
 	Date b(2014, 1, 8);
@@ -114,7 +116,7 @@ TEST_F(DateTest, PrintLeadingZeros){
   EXPECT_EQ(output3, expected_out_3);
 }
 
-
+//mutant 1
 TEST_F(DateTest, EpochTest){
 	Date a(99999999);
 	Date b(1569897148);
@@ -134,6 +136,7 @@ TEST_F(DateTest, EpochTest){
   EXPECT_EQ(output2, expected_out_2);
 }
 
+//mutant 5
 TEST_F(DateTest, JanMarchDaysBetween){
 	Date a(2016, 1, 1);
 	Date b(2016, 3, 1);
@@ -142,26 +145,27 @@ TEST_F(DateTest, JanMarchDaysBetween){
 	EXPECT_EQ(a.DaysBetween(b), 60) << "Days Between Jan & March Incorrect";
 }
 
+//mutant 3
 TEST_F(DateTest, MissingCharGetDate){
 	Date a(2016, 1, 1);
   EXPECT_EQ(a.GetDate(), "2016-01-01") << "wrong date format or missing character";
 }
-
+//mutant 6
 TEST_F(DateTest, FormatGetUsDate){
 	Date a(2016, 1, 1);
   EXPECT_EQ(a.GetUsDate(), "01-01-2016") << "wrong date format or missing character";
 }
-
+//mutant 8
 TEST_F(DateTest, MonthIndex){
 	Date a(2019, 9, 30);
 	EXPECT_EQ(a.GetDate(), "2019-09-30") << "wrong month index or format";
 }
-
+//mutant 4
 TEST_F(DateTest, todayTest){
 	Date today(2019, 9, 30);
 	EXPECT_EQ(today.GetUsDate(), "09-30-2019") << "month may be off by one";
 }
-
+//mutant 7
 TEST_F(DateTest, operateTest){
 	Date a(2016, 1, 5);
 	a = a - 1;
