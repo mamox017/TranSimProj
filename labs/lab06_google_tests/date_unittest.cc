@@ -13,7 +13,6 @@ class DateTest : public ::testing::Test {
     // code here will execute just before the test ensues 
 	first_day = Date(2018, 9, 4);
 	last_day = Date(2018, 12, 11);
-	today = Date(1569873400);
   }
  protected:
   Date first_day;          // first day of classes
@@ -27,12 +26,10 @@ TEST_F(DateTest, PrintDateTests) {
   Date y2k(1999, 12, 31);              // y2k
   Date ind_day(1776, 7, 4);            // US Independence
   Date best_holiday(2018, 10, 31);     // Halloween
-  Date today(1569873400);
 
   std::string expected_out_1 = "1999-12-31\n";
   std::string expected_out_2 = "1776-07-04\n";
   std::string expected_out_3 = "2018-10-31\n";
-  std::string expected_out_4 = "2019-09-30\n";
 
   testing::internal::CaptureStdout();
   y2k.PrintDate(true);
@@ -45,27 +42,20 @@ TEST_F(DateTest, PrintDateTests) {
   testing::internal::CaptureStdout();
   best_holiday.PrintDate(true);
   std::string output3 = testing::internal::GetCapturedStdout();
-  
-	testing::internal::CaptureStdout();
-  today.PrintDate(true);
-  std::string output4 = testing::internal::GetCapturedStdout();
 
   EXPECT_EQ(output1, expected_out_1);
   EXPECT_EQ(output2, expected_out_2);
   EXPECT_EQ(output3, expected_out_3);
-	EXPECT_EQ(output4, expected_out_4);
 }
 
 TEST_F(DateTest, PrintDateTestsWithoutNewline) {
   Date y2k(1999, 12, 31);              // y2k
   Date ind_day(1776, 7, 4);            // US Independence
   Date best_holiday(2018, 10, 31);     // Halloween
-  Date today(1569873400);
  
   std::string expected_out_1 = "1999-12-31";
   std::string expected_out_2 = "1776-07-04";
   std::string expected_out_3 = "2018-10-31";
-  std::string expected_out_4 = "2019-09-30";
 
   testing::internal::CaptureStdout();
   y2k.PrintDate(false);
@@ -79,19 +69,9 @@ TEST_F(DateTest, PrintDateTestsWithoutNewline) {
   best_holiday.PrintDate(false);
   std::string output3 = testing::internal::GetCapturedStdout();
   
-	testing::internal::CaptureStdout();
-  today.PrintDate(false);
-  std::string output4 = testing::internal::GetCapturedStdout();
-
-	testing::internal::CaptureStdout();
-  today.PrintDate(false);
-  std::string output5 = testing::internal::GetCapturedStdout();
-
   EXPECT_EQ(output1, expected_out_1);
   EXPECT_EQ(output2, expected_out_2);
   EXPECT_EQ(output3, expected_out_3);
-  EXPECT_EQ(output4, expected_out_4);
-  EXPECT_EQ(output5, expected_out_4);
 }
 
 /**
@@ -103,14 +83,54 @@ TEST_F(DateTest, PrintDateTestsWithoutNewline) {
   */
   
 TEST_F(DateTest, DaysBetweenTests) {
-	//Mutant 2
   EXPECT_EQ(first_day.GetUsDate(), "09-04-2018") << "First day of class not setup properly";
   EXPECT_EQ(last_day.GetUsDate(), "12-11-2018") << "Last day of class not setup properly";
   EXPECT_EQ(first_day.DaysBetween(last_day), 98) << "Days between is not calculated properly";
-	//Mutant 1
-	EXPECT_EQ(today.GetUsDate(), "09-30-2019") << "The epoch time was not setup properly";
-	//Mutant 3
-	EXPECT_EQ(today.GetDate(), "2019-09-30") << "GetDate not setup properly";
+}
+
+TEST_F(DateTest, PrintLeadingZeros){
+	Date a(1999, 3, 7);
+	Date b(2014, 1, 8);
+	Date c(2013, 8, 3);
+
+	std::string expected_out_1 = "1999-03-07";
+	std::string expected_out_2 = "2014-01-08";
+	std::string expected_out_3 = "2013-08-03";
+
+  testing::internal::CaptureStdout();
+  a.PrintDate(false);
+  std::string output1 = testing::internal::GetCapturedStdout();
+  
+  testing::internal::CaptureStdout();
+  b.PrintDate(false);
+  std::string output2 = testing::internal::GetCapturedStdout();
+  
+  testing::internal::CaptureStdout();
+  c.PrintDate(false);
+  std::string output3 = testing::internal::GetCapturedStdout();
+  
+  EXPECT_EQ(output1, expected_out_1);
+  EXPECT_EQ(output2, expected_out_2);
+  EXPECT_EQ(output3, expected_out_3);
+}
+
+TEST_F(DateTest, EpochTest){
+	Date a(99999999);
+	Date b(1569897148);
+
+	std::string expected_out_1 = "03-03-1973";
+	std::string expected_out_2 = "10-01-2019";
+
+  testing::internal::CaptureStdout();
+  a.PrintUsDate(false);
+  std::string output1 = testing::internal::GetCapturedStdout();
+  
+  testing::internal::CaptureStdout();
+  b.PrintUsDate(false);
+  std::string output2 = testing::internal::GetCapturedStdout();
+
+  EXPECT_EQ(output1, expected_out_1);
+  EXPECT_EQ(output2, expected_out_2);
 }
 
 /**
