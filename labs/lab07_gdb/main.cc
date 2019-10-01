@@ -5,7 +5,7 @@
  */
 
 #include "Date.h"
-
+ 
 #include <iostream>
 #include <string>
 
@@ -57,4 +57,5 @@ int main() {
   doInterestingThing(1998);
   doInterestingThing(1999);
   cout << endl << "... Goodbye ..." << endl;
+  exit(1);
 }
