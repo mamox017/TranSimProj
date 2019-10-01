@@ -13,7 +13,8 @@ using namespace std;
 
 void doInterestingThing(int yr) {
   // variables used in this method
-  int* array_len;
+  int x = 4;
+  int* array_len = &x;
   Date d1;
   Date d2;
   Date d3;
