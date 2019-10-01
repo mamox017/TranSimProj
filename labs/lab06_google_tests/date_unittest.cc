@@ -5,7 +5,7 @@
 #include <ctime>
 
 #include "date.h"
- 
+  
 
 class DateTest : public ::testing::Test {
  public:
