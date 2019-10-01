@@ -103,10 +103,13 @@ TEST_F(DateTest, PrintDateTestsWithoutNewline) {
   */
   
 TEST_F(DateTest, DaysBetweenTests) {
+	//Mutant 2
   EXPECT_EQ(first_day.GetUsDate(), "09-04-2018") << "First day of class not setup properly";
   EXPECT_EQ(last_day.GetUsDate(), "12-11-2018") << "Last day of class not setup properly";
   EXPECT_EQ(first_day.DaysBetween(last_day), 98) << "Days between is not calculated properly";
+	//Mutant 1
 	EXPECT_EQ(today.GetUsDate(), "09-30-2019") << "The epoch time was not setup properly";
+	//Mutant 3
 	EXPECT_EQ(today.GetDate(), "2019-09-30") << "GetDate not setup properly";
 }
 
