@@ -83,10 +83,15 @@ TEST_F(DateTest, PrintDateTestsWithoutNewline) {
   today.PrintDate(false);
   std::string output4 = testing::internal::GetCapturedStdout();
 
+	testing::internal::CaptureStdout();
+  today.PrintDate(false);
+  std::string output5 = testing::internal::GetCapturedStdout();
+
   EXPECT_EQ(output1, expected_out_1);
   EXPECT_EQ(output2, expected_out_2);
   EXPECT_EQ(output3, expected_out_3);
   EXPECT_EQ(output4, expected_out_4);
+  EXPECT_EQ(output5, expected_out_4);
 }
 
 /**
@@ -102,6 +107,7 @@ TEST_F(DateTest, DaysBetweenTests) {
   EXPECT_EQ(last_day.GetUsDate(), "12-11-2018") << "Last day of class not setup properly";
   EXPECT_EQ(first_day.DaysBetween(last_day), 98) << "Days between is not calculated properly";
 	EXPECT_EQ(today.GetUsDate(), "09-30-2019") << "The epoch time was not setup properly";
+	EXPECT_EQ(today.GetDate(), "2019-09-30") << "GetDate not setup properly";
 }
 
 /**
