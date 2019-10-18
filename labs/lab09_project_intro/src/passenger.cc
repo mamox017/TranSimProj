@@ -14,9 +14,12 @@ Passenger::Passenger(Stop * dest = NULL, std::string name = "Nobody") {
   count_++;
 }*/
 
-Passenger::Passenger(int destination_stop_id, std::string name): name_(name),
-destination_stop_id_(destination_stop_id), wait_at_stop_(0),
-time_on_bus_(0), id_(count_) {
+Passenger::Passenger(int destination_stop_id, std::string name) {
+  name_ = name;
+  destination_stop_id_ = destination_stop_id;
+  id_ = count_;
+  wait_at_stop_ = 0;
+  time_on_bus_ = 0;
   count_++;
 }
 
@@ -31,15 +34,16 @@ void Passenger::Update() {
 void Passenger::GetOnBus() {
   time_on_bus_ = 1;
 }
-// fix
+
+
 int Passenger::GetTotalWait() const {
-  // time_on_bus_ + wait_at_stop_
-  // or all stops before added together
-  return wait_at_stop_;
+  return (wait_at_stop_ + time_on_bus_);
 }
 // fix
 bool Passenger::IsOnBus() const {
-  // what do i refer to?
+  if (time_on_bus_ > 0) {
+    return true;
+  }
   return false;
 }
 
