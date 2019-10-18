@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 
+
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
@@ -33,6 +34,7 @@ class Passenger {  // : public Reporter {
   *
   * @return Passenger object
   */
+  //Passenger(Stop * dest = NULL, std::string name = "Nobody");
   explicit Passenger(int = -1, std::string = "Nobody");
   void Update();
   void GetOnBus();

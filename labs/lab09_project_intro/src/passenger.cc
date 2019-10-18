@@ -1,21 +1,31 @@
 // Copyright [year] <Copyright Owner>
 #include "src/passenger.h"
+#include "src/stop.h"
 
 #include <iostream>
 #include <string>
 
 
 int Passenger::count_ = 0;
+/*
+Passenger::Passenger(Stop * dest = NULL, std::string name = "Nobody") {
+  name_ = name;
+  destination_stop_id = dest.GetId();
+  count_++;
+}*/
 
-// Passenger::Passenger(Stop * dest = NULL, std::string name = "Nobody") {
 Passenger::Passenger(int destination_stop_id, std::string name): name_(name),
 destination_stop_id_(destination_stop_id), wait_at_stop_(0),
 time_on_bus_(0), id_(count_) {
   count_++;
 }
-//fix
+
 void Passenger::Update() {
-  wait_at_stop_++;
+  if (this->IsOnBus()){
+    time_on_bus_++;
+  } else {
+    wait_at_stop_++;
+  }
 }
 
 void Passenger::GetOnBus() {
