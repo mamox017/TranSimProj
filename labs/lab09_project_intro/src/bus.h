@@ -1,7 +1,6 @@
 /**
  * @file bus.h
  *
- *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 #ifndef SRC_BUS_H_
