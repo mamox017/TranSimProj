@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on October 18, 09:23:16 AM.
+Run on October 18, 10:40:40 AM.
 
 
 ### Necessary Files and Structure
@@ -8,8 +8,6 @@ Run on October 18, 09:23:16 AM.
 + Pass: Check that directory "labs" exists.
 
 + Pass: Check that directory "labs/lab10_advanced_git" exists.
-
-+ Pass: Check that directory "project" exists.
 
 
 ### Git Usage
@@ -28,7 +26,7 @@ e94b05bab14a1947b2bc7ff10bc993e5c4127fc0	refs/heads/devel
 
 19490fd709fc970c8eb80cc35be678681de22469	refs/heads/fix/02-compilation-errors
 
-14c6a215677cdac03ddeb41866bc76ab29433735	refs/heads/master
+cfe013a68c46f7fe5727c4771defa6a09fa402a2	refs/heads/master
 
 
 
@@ -108,13 +106,23 @@ Sufficient commits (found=12,required=4)
 
 + Pass: Configuring GHI
 
-+ Pass: Run ghi for total number of open issues in Github repo (Found: 0)
++ Pass: Run ghi for total number of open issues in Github repo (Found: 2)
+
+[OPEN issue #2] :  Issue 2 [enhancement]
+
+[OPEN issue #1] :  Issue 1 [bug]
+
+
+
+
 
 + Pass: Run ghi for total number of closed issues in Github repo (Found: 0)
 
-+ Fail: Run ghi for total number of issues in Github repo (Found: 0, Expected: 2) 
++ Pass: Run ghi for total number of issues in Github repo (Found: 2, Expected: 2) 
 
- [OPEN issue #] : 
+ [OPEN issue #2] :  Issue 2 [enhancement]
+
+[OPEN issue #1] :  Issue 1 [bug]
 
 [CLOSED issue #] : 
 
@@ -128,6 +136,8 @@ Sufficient commits (found=12,required=4)
 + Pass: Checkout devel branch.
 
 
+
++ Pass: Check that directory "project" exists.
 
 + Pass: Change into directory "project".
 
