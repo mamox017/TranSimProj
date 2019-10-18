@@ -13,7 +13,7 @@ destination_stop_id_(destination_stop_id), wait_at_stop_(0),
 time_on_bus_(0), id_(count_) {
   count_++;
 }
-
+//fix
 void Passenger::Update() {
   wait_at_stop_++;
 }
@@ -21,11 +21,11 @@ void Passenger::Update() {
 void Passenger::GetOnBus() {
   time_on_bus_ = 1;
 }
-
+//fix
 int Passenger::GetTotalWait() const {
   return wait_at_stop_;
 }
-
+//fix
 bool Passenger::IsOnBus() const {
   return false;
 }
