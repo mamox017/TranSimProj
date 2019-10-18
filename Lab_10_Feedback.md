@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on October 17, 20:20:01 PM.
+Run on October 17, 20:49:30 PM.
 
 
 ### Necessary Files and Structure
@@ -22,17 +22,23 @@ Run on October 17, 20:20:01 PM.
 
 + Pass: Run git ls-remote gather all branches in repo
 
-d3cb9b0ae81cc6f68ecb908ed3c522894a7d6cd6	refs/heads/devel
+e94b05bab14a1947b2bc7ff10bc993e5c4127fc0	refs/heads/devel
 
-8aeab0aef854e28ec2783921e86fbcbf7be64de1	refs/heads/master
+8960f5b87bb57f5dbb449b5dd2f5f467a05d0716	refs/heads/fix/01-compilation-errors
+
+19490fd709fc970c8eb80cc35be678681de22469	refs/heads/fix/02-compilation-errors
+
+5812df548ef5ed69f0fd8361f86541d2a6bab9f8	refs/heads/master
 
 
 
 + Pass: Checking for the correct number of branches
 
-Insufficient branches found (found=0, required=2):
+Sufficient branches found (found=2, required=2):
 
+fix/01-compilation-errors
 
+fix/02-compilation-errors
 
 
 #### Counting commits on devel
@@ -43,7 +49,12 @@ Insufficient branches found (found=0, required=2):
 
 + Pass: Gather commit history
 
-[Mootii] 2019-10-17 (HEAD -> devel, origin/devel) Merge branch 'support-code' 
+[Mootii] 2019-10-17 (HEAD -> devel, origin/devel) Merge branch 'fix/01-compilation-errors' into devel fixed
+
+
+[Mootii] 2019-10-17 (origin/fix/01-compilation-errors, fix/01-compilation-errors) fix(local_simulator.cc) <changed . to -> on calls to object pointer> 
+
+[Mootii] 2019-10-17 Merge branch 'support-code' 
 
 [Mootii] 2019-10-17 Merge branch 'support-code' of github.umn.edu:umn-csci-3081-F19/csci3081-shared-upstream into support-code 
 
@@ -90,7 +101,7 @@ Insufficient branches found (found=0, required=2):
 
 
 + Pass: Check git commit history
-Sufficient commits (found=9,required=4)
+Sufficient commits (found=12,required=4)
 
 
 ### Git Issue Usage
@@ -122,69 +133,7 @@ Sufficient commits (found=9,required=4)
 
 + Pass: Check that file "makefile" exists.
 
-+ Fail: Check that make compiles.
-
-    Make compile fails with errors:.
-<pre>cd src; make -j
-make[1]: Entering directory '/project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/src'
-==== Auto-Generating Dependencies for ../drivers/transit_sim.cc. ====
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/objdrivers/transit_sim.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/objdrivers/transit_sim.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers ../drivers/transit_sim.cc
-==== Compiling ../drivers/transit_sim.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/objdrivers/transit_sim.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/objdrivers/transit_sim.o ../drivers/transit_sim.cc
-==== Auto-Generating Dependencies for random_passenger_generator.cc. ====
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/random_passenger_generator.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/random_passenger_generator.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers random_passenger_generator.cc
-==== Auto-Generating Dependencies for stop.cc. ====
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/stop.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/stop.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers stop.cc
-==== Auto-Generating Dependencies for bus.cc. ====
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/bus.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/bus.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers bus.cc
-==== Auto-Generating Dependencies for local_simulator.cc. ====
-==== Auto-Generating Dependencies for passenger_factory.cc. ====
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/local_simulator.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/local_simulator.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers local_simulator.cc
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_factory.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_factory.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers passenger_factory.cc
-==== Auto-Generating Dependencies for passenger.cc. ====
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers passenger.cc
-==== Auto-Generating Dependencies for route.cc. ====
-==== Auto-Generating Dependencies for passenger_generator.cc. ====
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/route.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/route.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers route.cc
-g++ -MM -MF /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_generator.d -MP -MT /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_generator.o -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers passenger_generator.cc
-==== Compiling stop.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/stop.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/stop.o stop.cc
-==== Compiling passenger.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger.o passenger.cc
-==== Compiling passenger_factory.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_factory.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_factory.o passenger_factory.cc
-==== Compiling route.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/route.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/route.o route.cc
-==== Compiling passenger_generator.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_generator.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/passenger_generator.o passenger_generator.cc
-==== Compiling bus.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/bus.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/bus.o bus.cc
-==== Compiling local_simulator.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/local_simulator.o. ====
-==== Compiling random_passenger_generator.cc into /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/random_passenger_generator.o. ====
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/local_simulator.o local_simulator.cc
-g++ -fopenmp -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -Wcast-align -Wcast-qual -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wswitch-default -Wsuggest-override -Wstrict-null-sentinel -Wsign-promo -Wold-style-cast -Woverloaded-virtual -Wctor-dtor-privacy -Wno-old-style-cast -Wno-cast-align -g -std=c++11 -c -I.. -I. -I./.. -I../drivers  -c -fPIC -o  /project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/random_passenger_generator.o random_passenger_generator.cc
-stop.cc: In member function int Stop::AddPassengers(Passenger*):
-stop.cc:10:37: warning: unused parameter pass [-Wunused-parameter]
- int Stop::AddPassengers(Passenger * pass) {
-                                     ^~~~
-bus.cc: In member function bool Bus::LoadPassenger(Passenger*):
-bus.cc:13:37: warning: unused parameter new_passenger [-Wunused-parameter]
- bool Bus::LoadPassenger(Passenger * new_passenger) {
-                                     ^~~~~~~~~~~~~
-local_simulator.cc: In member function virtual bool LocalSimulator::Update():
-local_simulator.cc:31:9: error: request for member Update in ((LocalSimulator*)this)->LocalSimulator::pass_, which is of pointer type Passenger* (maybe you meant to use -> ?)
-   pass_.Update();
-         ^~~~~~
-local_simulator.cc:32:9: error: request for member Report in ((LocalSimulator*)this)->LocalSimulator::pass_, which is of pointer type Passenger* (maybe you meant to use -> ?)
-   pass_.Report();
-         ^~~~~~
-makefile:86: recipe for target '/project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/local_simulator.o' failed
-make[1]: *** [/project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/build/obj/transit_sim/local_simulator.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make[1]: Leaving directory '/project/grades/Fall-2019/csci3081/student-repos/Lab_10_Feedback/repo-mamox017/project/src'
-makefile:10: recipe for target 'TransitSim' failed
-make: *** [TransitSim] Error 2
-</pre>
++ Pass: Check that make compiles.
 
 
 
