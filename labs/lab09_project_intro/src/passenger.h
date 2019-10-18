@@ -34,7 +34,7 @@ class Passenger {  // : public Reporter {
   *
   * @return Passenger object
   */
-  //Passenger(Stop * dest = NULL, std::string name = "Nobody");
+  // Passenger(Stop * dest = NULL, std::string name = "Nobody");
   explicit Passenger(int = -1, std::string = "Nobody");
   void Update();
   void GetOnBus();
@@ -42,6 +42,7 @@ class Passenger {  // : public Reporter {
   bool IsOnBus() const;
   int GetDestination() const;
   void Report() const;
+
  private:
   std::string name_;
   int destination_stop_id_;
