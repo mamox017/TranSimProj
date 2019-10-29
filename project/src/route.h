@@ -15,6 +15,7 @@
 #include "./stop.h"
 
 class PassengerGenerator;
+class Stop;
 
 class Route {
  public:
@@ -22,6 +23,7 @@ class Route {
         PassengerGenerator *);
   Route * Clone();
   void Update();
+  // one has ostream input
   void Report(std::ostream&);
   bool IsAtEnd() const;
   void NextStop();  // Change destination_stop_ to next stop

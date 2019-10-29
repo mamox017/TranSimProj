@@ -22,7 +22,8 @@ class Stop {
   int GetId() const;
   int AddPassengers(Passenger *);  
   void Update();
-  void Report() const;
+  //void Report() const;
+  void Report(std::ostream&) const;
 
  private:
   int id_;

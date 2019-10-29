@@ -26,8 +26,8 @@ class Bus {
   bool LoadPassenger(Passenger *);  // returning revenue delta
   bool Move();
   void Update();
-  void Report();
-
+  void Report(std::ostream&);
+  bool IsTripComplete();
  private:
   std::list<Passenger *> passengers_;
   int passenger_max_capacity_;

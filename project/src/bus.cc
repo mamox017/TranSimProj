@@ -11,6 +11,7 @@ Bus::Bus(std::string name, Route * out, Route * in, int capacity, double speed) 
 
 
 bool Bus::LoadPassenger(Passenger * new_passenger) {
+  //passengers_ = new_passenger;
   return true;
 }
 
@@ -27,12 +28,16 @@ void Bus::Update() { //using common Update format
   Move();
 }
 
-void Bus::Report() {
+bool Bus::IsTripComplete() {
+  return false;
+}
+
+void Bus::Report(std::ostream &o) {
   std::cout << "Name: " << name_ << std::endl;
   std::cout << "Speed: " << speed_ << std::endl;
   std::cout << "Distance to next stop: " << distance_remaining_ << std::endl;
   std::cout << "\tPassengers (" << passengers_.size() << "): " << std::endl;
   for (std::list<Passenger *>::iterator it = passengers_.begin(); it != passengers_.end(); it++) {
-    (*it)->Report();
+    (*it)->Report(o);
   }
 }

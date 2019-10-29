@@ -1,6 +1,6 @@
 #include "route.h"
 
-Route::Route(std::string name, Stop ** stops, double * distances, int num_stops) {
+Route::Route(std::string name, Stop ** stops, double * distances, int num_stops, PassengerGenerator *) {
   for (int i = 0; i < num_stops; i++) {
     stops_.push_back(stops[i]);
   }
@@ -18,12 +18,12 @@ void Route::Update() {
   }
 }
 
-void Route::Report() {
+void Route::Report(std::ostream &o) {
   std::cout << "Name: " << name_ << std::endl;
   std::cout << "Num stops: " << num_stops_ << std::endl;
   int stop_counter = 0;
   for(std::list<Stop *>::const_iterator it = stops_.begin(); it != stops_.end(); it++) {
-    (*it)->Report();
+    (*it)->Report(o);
     stop_counter++;
   }
 }

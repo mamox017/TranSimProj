@@ -21,10 +21,10 @@ int Stop::GetId() const{
   return id_;
 }
 
-void Stop::Report() const {
+void Stop::Report(std::ostream &o) const {
   std::cout << "ID: " << id_ << std::endl;
   std::cout << "Passengers waiting: " << passengers_.size() << std::endl;
   for(std::list<Passenger *>::const_iterator it = passengers_.begin(); it != passengers_.end(); it++) {
-    (*it)->Report();
+    (*it)->Report(o);
   }
 }

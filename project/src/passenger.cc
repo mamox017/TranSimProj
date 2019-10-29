@@ -24,7 +24,7 @@ void Passenger::Update() {
 }
 
 void Passenger::GetOnBus() {
-  time_on_bus_ = 1;
+  time_on_bus_ += 1;
 }
 
 int Passenger::GetTotalWait() const {
@@ -38,11 +38,14 @@ bool Passenger::IsOnBus() const {
   return false;
 }
 
+std::string Passenger::GetName() {
+    return name_;
+}
 int Passenger::GetDestination() const {
   return destination_stop_id_;
 }
 
-void Passenger::Report() const {
+void Passenger::Report(std::ostream&) const {
   std::cout << "Name: " << name_ << std::endl;
   std::cout << "Destination: " << destination_stop_id_ << std::endl;
   std::cout << "Total Wait: " << GetTotalWait() << std::endl;
