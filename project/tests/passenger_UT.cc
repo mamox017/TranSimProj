@@ -30,7 +30,7 @@ class PassengerTests : public ::testing::Test {
     virtual void SetUp() {
         passenger = new Passenger();
         passenger2 = new Passenger(5, "Bro");
-        //passenger3 = new Passenger(10953, "Stanley");
+        // passenger3 = new Passenger(10953, "Stanley");
         passenger4 = new Passenger(21, "David");
     }
 
@@ -71,7 +71,7 @@ TEST_F(PassengerTests, UpdateTest) {
 TEST_F(PassengerTests, GetOnBusTest) {
     EXPECT_EQ(passenger4->IsOnBus(), false);
     passenger4->GetOnBus();
-    EXPECT_EQ(passenger4->IsOnBus(), true);    
+    EXPECT_EQ(passenger4->IsOnBus(), true);
 }
 
 TEST_F(PassengerTests, GetTotalWait) {
@@ -92,8 +92,9 @@ TEST_F(PassengerTests, GetDestinationTest) {
     EXPECT_EQ(passenger2->GetDestination(), 5);
 }
 
-TEST_F(PassengerTests, ReportTest){
+TEST_F(PassengerTests, ReportTest) {
     std::ostringstream testString;
     passenger4->Report(testString);
-    EXPECT_EQ(testString.str(), "Name: David\nDestination: 21\nTotal Wait: 0\n\tWait at Stop: 0\n\tTime on bus: 0\n");
+    EXPECT_EQ(testString.str(),
+"Name: David\nDestination: 21\nTotal Wait: 0\n\tWait at Stop: 0\n\tTime on bus: 0\n");
 }

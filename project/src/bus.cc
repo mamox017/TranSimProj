@@ -1,6 +1,8 @@
-#include "bus.h"
+// Copyright [year] <Copyright Owner>"
+#include "src/bus.h"
 
-Bus::Bus(std::string name, Route * out, Route * in, int capacity, double speed) {
+Bus::Bus(std::string name, Route * out, Route * in,
+int capacity, double speed) {
   name_ = name;
   outgoing_route_ = out;
   incoming_route_ = in;
@@ -11,20 +13,20 @@ Bus::Bus(std::string name, Route * out, Route * in, int capacity, double speed) 
 
 
 bool Bus::LoadPassenger(Passenger * new_passenger) {
-  //passengers_ = new_passenger;
+  // passengers_ = new_passenger;
   return true;
 }
 
 bool Bus::Move() {
-	return true;
+  return true;
 }
 
-//bool Refuel() {
-//  //This may become more complex in the future
+// bool Refuel() {
+//  // This may become more complex in the future
 //  fuel_ = max_fuel_;
-//}
+// }
 
-void Bus::Update() { //using common Update format
+void Bus::Update() {  // using common Update format
   Move();
 }
 
@@ -37,7 +39,8 @@ void Bus::Report(std::ostream& o) {
   o << "Speed: " << speed_ << std::endl;
   o << "Distance to next stop: " << distance_remaining_ << std::endl;
   o << "\tPassengers (" << passengers_.size() << "): " << std::endl;
-  for (std::list<Passenger *>::iterator it = passengers_.begin(); it != passengers_.end(); it++) {
+  for (std::list<Passenger *>::iterator it = passengers_.begin();
+it != passengers_.end(); it++) {
     (*it)->Report(o);
   }
 }
