@@ -32,11 +32,11 @@ bool Bus::IsTripComplete() {
   return false;
 }
 
-void Bus::Report(std::ostream &o) {
-  std::cout << "Name: " << name_ << std::endl;
-  std::cout << "Speed: " << speed_ << std::endl;
-  std::cout << "Distance to next stop: " << distance_remaining_ << std::endl;
-  std::cout << "\tPassengers (" << passengers_.size() << "): " << std::endl;
+void Bus::Report(std::ostream& o) {
+  o << "Name: " << name_ << std::endl;
+  o << "Speed: " << speed_ << std::endl;
+  o << "Distance to next stop: " << distance_remaining_ << std::endl;
+  o << "\tPassengers (" << passengers_.size() << "): " << std::endl;
   for (std::list<Passenger *>::iterator it = passengers_.begin(); it != passengers_.end(); it++) {
     (*it)->Report(o);
   }

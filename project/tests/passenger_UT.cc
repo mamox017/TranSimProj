@@ -67,17 +67,19 @@ TEST_F(PassengerTests, UpdateTest) {
     passenger->Update();
     EXPECT_EQ(passenger->GetTotalWait(), before+1);
 }
-// make better
+
 TEST_F(PassengerTests, GetOnBusTest) {
     EXPECT_EQ(passenger4->IsOnBus(), false);
-    passnger4->GetOnBus();
+    passenger4->GetOnBus();
     EXPECT_EQ(passenger4->IsOnBus(), true);    
 }
 
 TEST_F(PassengerTests, GetTotalWait) {
     EXPECT_EQ(passenger->GetTotalWait(), 0);
+    passenger->Update();
     passenger->GetOnBus();
-    EXPECT_GT(passenger->GetTotalWait(), 0);
+    passenger->Update();
+    EXPECT_EQ(passenger->GetTotalWait(), 3);
 }
 
 TEST_F(PassengerTests, IsOnBusTest) {
@@ -90,6 +92,8 @@ TEST_F(PassengerTests, GetDestinationTest) {
     EXPECT_EQ(passenger2->GetDestination(), 5);
 }
 
-/*TEST_F(PassengerTests, ReportTest){
-    EXPECT_EQ(passenger2->Report(std::cout), "");
-}*/
+TEST_F(PassengerTests, ReportTest){
+    std::ostringstream testString;
+    passenger4->Report(testString);
+    EXPECT_EQ(testString.str(), "Name: David\nDestination: 21\nTotal Wait: 0\n\tWait at Stop: 0\n\tTime on bus: 0\n");
+}

@@ -5,8 +5,8 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-#ifndef PASSENGER_H_
-#define PASSENGER_H_
+#ifndef SRC_PASSENGER_H_
+#define SRC_PASSENGER_H_
 
 #include <iostream>
 #include <string>
@@ -29,6 +29,7 @@ class Passenger {  // : public Reporter {
   int GetDestination() const;
   std::string GetName();
   void Report(std::ostream&) const;
+
  private:
   std::string name_;
   int destination_stop_id_;
@@ -37,4 +38,4 @@ class Passenger {  // : public Reporter {
   int id_;
   static int count_;   // global count, used to set ID for new instances
 };
-#endif  // PASSENGER_H_
+#endif  // SRC_PASSENGER_H_
