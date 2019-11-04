@@ -21,15 +21,25 @@ class Simulator {
 
  protected:
   // bus and stop list will be iterated over to update
+<<<<<<< HEAD
   // list is efficient in traversal
+=======
+  // ist is efficient in traversal
+>>>>>>> 2b3c10910ec406d400757eb9a456367ca13f2acd
   std::list<Bus *> active_buses_;         // buses leave scope
   std::list<Stop *> all_stops_;
 
   // prototype_routes and distance lists will be accessed directly
   // list is not efficient at direct selection by index
+<<<<<<< HEAD
   std::vector<Route *> prototype_routes;   // routes for copying on bus creation
+=======
+  // routes below a for copying on bus creation
+  std::vector<Route *> prototype_routes_;
+>>>>>>> 2b3c10910ec406d400757eb9a456367ca13f2acd
   std::vector<double *> distance_between_sets_;
   std::vector<PassengerGenerator *> passenger_generators_;
+  // std::vector<std:list<double>> passenger_generation_probability_lists;
 };
 
 #endif  // SRC_SIMULATOR_H_
