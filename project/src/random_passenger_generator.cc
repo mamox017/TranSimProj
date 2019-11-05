@@ -48,11 +48,8 @@ int RandomPassengerGenerator::GeneratePassengers() {
     while (current_generation_probability > .0001) {
       // generate a random double value_comp
       double generation_value =
-<<<<<<< HEAD
-((my_rand() - my_rand.min()) / (my_rand.max() * 1.0));
-=======
-                    ((my_rand() - my_rand.min()) / (my_rand.max() * 1.0));
->>>>>>> 2b3c10910ec406d400757eb9a456367ca13f2acd
+      ((my_rand() - my_rand.min()) / (my_rand.max() * 1.0));
+
       // e.g. `.54234234 < .90`, generate a passenger
       // `.912353254 !< .90`, don't generate
       // this gives us a 90% chance of creating a passenger

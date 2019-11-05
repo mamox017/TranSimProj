@@ -15,6 +15,7 @@ longitude_(longitude), latitude_(latitude) {
 }
 
 int Stop::AddPassengers(Passenger * pass) {
+  passengers_.push_back(pass);
   return 0;
 }
 

@@ -8,6 +8,7 @@
 #define SRC_PASSENGER_GENERATOR_H_
 
 #include <list>
+#include <stdlib.h>
 #include "src/passenger_factory.h"
 #include "src/stop.h"
 
@@ -18,6 +19,10 @@ class PassengerGenerator {
   PassengerGenerator(std::list<double>, std::list<Stop *>);
   // Makes the class abstract, cannot instantiate and forces subclass override
   virtual int GeneratePassengers() = 0;  // pure virtual
+  // PassengerGenerator(const PassengerGenerator& p);
+  // void operator = (const PassengerGenerator &p);
+  // std::list<Passenger *> Generate();
+
  protected:
   std::list<double> generation_probabilities_;
   std::list<Stop *> stops_;
