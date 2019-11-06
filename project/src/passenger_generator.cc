@@ -17,6 +17,17 @@ PassengerGenerator::PassengerGenerator(std::list<double> probs,
   stops_ = stops;
 }
 
+/*
+Passenger * PassengerGenerator::PassengerListMaker(int numPassengers, Stop * currStop){
+  //make passenger list
+  Passenger * generatedPassengers = new Passenger [numPassengers];
+  //iterate through how many passengers to make and instantiate as a passenger and add them to list
+  for (int i = 0; i < numPassengers; i++;) {
+    Passenger * p = pass_factory.Generate(currStop.getId(), stops_.end.getId());
+    generatedPassengers[i] = *p;
+  }
+} */
+
 /*std::list<Passenger *> PassengerGenerator::Generate(){
   std::list<Passenger *> generatedPassengers;  
   int how_many_ = rand() % (generation_probabilities.size-1);

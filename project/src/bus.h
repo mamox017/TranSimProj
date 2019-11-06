@@ -24,17 +24,26 @@ class Bus {
   Bus(std::string name, Route * out, Route * in, int capacity = 60,
                                                  double speed = 1);
   bool LoadPassenger(Passenger *);  // returning revenue delta
+  bool UnloadPassengers();
   bool Move();
   void Update();
   void Report(std::ostream&);
   bool IsTripComplete();
+  void Connector();
+
  private:
+  Stop * currentStop;
+  bool skipcase;
+  bool hasSwitchedRoutes;
+  bool firstIter;
   std::list<Passenger *> passengers_;
   int passenger_max_capacity_;
   std::string name_;
   double speed_;  // could also be called "distance travelled in one time step"
   Route * outgoing_route_;
   Route * incoming_route_;
+  Route * currentRoute;
+
   double distance_remaining_;  // when negative?, unload/load procedure occurs
                               // AND next stop set
   // double revenue_; // revenue collected from passengers, doesn't include

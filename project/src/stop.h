@@ -21,11 +21,17 @@ class Stop {
   // Adding passengers to the stop (from the generator)
   int GetId() const;
   int AddPassengers(Passenger *);
+  void SetNextStop(Stop * next) {nextStop = next;};
+  Stop * GetNextStop();
+  double getDistance();
+  void setDistance(double dis);
   void Update();
-  // void Report() const;
   void Report(std::ostream&) const;
+  std::list<Passenger *> GetPassengerList();
 
  private:
+  Stop * nextStop;
+  double distance;
   int id_;
   std::list<Passenger *> passengers_;  // considered array, vector, queue, list
   double longitude_;

@@ -19,6 +19,14 @@ int Stop::AddPassengers(Passenger * pass) {
   return 0;
 }
 
+void Stop::setDistance(double dis) {
+  distance = dis;
+}
+
+double Stop::getDistance() {
+  return distance;
+}
+
 void Stop::Update() {
   for (std::list<Passenger *>::iterator it = passengers_.begin();
 it != passengers_.end(); it++) {
@@ -30,6 +38,10 @@ int Stop::GetId() const {
   return id_;
 }
 
+std::list<Passenger *> Stop::GetPassengerList() {
+  return passengers_;
+}
+
 void Stop::Report(std::ostream& o) const {
   o << "ID: " << id_ << std::endl;
   o << "Passengers waiting: " << passengers_.size() << std::endl;
@@ -37,4 +49,9 @@ void Stop::Report(std::ostream& o) const {
 it != passengers_.end(); it++) {
     (*it)->Report(o);
   }
+}
+
+
+Stop * Stop::GetNextStop() {
+  return nextStop;
 }

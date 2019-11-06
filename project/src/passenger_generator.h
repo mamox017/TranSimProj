@@ -22,6 +22,7 @@ class PassengerGenerator {
   // PassengerGenerator(const PassengerGenerator& p);
   // void operator = (const PassengerGenerator &p);
   // std::list<Passenger *> Generate();
+  // (me)Passenger * PassengerListMaker(int numPassengers, Stop * currStop);
 
  protected:
   std::list<double> generation_probabilities_;
