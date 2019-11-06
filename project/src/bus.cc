@@ -29,6 +29,7 @@ bool Bus::UnloadPassengers() {
   it != passengers_.end(); it++) {
     if ((*it)->GetDestination() == currentStop->GetId()){
       (*it)->GetOffBus();
+      // ?
       passengers_.erase(it);
     }
     return true;
@@ -78,13 +79,14 @@ void Bus::Update() {  // using common Update format
   if(!IsTripComplete()){
     if (Move()){
       this->UnloadPassengers();
+      /*
       std::list<Passenger *> stopPassengerList = currentStop->GetPassengerList();
       for (std::list<Passenger *>::const_iterator it = stopPassengerList.begin();
       it != stopPassengerList.end(); it++) {
         //maybecheck ids
         this->LoadPassenger(*it);
         (*it)->GetOnBus();
-      }
+      }*/
       currentStop->LoadPassengers(this);
     }
 

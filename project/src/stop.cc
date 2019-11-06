@@ -17,15 +17,25 @@ longitude_(longitude), latitude_(latitude) {
 
 int Stop::LoadPassengers(Bus * bus) {
   int i = 0;
-  std::list<Passenger *> plist = bus->GetPassengerList();
-  for (std::list<Passenger *>::const_iterator it = plist.begin();
-it != plist.end(); it++) {
-    bus->LoadPassenger(*it);
+
+  //std::list<Passenger *> plist = bus->GetPassengerList();
+  //adds to bus
+  for (std::list<Passenger *>::const_iterator it = passengers_.begin();
+it != passengers_.end(); it++) {
     (*it)->GetOnBus();
+    bus->LoadPassenger(*it);
     i++;
+  }
+  //removes from stop
+  for (std::list<Passenger *>::const_iterator it2 = passengers_.begin();
+it2 != passengers_.end(); it2++) {
+    //if ((*it2)->IsOnBus()){
+    passengers_.remove(*it2);
+    //}
   }
   return i;
 }
+
 
 int Stop::AddPassengers(Passenger * pass) {
   passengers_.push_back(pass);
