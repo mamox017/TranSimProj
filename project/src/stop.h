@@ -79,7 +79,7 @@ class Stop {
   *
   * @return int id of the stop
   */
-  void SetNextStop(Stop * next) {nextStop = next;};
+  void SetNextStop(Stop * next) {nextStop = next;}
 /**
   * @brief The get next stop for Stop objects.
   * 
@@ -138,7 +138,8 @@ class Stop {
   Stop * nextStop;
   double distance;
   int id_;
-  //std::list<Passenger *>const_iterator itera;
+  int num_waiters;
+  // std::list<Passenger *>const_iterator itera;
   std::list<Passenger *> passengers_;  // considered array, vector, queue, list
   double longitude_;
   double latitude_;  // are we using long/lat coords?

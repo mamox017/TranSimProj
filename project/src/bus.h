@@ -101,6 +101,7 @@ class Bus {
   * 
   * This function checks if the bus is at the end of both the incoming and
   * outgoing routes by using IsAtEnd()
+  * *[EDIT]* This accessor function retrieves the member variable complete
   *
   * @return bool object that is true if complete or false if incomplete
   */
@@ -113,7 +114,7 @@ class Bus {
   * @return std::list<Passenger *> list of passengers onboard bus
   */
   std::list<Passenger *> GetPassengerList();
-  
+
  private:
   Stop * currentStop;
   bool skipcase;
@@ -126,6 +127,7 @@ class Bus {
   Route * outgoing_route_;
   Route * incoming_route_;
   Route * currentRoute;
+  bool complete;
 
   double distance_remaining_;  // when negative?, unload/load procedure occurs
                               // AND next stop set

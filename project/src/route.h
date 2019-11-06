@@ -54,7 +54,7 @@ class Route {
   * @return Route * copy of Route object
   */
   Route * Clone();
-  //void setCurrentStop();
+  // void setCurrentStop();
 /**
   * @brief The route updater function for Route objects.
   * 
@@ -137,7 +137,7 @@ class Route {
   * @return double distance away of first stop
   */
   double GetFirstDistance();
-  //Stop * SetToNextRouteStop(Stop * otherRouteStop);
+  // Stop * SetToNextRouteStop(Stop * otherRouteStop);
 /**
   * @brief The get last stop for Route objects.
   * 

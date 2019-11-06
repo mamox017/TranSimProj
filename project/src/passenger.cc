@@ -34,7 +34,7 @@ void Passenger::GetOffBus() {
 }
 
 void Passenger::GetOnBus() {
-  time_on_bus_ += 1;
+  time_on_bus_ = 1;
 }
 
 int Passenger::GetTotalWait() const {

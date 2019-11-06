@@ -42,6 +42,7 @@ class LocalSimulator : public Simulator {
   * @return bool = 0, indicates whether simulation successfully updates
   */
   bool Update() override;
+
  private:
   std::vector<int> bus_counters_;
   std::vector<int> bus_start_timings_;

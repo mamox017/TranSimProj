@@ -35,7 +35,7 @@ int num_stops, PassengerGenerator * gen) {
     distances_between_.push_back(distances[i]);
     stops[i]->setDistance(distances[i]);
   }
-  generator_ = gen; // ?
+  generator_ = gen;
   name_ = name;
   num_stops_ = num_stops;
 
@@ -55,17 +55,17 @@ Route * Route::Clone() {
   // maybe make distances_between_ a pointer?
   // PassengerGenerator gen2;
   // gen2 = generator_;
-  
+
   Stop ** newstops = new Stop *[stops_.size()];
   int i = 0;
-  
+
   for (std::list<Stop *>::iterator iter = stops_.begin();
 iter != stops_.end(); iter++) {
     newstops[i] = (*iter);
     i++;
   }
-  
-  double * dists = new double [distances_between_.size()];
+
+  double * dists = new double[distances_between_.size()];
   int j = 0;
 
   for (std::list<double>::iterator it2 = distances_between_.begin();
@@ -75,8 +75,8 @@ it2 != distances_between_.end(); it2++) {
   }
 
   return new Route(name_, newstops, dists, num_stops_, generator_);
-  //Route a = new Route(*this);
-  //return a;
+  // Route a = new Route(*this);
+  // return a;
 }
 
 void Route::Report(std::ostream& o) {
@@ -91,10 +91,10 @@ it != stops_.end(); it++) {
 }
 
 int Route::GenerateNewPassengers() {
-  //iterate through stops and generate passengers?
+  // iterate through stops and generate passengers?
   /*
   for (std::list<Stop *>::iterator it = stops_.begin();
-it != stops_.end(); it++) {
+  it != stops_.end(); it++) {
     int numPass = generator_->GeneratePassengers();
     Passenger * pass_list_ = generator_->PassengerListMaker(numPass, (it*));
     for (int x = 0; i < numPass; i++;) {
@@ -116,9 +116,9 @@ it2 != distances_between_.end(); it2++) {
 }
 
 double Route::GetNextStopDistance() {
-  //std::list<double>::const_iterator it2 = distances_between_.begin();
-  //advance(it2, 1);
-  //return (*it2);
+  // std::list<double>::const_iterator it2 = distances_between_.begin();
+  // advance(it2, 1);
+  // return (*it2);
   double d = destination_stop_->getDistance();
   return d;
 }
