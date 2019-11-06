@@ -3,6 +3,10 @@
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
+
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include "src/local_simulator.h"
 
 #include <vector>
@@ -13,6 +17,9 @@
 #include "src/route.h"
 #include "src/random_passenger_generator.h"
 
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
 bool LocalSimulator::Start() {
   simulation_time_elapsed_ = 0;  // init, but also allows restart
 
