@@ -34,6 +34,7 @@ class Stop {
   Stop * nextStop;
   double distance;
   int id_;
+  //std::list<Passenger *>const_iterator itera;
   std::list<Passenger *> passengers_;  // considered array, vector, queue, list
   double longitude_;
   double latitude_;  // are we using long/lat coords?

@@ -7,6 +7,9 @@
 #ifndef SRC_ROUTE_H_
 #define SRC_ROUTE_H_
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include <list>
 #include <iostream>
 #include <string>
@@ -14,15 +17,52 @@
 #include "./passenger_generator.h"
 #include "./stop.h"
 
+/*******************************************************************************
+ * Class Definitions
+ ******************************************************************************/
 class PassengerGenerator;
 class Stop;
-
+/**
+ * @brief The main class for a route.
+ *
+ * Creates a new instance of a Route object.
+ *  
+ */
 class Route {
  public:
+/**
+  * @brief Constructs a Route with a name, stop list, distance list, number
+  * of stops, and a passenger generator.
+  *
+  * @param[in] std::string name, label for the route
+  * @param[in] Stop ** stops, pointer array of Stop * objects in the route
+  * @param[in] double * distances, distances between stops on the route
+  * @param[in] int num_stops, the number of stops on the route
+  * @param[in] PassengerGenerator * gen, PassengerGenerator object pointer,
+  *  which will be used to generate passengers on the route.
+  *
+  * @return Route object with name, stop list, distance list, number of stops,
+  *  and PassengerGenerator
+  */
   Route(std::string name, Stop ** stops, double * distances, int num_stops,
         PassengerGenerator * gen);
+/**
+  * @brief Clones a Route object, giving it the same attributes.  Uses iterator
+  *  to create deep copies of stop and double lists, while copying over the
+  *  number of stops and name, as well as pointing to the same generator.
+  *
+  * @return Route * copy of Route object
+  */
   Route * Clone();
   //void setCurrentStop();
+/**
+  * @brief The route updater function for Route objects.
+  * 
+  * This function updates the Route by updating all the stops on the route and
+  *  calling for the generation of passengers.
+  *
+  * @return void
+  */
   void Update();
   void Report(std::ostream&);
   bool IsAtEnd() const;

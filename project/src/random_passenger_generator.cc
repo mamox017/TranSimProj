@@ -4,11 +4,17 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include <random>
 #include <ctime>
 
 #include "src/random_passenger_generator.h"
 
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
 // Nothing to do here, just pass args along
 RandomPassengerGenerator::RandomPassengerGenerator(std::list<double> probs,
     std::list<Stop *> stops) : PassengerGenerator(probs, stops) { }

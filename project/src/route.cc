@@ -53,7 +53,7 @@ Route * Route::Clone() {
   Stop ** newstops = new Stop *[stops_.size()];
   int i = 0;
   
-  for (std::list<Stop *>::const_iterator iter = stops_.begin();
+  for (std::list<Stop *>::iterator iter = stops_.begin();
 iter != stops_.end(); iter++) {
     newstops[i] = (*iter);
     i++;
@@ -62,7 +62,7 @@ iter != stops_.end(); iter++) {
   double * dists = new double [distances_between_.size()];
   int j = 0;
 
-  for (std::list<double>::const_iterator it2 = distances_between_.begin();
+  for (std::list<double>::iterator it2 = distances_between_.begin();
 it2 != distances_between_.end(); it2++) {
     dists[j] = (*it2);
     j++;

@@ -4,6 +4,9 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include "src/passenger_generator.h"
 #include <stdlib.h>
 #include "src/passenger.h"
@@ -11,6 +14,10 @@
 generate a list of passengers
 route->generateNewPass has nested for loop going through each stop and a list of passengers for each stop
 */
+
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
 PassengerGenerator::PassengerGenerator(std::list<double> probs,
    std::list<Stop *> stops) {
   generation_probabilities_ = probs;

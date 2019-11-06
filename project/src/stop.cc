@@ -12,6 +12,7 @@ Stop::Stop(int id, double longitude, double latitude) : id_(id),
 longitude_(longitude), latitude_(latitude) {
   // Defaults to Westbound Coffman Union stop
   // no initialization of list of passengers necessary
+  //itera = passengers_.begin();
 }
 
 
@@ -20,14 +21,14 @@ int Stop::LoadPassengers(Bus * bus) {
 
   //std::list<Passenger *> plist = bus->GetPassengerList();
   //adds to bus
-  for (std::list<Passenger *>::const_iterator it = passengers_.begin();
+  for (std::list<Passenger *>::iterator it = passengers_.begin();
 it != passengers_.end(); it++) {
     (*it)->GetOnBus();
     bus->LoadPassenger(*it);
     i++;
   }
   //removes from stop
-  for (std::list<Passenger *>::const_iterator it2 = passengers_.begin();
+  for (std::list<Passenger *>::iterator it2 = passengers_.begin();
 it2 != passengers_.end(); it2++) {
     //if ((*it2)->IsOnBus()){
     passengers_.remove(*it2);

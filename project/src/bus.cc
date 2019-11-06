@@ -1,6 +1,13 @@
 // Copyright [year] <Copyright Owner>"
+
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include "src/bus.h"
 
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
 Bus::Bus(std::string name, Route * out, Route * in,
 int capacity, double speed) {
   name_ = name;
@@ -17,24 +24,28 @@ int capacity, double speed) {
 }
 
 bool Bus::LoadPassenger(Passenger * new_passenger) {
-  if (((int)passengers_.size()+1) <= passenger_max_capacity_) {
-    passengers_.push_back(new_passenger);
-    return true;
-  }
-  return false;
+  //if (((int)passengers_.size()+1) <= passenger_max_capacity_) {
+  passengers_.push_back(new_passenger);
+  Passenger * rory = new Passenger(5, "rory");
+  rory->GetOnBus();
+  passengers_.push_back(rory);
+  return true;
+  //}
+  //return false;
 }
 
 bool Bus::UnloadPassengers() {
-  for (std::list<Passenger *>::const_iterator it = passengers_.begin();
+	bool success = false;
+  for (std::list<Passenger *>::iterator it = passengers_.begin();
   it != passengers_.end(); it++) {
     if ((*it)->GetDestination() == currentStop->GetId()){
       (*it)->GetOffBus();
       // ?
-      passengers_.erase(it);
+      passengers_.remove(*it);
+      success = true;
     }
-    return true;
   }
-  return false;
+  return success;
 }
 
 bool Bus::Move() {

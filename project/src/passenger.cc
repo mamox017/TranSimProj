@@ -1,5 +1,8 @@
 // Copyright 2019 Kevin Wendt
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include "src/passenger.h"
 
 #include <iostream>
@@ -8,6 +11,9 @@
 
 int Passenger::count_ = 0;
 
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
 // Passenger::Passenger(Stop * dest = NULL, std::string name = "Nobody") {
 Passenger::Passenger(int destination_stop_id, std::string name): name_(name),
         destination_stop_id_(destination_stop_id), wait_at_stop_(0),
@@ -43,7 +49,7 @@ bool Passenger::IsOnBus() const {
 }
 
 std::string Passenger::GetName() {
-    return name_;
+  return name_;
 }
 int Passenger::GetDestination() const {
   return destination_stop_id_;
