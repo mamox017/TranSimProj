@@ -23,6 +23,10 @@ void Passenger::Update() {
   }
 }
 
+void Passenger::GetOffBus() {
+  time_on_bus_ = 0;
+}
+
 void Passenger::GetOnBus() {
   time_on_bus_ += 1;
 }

@@ -14,6 +14,19 @@ longitude_(longitude), latitude_(latitude) {
   // no initialization of list of passengers necessary
 }
 
+
+int Stop::LoadPassengers(Bus * bus) {
+  int i = 0;
+  std::list<Passenger *> plist = bus->GetPassengerList();
+  for (std::list<Passenger *>::const_iterator it = plist.begin();
+it != plist.end(); it++) {
+    bus->LoadPassenger(*it);
+    (*it)->GetOnBus();
+    i++;
+  }
+  return i;
+}
+
 int Stop::AddPassengers(Passenger * pass) {
   passengers_.push_back(pass);
   return 0;

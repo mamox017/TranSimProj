@@ -28,6 +28,7 @@ bool Bus::UnloadPassengers() {
   for (std::list<Passenger *>::const_iterator it = passengers_.begin();
   it != passengers_.end(); it++) {
     if ((*it)->GetDestination() == currentStop->GetId()){
+      (*it)->GetOffBus();
       passengers_.erase(it);
     }
     return true;
@@ -64,32 +65,35 @@ bool Bus::Move() {
   return false;
 }
 
+std::list<Passenger *> Bus::GetPassengerList() {
+  return passengers_;
+}
 // bool Refuel() {
 //  // This may become more complex in the future
 //  fuel_ = max_fuel_;
 // }
 
-/*
-void Bus::Connector() {
-  incoming_route_->GetLastStop()->SetNextStop(outgoing_route_->GetFirstStop());
-  incoming_route_->DistanceCombiner(outgoing_route_->GetDistanceList());
-} */
 
 void Bus::Update() {  // using common Update format
-    //if (currentStop != NULL){
-      //std::cout << "                                                                                    DESTINATION: " << currentStop->GetId() << std::endl;
-    //}
-    if(!IsTripComplete()){
-      Move();
-
+  if(!IsTripComplete()){
+    if (Move()){
       this->UnloadPassengers();
       std::list<Passenger *> stopPassengerList = currentStop->GetPassengerList();
       for (std::list<Passenger *>::const_iterator it = stopPassengerList.begin();
       it != stopPassengerList.end(); it++) {
+        //maybecheck ids
         this->LoadPassenger(*it);
+        (*it)->GetOnBus();
       }
+      currentStop->LoadPassengers(this);
     }
-    
+
+    /*
+    for (std::list<Passenger *>::iterator it2 = passengers_.begin();
+      it2 != passengers_.end(); it2++) {
+        (*it2)->Update();
+    }*/
+  }
 }
 
 bool Bus::IsTripComplete() {

@@ -136,6 +136,10 @@ Stop * Route::GetFirstStop() {
   return stops_.front();
 }
 
+Stop * Route::GetDestinationStop() const {
+  return destination_stop_;
+}
+
 void Route::NextStop() {
   /*if (destination_stop_->GetNextStop() != NULL && destination_stop_index_ > (int)stops_.size()-1){
     }*/

@@ -30,7 +30,8 @@ class Bus {
   void Report(std::ostream&);
   bool IsTripComplete();
   void Connector();
-
+  std::list<Passenger *> GetPassengerList();
+  
  private:
   Stop * currentStop;
   bool skipcase;

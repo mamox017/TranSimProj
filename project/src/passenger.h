@@ -23,6 +23,7 @@ class Passenger {  // : public Reporter {
   */
   explicit Passenger(int = -1, std::string = "Nobody");
   void Update();
+  void GetOffBus();
   void GetOnBus();
   int GetTotalWait() const;
   bool IsOnBus() const;
