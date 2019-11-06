@@ -1,8 +1,15 @@
 // Copyright [year] <Copyright Owner>
+
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include "src/route.h"
 #include <stdlib.h>
 
-// For testing
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
+// for testing
 std::string Route::GetName() {
   return name_;
 }
@@ -34,7 +41,6 @@ int num_stops, PassengerGenerator * gen) {
 
   currentStop = stops_.front();
   distancesArg = distances;
-  distancesIndex = 0;
 }
 
 void Route::Update() {
@@ -153,7 +159,6 @@ std::list<double> Route::GetDistanceList() {
 }
 
 double Route::GetFirstDistance() {
-  distancesIndex++;
   return distances_between_.front();
 }
 

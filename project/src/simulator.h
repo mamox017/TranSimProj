@@ -6,6 +6,9 @@
 #ifndef SRC_SIMULATOR_H_
 #define SRC_SIMULATOR_H_
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include <list>
 #include <vector>
 
@@ -14,9 +17,34 @@
 #include "src/route.h"
 #include "src/passenger_generator.h"
 
+/*******************************************************************************
+ * Class Definitions
+ ******************************************************************************/
+/**
+ * @brief The main class for the simulator
+ *
+ * Creates a new instance of a Simulator object.
+ *  
+ */
 class Simulator {
  public:
+/**
+  * @brief The Start function for Simulator objects.
+  * 
+  * This pure virtual function is to be used by inheriting classes to start a
+  *  simulation of given situations.
+  *
+  * @return bool = 0, indicates whether simulation successfully starts
+  */
   virtual bool Start() = 0;
+/**
+  * @brief The Update function for Simulator objects.
+  * 
+  * This pure virtual function is to be used by inheriting classes to update a
+  *  simulation.
+  *
+  * @return bool = 0, indicates whether simulation successfully updates
+  */
   virtual bool Update() = 0;
 
  protected:
