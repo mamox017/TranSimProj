@@ -1,0 +1,241 @@
+\hypertarget{classBus}{}\section{Bus Class Reference}
+\label{classBus}\index{Bus@{Bus}}
+
+
+The main class for the bus.  
+
+
+
+
+{\ttfamily \#include $<$bus.\+h$>$}
+
+
+
+Collaboration diagram for Bus\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBus__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBus_aa28c3c318b6993f3a3aebf211daa9217}{Bus} (std\+::string name, \hyperlink{classRoute}{Route} $\ast$out, \hyperlink{classRoute}{Route} $\ast$in, int capacity=60, double speed=1)
+\begin{DoxyCompactList}\small\item\em The constructor function of \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\item 
+bool \hyperlink{classBus_aae72290f9daf683b3068428eee0a9ee7}{Load\+Passenger} (\hyperlink{classPassenger}{Passenger} $\ast$new\+\_\+passenger)
+\begin{DoxyCompactList}\small\item\em The passenger loader function for \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\item 
+bool \hyperlink{classBus_a352bd5f926705ed4dd91d7fdea6a7fc9}{Unload\+Passengers} ()
+\begin{DoxyCompactList}\small\item\em The passenger unloader function for \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\item 
+bool \hyperlink{classBus_a5e667186d6db0916ebab0e4eff3312c8}{Move} ()
+\begin{DoxyCompactList}\small\item\em The motion function for \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classBus_a9896f74f16966f7621d0dfafff0ec6b4}{Update} ()
+\begin{DoxyCompactList}\small\item\em The bus updater function for \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classBus_a695e790984f5cf7bbec85fe422466b48}{Report} (std\+::ostream \&o)
+\begin{DoxyCompactList}\small\item\em The report function for \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\item 
+bool \hyperlink{classBus_a9c64b0801bf589f121fb0598b70a99b4}{Is\+Trip\+Complete} ()
+\begin{DoxyCompactList}\small\item\em The trip complete checker function for \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\item 
+std\+::list$<$ \hyperlink{classPassenger}{Passenger} $\ast$ $>$ \hyperlink{classBus_a0662511d51f1c4ba7466e626be3c2ca0}{Get\+Passenger\+List} ()
+\begin{DoxyCompactList}\small\item\em The bus Get\+Passenger\+List function for \hyperlink{classBus}{Bus} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBus_a71d4efb1f0e2810c712d2b04eaa9f909}\label{classBus_a71d4efb1f0e2810c712d2b04eaa9f909}} 
+\hyperlink{classStop}{Stop} $\ast$ {\bfseries current\+Stop}
+\item 
+\mbox{\Hypertarget{classBus_aca3e8ae5c42858f0f9e59c53270ee04e}\label{classBus_aca3e8ae5c42858f0f9e59c53270ee04e}} 
+bool {\bfseries skipcase}
+\item 
+\mbox{\Hypertarget{classBus_a1e9e0ddf70d42b3320669f275a586587}\label{classBus_a1e9e0ddf70d42b3320669f275a586587}} 
+bool {\bfseries has\+Switched\+Routes}
+\item 
+\mbox{\Hypertarget{classBus_a009d8dacb64ef5dc6fa9a8f3511face9}\label{classBus_a009d8dacb64ef5dc6fa9a8f3511face9}} 
+bool {\bfseries first\+Iter}
+\item 
+\mbox{\Hypertarget{classBus_a4a6e51d12fa70cbf9e973e82090773f3}\label{classBus_a4a6e51d12fa70cbf9e973e82090773f3}} 
+std\+::list$<$ \hyperlink{classPassenger}{Passenger} $\ast$ $>$ {\bfseries passengers\+\_\+}
+\item 
+\mbox{\Hypertarget{classBus_a0f8a0586923d96c085a6d33b74150962}\label{classBus_a0f8a0586923d96c085a6d33b74150962}} 
+int {\bfseries passenger\+\_\+max\+\_\+capacity\+\_\+}
+\item 
+\mbox{\Hypertarget{classBus_a414fa2321dd325141c60741eb838972d}\label{classBus_a414fa2321dd325141c60741eb838972d}} 
+std\+::string {\bfseries name\+\_\+}
+\item 
+\mbox{\Hypertarget{classBus_acae5a7639b0c5b3c4a1d1f888ac18ce1}\label{classBus_acae5a7639b0c5b3c4a1d1f888ac18ce1}} 
+double {\bfseries speed\+\_\+}
+\item 
+\mbox{\Hypertarget{classBus_a625684b3e464f90f822f6303d6113b49}\label{classBus_a625684b3e464f90f822f6303d6113b49}} 
+\hyperlink{classRoute}{Route} $\ast$ {\bfseries outgoing\+\_\+route\+\_\+}
+\item 
+\mbox{\Hypertarget{classBus_a393eb8015c87cc306a4ce18bf3f19956}\label{classBus_a393eb8015c87cc306a4ce18bf3f19956}} 
+\hyperlink{classRoute}{Route} $\ast$ {\bfseries incoming\+\_\+route\+\_\+}
+\item 
+\mbox{\Hypertarget{classBus_a0a220de5b56257d6835ae58a95f2c352}\label{classBus_a0a220de5b56257d6835ae58a95f2c352}} 
+\hyperlink{classRoute}{Route} $\ast$ {\bfseries current\+Route}
+\item 
+\mbox{\Hypertarget{classBus_ae8b6cf1028a4f5dffd82c1423f17e58e}\label{classBus_ae8b6cf1028a4f5dffd82c1423f17e58e}} 
+bool {\bfseries complete}
+\item 
+\mbox{\Hypertarget{classBus_ae0e153e41426834bb6c15ffa90bca417}\label{classBus_ae0e153e41426834bb6c15ffa90bca417}} 
+double {\bfseries distance\+\_\+remaining\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for the bus. 
+
+Creates a new instance of a \hyperlink{classBus}{Bus} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBus_aa28c3c318b6993f3a3aebf211daa9217}\label{classBus_aa28c3c318b6993f3a3aebf211daa9217}} 
+\index{Bus@{Bus}!Bus@{Bus}}
+\index{Bus@{Bus}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Bus()}{Bus()}}
+{\footnotesize\ttfamily Bus\+::\+Bus (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\hyperlink{classRoute}{Route} $\ast$}]{out,  }\item[{\hyperlink{classRoute}{Route} $\ast$}]{in,  }\item[{int}]{capacity = {\ttfamily 60},  }\item[{double}]{speed = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+The constructor function of \hyperlink{classBus}{Bus} objects. 
+
+This creates a bus object with given attributes as arguments.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em std\+::string} & name Current stop, name attribute of the \hyperlink{classBus}{Bus} object \\
+\hline
+\mbox{\tt in}  & {\em \hyperlink{classRoute}{Route}} & $\ast$ out, outgoing route of the bus, used after in \\
+\hline
+\mbox{\tt in}  & {\em \hyperlink{classRoute}{Route}} & $\ast$ in, incoming route of the bus, traversed first \\
+\hline
+\mbox{\tt in}  & {\em int} & capacity, maximum number of passengers in passenger\+\_\+ list \\
+\hline
+\mbox{\tt in}  & {\em double} & speed, number at which distance\+\_\+remaining\+\_\+ decreases\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classBus}{Bus} object with name, outgoing route, incoming route, cap, and speed 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBus_a0662511d51f1c4ba7466e626be3c2ca0}\label{classBus_a0662511d51f1c4ba7466e626be3c2ca0}} 
+\index{Bus@{Bus}!Get\+Passenger\+List@{Get\+Passenger\+List}}
+\index{Get\+Passenger\+List@{Get\+Passenger\+List}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Get\+Passenger\+List()}{GetPassengerList()}}
+{\footnotesize\ttfamily std\+::list$<$ \hyperlink{classPassenger}{Passenger} $\ast$ $>$ Bus\+::\+Get\+Passenger\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The bus Get\+Passenger\+List function for \hyperlink{classBus}{Bus} objects. 
+
+This function accesses the private member variable passenger\+\_\+
+
+\begin{DoxyReturn}{Returns}
+std\+::list$<$\+Passenger $\ast$$>$ list of passengers onboard bus 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBus_a9c64b0801bf589f121fb0598b70a99b4}\label{classBus_a9c64b0801bf589f121fb0598b70a99b4}} 
+\index{Bus@{Bus}!Is\+Trip\+Complete@{Is\+Trip\+Complete}}
+\index{Is\+Trip\+Complete@{Is\+Trip\+Complete}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Is\+Trip\+Complete()}{IsTripComplete()}}
+{\footnotesize\ttfamily bool Bus\+::\+Is\+Trip\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The trip complete checker function for \hyperlink{classBus}{Bus} objects. 
+
+This function checks if the bus is at the end of both the incoming and outgoing routes by using Is\+At\+End() {\itshape \mbox{[}E\+D\+IT\mbox{]}} This accessor function retrieves the member variable complete
+
+\begin{DoxyReturn}{Returns}
+bool object that is true if complete or false if incomplete 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBus_aae72290f9daf683b3068428eee0a9ee7}\label{classBus_aae72290f9daf683b3068428eee0a9ee7}} 
+\index{Bus@{Bus}!Load\+Passenger@{Load\+Passenger}}
+\index{Load\+Passenger@{Load\+Passenger}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Load\+Passenger()}{LoadPassenger()}}
+{\footnotesize\ttfamily bool Bus\+::\+Load\+Passenger (\begin{DoxyParamCaption}\item[{\hyperlink{classPassenger}{Passenger} $\ast$}]{new\+\_\+passenger }\end{DoxyParamCaption})}
+
+
+
+The passenger loader function for \hyperlink{classBus}{Bus} objects. 
+
+This function loads a passenger onto the bus if the capacity isn\textquotesingle{}t reached.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \hyperlink{classPassenger}{Passenger}} & $\ast$ new\+\_\+passenger, pointer to passenger to be loaded\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean object determining whether or not the load was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBus_a5e667186d6db0916ebab0e4eff3312c8}\label{classBus_a5e667186d6db0916ebab0e4eff3312c8}} 
+\index{Bus@{Bus}!Move@{Move}}
+\index{Move@{Move}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily bool Bus\+::\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The motion function for \hyperlink{classBus}{Bus} objects. 
+
+This function moves the bus by decreasing the distance\+\_\+remaining\+\_\+ by speed. If the distance\+\_\+remaining\+\_\+ is less than or equal to 0, progresses to next stop.
+
+\begin{DoxyReturn}{Returns}
+bool object determining whether or not at a stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBus_a695e790984f5cf7bbec85fe422466b48}\label{classBus_a695e790984f5cf7bbec85fe422466b48}} 
+\index{Bus@{Bus}!Report@{Report}}
+\index{Report@{Report}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Report()}{Report()}}
+{\footnotesize\ttfamily void Bus\+::\+Report (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{o }\end{DoxyParamCaption})}
+
+
+
+The report function for \hyperlink{classBus}{Bus} objects. 
+
+This function reports the bus\textquotesingle{}s attributes to a given output stream.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em std\+::ostream\&} & o, the output stream to which the information is sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBus_a352bd5f926705ed4dd91d7fdea6a7fc9}\label{classBus_a352bd5f926705ed4dd91d7fdea6a7fc9}} 
+\index{Bus@{Bus}!Unload\+Passengers@{Unload\+Passengers}}
+\index{Unload\+Passengers@{Unload\+Passengers}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Unload\+Passengers()}{UnloadPassengers()}}
+{\footnotesize\ttfamily bool Bus\+::\+Unload\+Passengers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The passenger unloader function for \hyperlink{classBus}{Bus} objects. 
+
+This function unloads a passenger off the bus.
+
+\begin{DoxyReturn}{Returns}
+bool object determining whether or not the unload was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBus_a9896f74f16966f7621d0dfafff0ec6b4}\label{classBus_a9896f74f16966f7621d0dfafff0ec6b4}} 
+\index{Bus@{Bus}!Update@{Update}}
+\index{Update@{Update}!Bus@{Bus}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Bus\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The bus updater function for \hyperlink{classBus}{Bus} objects. 
+
+This function updates the bus\textquotesingle{}s state if the trip is not complete. If the bus is at a stop, as determined by \hyperlink{classBus_a5e667186d6db0916ebab0e4eff3312c8}{Move()}, passengers will be unloaded and loaded.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mamox017/3081\+\_\+f19/repo-\/mamox017/project/src/\hyperlink{bus_8h}{bus.\+h}\item 
+/home/mamox017/3081\+\_\+f19/repo-\/mamox017/project/src/bus.\+cc\end{DoxyCompactItemize}

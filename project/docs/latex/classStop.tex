@@ -1,0 +1,365 @@
+\hypertarget{classStop}{}\section{Stop Class Reference}
+\label{classStop}\index{Stop@{Stop}}
+
+
+The main class for a stop.  
+
+
+
+
+{\ttfamily \#include $<$stop.\+h$>$}
+
+
+
+Collaboration diagram for Stop\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classStop__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStop_a59d881f072b1cf89512bb15a51ffc773}{Stop} (int, double=44.\+973723, double=-\/93.\+235365)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classStop}{Stop} with an id, longitude and latitude. \end{DoxyCompactList}\item 
+void \hyperlink{classStop_a936324668d7b9f5edfbe4531cf244608}{set\+Id} (int i)
+\begin{DoxyCompactList}\small\item\em The stop set id function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classStop_a26866e7dfd469467c67d4176693b53c7}{set\+Longitude} (double l)
+\begin{DoxyCompactList}\small\item\em The stop set longitude function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classStop_ad70323088d687724e6eaad1eb723061f}{set\+Latitude} (double lat)
+\begin{DoxyCompactList}\small\item\em The stop set latitude function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+double \hyperlink{classStop_aea4bfbf489a3a61ecb104e9aa9f613c4}{get\+Long} ()
+\begin{DoxyCompactList}\small\item\em The stop get longitude function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+double \hyperlink{classStop_ad26553052a5ee0c478f4988ec51236d9}{get\+Lat} ()
+\begin{DoxyCompactList}\small\item\em The stop get id function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+int \hyperlink{classStop_a2f3b845d5a338f197226c90696314904}{Get\+Id} () const
+\begin{DoxyCompactList}\small\item\em The stop get id function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+int \hyperlink{classStop_a02c6dcba2b6de5fdd008cf623f19bf7c}{Load\+Passengers} (\hyperlink{classBus}{Bus} $\ast$)
+\begin{DoxyCompactList}\small\item\em The load passengers function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+int \hyperlink{classStop_a20a8b6035679d92a7a838a03a102bcd1}{Add\+Passengers} (\hyperlink{classPassenger}{Passenger} $\ast$)
+\begin{DoxyCompactList}\small\item\em The add passengers function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classStop_a7e39a7138f5bcf8f144155de7b1ae1aa}{Set\+Next\+Stop} (\hyperlink{classStop}{Stop} $\ast$next)
+\begin{DoxyCompactList}\small\item\em The set next stop function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+\hyperlink{classStop}{Stop} $\ast$ \hyperlink{classStop_a195566d0fb9cc1bcc8929cffd5602052}{Get\+Next\+Stop} ()
+\begin{DoxyCompactList}\small\item\em The get next stop for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+double \hyperlink{classStop_a75185ff04f33083582c98230fc3a6df4}{get\+Distance} ()
+\begin{DoxyCompactList}\small\item\em The get distance for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classStop_af26acbcbca66d3a36ce01bc662e2e892}{set\+Distance} (double dis)
+\begin{DoxyCompactList}\small\item\em The set distance for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classStop_aa373ae256ce6bc01ef13e876dfdec5bd}{Update} ()
+\begin{DoxyCompactList}\small\item\em The stop updater function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+void \hyperlink{classStop_a8e286b7cca2dce6977ebda6f01805d94}{Report} (std\+::ostream \&) const
+\begin{DoxyCompactList}\small\item\em The report function for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\item 
+std\+::list$<$ \hyperlink{classPassenger}{Passenger} $\ast$ $>$ \hyperlink{classStop_a57c093d381664512dd576cf02a88bea6}{Get\+Passenger\+List} ()
+\begin{DoxyCompactList}\small\item\em The get passenger list for \hyperlink{classStop}{Stop} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStop_aa687fb4e9e5876af53b0f40459ae9d49}\label{classStop_aa687fb4e9e5876af53b0f40459ae9d49}} 
+\hyperlink{classStop}{Stop} $\ast$ {\bfseries next\+Stop}
+\item 
+\mbox{\Hypertarget{classStop_a62a29cc045a4e927a367eee662cc5d2d}\label{classStop_a62a29cc045a4e927a367eee662cc5d2d}} 
+double {\bfseries distance}
+\item 
+\mbox{\Hypertarget{classStop_a71becdbe8bf6168f72f9c8ea2b3dc0c4}\label{classStop_a71becdbe8bf6168f72f9c8ea2b3dc0c4}} 
+int {\bfseries id\+\_\+}
+\item 
+\mbox{\Hypertarget{classStop_a1e75327b0aadd184120bf6a85eb641fa}\label{classStop_a1e75327b0aadd184120bf6a85eb641fa}} 
+std\+::list$<$ \hyperlink{classPassenger}{Passenger} $\ast$ $>$ {\bfseries passengers\+\_\+}
+\item 
+\mbox{\Hypertarget{classStop_a6fbad9a47cf803d0f43a60d3b954505c}\label{classStop_a6fbad9a47cf803d0f43a60d3b954505c}} 
+double {\bfseries longitude\+\_\+}
+\item 
+\mbox{\Hypertarget{classStop_a4314074f0842c7e2483d341061bdb293}\label{classStop_a4314074f0842c7e2483d341061bdb293}} 
+double {\bfseries latitude\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for a stop. 
+
+Creates a new instance of a \hyperlink{classStop}{Stop} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStop_a59d881f072b1cf89512bb15a51ffc773}\label{classStop_a59d881f072b1cf89512bb15a51ffc773}} 
+\index{Stop@{Stop}!Stop@{Stop}}
+\index{Stop@{Stop}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily Stop\+::\+Stop (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{double}]{longitude = {\ttfamily 44.973723},  }\item[{double}]{latitude = {\ttfamily -\/93.235365} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \hyperlink{classStop}{Stop} with an id, longitude and latitude. 
+
+This function is explicit.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em int} & holding an id number \\
+\hline
+\mbox{\tt in}  & {\em double} & holding the longitude of the stop \\
+\hline
+\mbox{\tt in}  & {\em double} & holding the latitude of the stop\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classStop}{Stop} object with id, longitude and latitude 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStop_a20a8b6035679d92a7a838a03a102bcd1}\label{classStop_a20a8b6035679d92a7a838a03a102bcd1}} 
+\index{Stop@{Stop}!Add\+Passengers@{Add\+Passengers}}
+\index{Add\+Passengers@{Add\+Passengers}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Add\+Passengers()}{AddPassengers()}}
+{\footnotesize\ttfamily int Stop\+::\+Add\+Passengers (\begin{DoxyParamCaption}\item[{\hyperlink{classPassenger}{Passenger} $\ast$}]{pass }\end{DoxyParamCaption})}
+
+
+
+The add passengers function for \hyperlink{classStop}{Stop} objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \hyperlink{classPassenger}{Passenger}} & $\ast$ pointer to a passenger to add to stop. Added to stop list by .push\+\_\+back().\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 for success 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a75185ff04f33083582c98230fc3a6df4}\label{classStop_a75185ff04f33083582c98230fc3a6df4}} 
+\index{Stop@{Stop}!get\+Distance@{get\+Distance}}
+\index{get\+Distance@{get\+Distance}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{get\+Distance()}{getDistance()}}
+{\footnotesize\ttfamily double Stop\+::get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get distance for \hyperlink{classStop}{Stop} objects. 
+
+This function accesses the distance member variable.
+
+\begin{DoxyReturn}{Returns}
+double distance of next stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a2f3b845d5a338f197226c90696314904}\label{classStop_a2f3b845d5a338f197226c90696314904}} 
+\index{Stop@{Stop}!Get\+Id@{Get\+Id}}
+\index{Get\+Id@{Get\+Id}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Get\+Id()}{GetId()}}
+{\footnotesize\ttfamily int Stop\+::\+Get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+The stop get id function for \hyperlink{classStop}{Stop} objects. 
+
+This function accesses the stop\textquotesingle{}s id.
+
+\begin{DoxyReturn}{Returns}
+int id of the stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_ad26553052a5ee0c478f4988ec51236d9}\label{classStop_ad26553052a5ee0c478f4988ec51236d9}} 
+\index{Stop@{Stop}!get\+Lat@{get\+Lat}}
+\index{get\+Lat@{get\+Lat}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{get\+Lat()}{getLat()}}
+{\footnotesize\ttfamily double Stop\+::get\+Lat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The stop get id function for \hyperlink{classStop}{Stop} objects. 
+
+This function accesses the stop\textquotesingle{}s latitude.
+
+\begin{DoxyReturn}{Returns}
+double latitude of the stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_aea4bfbf489a3a61ecb104e9aa9f613c4}\label{classStop_aea4bfbf489a3a61ecb104e9aa9f613c4}} 
+\index{Stop@{Stop}!get\+Long@{get\+Long}}
+\index{get\+Long@{get\+Long}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{get\+Long()}{getLong()}}
+{\footnotesize\ttfamily double Stop\+::get\+Long (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The stop get longitude function for \hyperlink{classStop}{Stop} objects. 
+
+This function accesses the stop\textquotesingle{}s longitude.
+
+\begin{DoxyReturn}{Returns}
+double longitude of the stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a195566d0fb9cc1bcc8929cffd5602052}\label{classStop_a195566d0fb9cc1bcc8929cffd5602052}} 
+\index{Stop@{Stop}!Get\+Next\+Stop@{Get\+Next\+Stop}}
+\index{Get\+Next\+Stop@{Get\+Next\+Stop}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Get\+Next\+Stop()}{GetNextStop()}}
+{\footnotesize\ttfamily \hyperlink{classStop}{Stop} $\ast$ Stop\+::\+Get\+Next\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get next stop for \hyperlink{classStop}{Stop} objects. 
+
+This function accesses the next\+Stop member variable.
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classStop}{Stop} $\ast$ object of next stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a57c093d381664512dd576cf02a88bea6}\label{classStop_a57c093d381664512dd576cf02a88bea6}} 
+\index{Stop@{Stop}!Get\+Passenger\+List@{Get\+Passenger\+List}}
+\index{Get\+Passenger\+List@{Get\+Passenger\+List}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Get\+Passenger\+List()}{GetPassengerList()}}
+{\footnotesize\ttfamily std\+::list$<$ \hyperlink{classPassenger}{Passenger} $\ast$ $>$ Stop\+::\+Get\+Passenger\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get passenger list for \hyperlink{classStop}{Stop} objects. 
+
+This function accesses the passengers\+\_\+ list member variable.
+
+\begin{DoxyReturn}{Returns}
+std\+::list$<$\+Passenger $\ast$$>$ list of passengers on stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a02c6dcba2b6de5fdd008cf623f19bf7c}\label{classStop_a02c6dcba2b6de5fdd008cf623f19bf7c}} 
+\index{Stop@{Stop}!Load\+Passengers@{Load\+Passengers}}
+\index{Load\+Passengers@{Load\+Passengers}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Load\+Passengers()}{LoadPassengers()}}
+{\footnotesize\ttfamily int Stop\+::\+Load\+Passengers (\begin{DoxyParamCaption}\item[{\hyperlink{classBus}{Bus} $\ast$}]{bus }\end{DoxyParamCaption})}
+
+
+
+The load passengers function for \hyperlink{classStop}{Stop} objects. 
+
+This function iterates through the passenger\+\_\+ list of the stop and loads them onto the bus argument. Then it iterates through the passenger\+\_\+ list to remove them from the stop also.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \hyperlink{classBus}{Bus}} & $\ast$ bus pointer of which stop loads passengers to\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int number of passengers loaded 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a8e286b7cca2dce6977ebda6f01805d94}\label{classStop_a8e286b7cca2dce6977ebda6f01805d94}} 
+\index{Stop@{Stop}!Report@{Report}}
+\index{Report@{Report}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Report()}{Report()}}
+{\footnotesize\ttfamily void Stop\+::\+Report (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{o }\end{DoxyParamCaption}) const}
+
+
+
+The report function for \hyperlink{classStop}{Stop} objects. 
+
+This function reports the \hyperlink{classStop}{Stop}\textquotesingle{}s attributes to a given output stream.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em std\+::ostream\&} & o, the output stream to which the information is sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_af26acbcbca66d3a36ce01bc662e2e892}\label{classStop_af26acbcbca66d3a36ce01bc662e2e892}} 
+\index{Stop@{Stop}!set\+Distance@{set\+Distance}}
+\index{set\+Distance@{set\+Distance}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{set\+Distance()}{setDistance()}}
+{\footnotesize\ttfamily void Stop\+::set\+Distance (\begin{DoxyParamCaption}\item[{double}]{dis }\end{DoxyParamCaption})}
+
+
+
+The set distance for \hyperlink{classStop}{Stop} objects. 
+
+This function sets the distance member variable.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em double} & dis, distance of the stop\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a936324668d7b9f5edfbe4531cf244608}\label{classStop_a936324668d7b9f5edfbe4531cf244608}} 
+\index{Stop@{Stop}!set\+Id@{set\+Id}}
+\index{set\+Id@{set\+Id}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{set\+Id()}{setId()}}
+{\footnotesize\ttfamily void Stop\+::set\+Id (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+The stop set id function for \hyperlink{classStop}{Stop} objects. 
+
+This function changes the stop\textquotesingle{}s id to the argument.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_ad70323088d687724e6eaad1eb723061f}\label{classStop_ad70323088d687724e6eaad1eb723061f}} 
+\index{Stop@{Stop}!set\+Latitude@{set\+Latitude}}
+\index{set\+Latitude@{set\+Latitude}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{set\+Latitude()}{setLatitude()}}
+{\footnotesize\ttfamily void Stop\+::set\+Latitude (\begin{DoxyParamCaption}\item[{double}]{lat }\end{DoxyParamCaption})}
+
+
+
+The stop set latitude function for \hyperlink{classStop}{Stop} objects. 
+
+This function changes the stop\textquotesingle{}s latitude.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a26866e7dfd469467c67d4176693b53c7}\label{classStop_a26866e7dfd469467c67d4176693b53c7}} 
+\index{Stop@{Stop}!set\+Longitude@{set\+Longitude}}
+\index{set\+Longitude@{set\+Longitude}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{set\+Longitude()}{setLongitude()}}
+{\footnotesize\ttfamily void Stop\+::set\+Longitude (\begin{DoxyParamCaption}\item[{double}]{l }\end{DoxyParamCaption})}
+
+
+
+The stop set longitude function for \hyperlink{classStop}{Stop} objects. 
+
+This function changes the stop\textquotesingle{}s longitude.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_a7e39a7138f5bcf8f144155de7b1ae1aa}\label{classStop_a7e39a7138f5bcf8f144155de7b1ae1aa}} 
+\index{Stop@{Stop}!Set\+Next\+Stop@{Set\+Next\+Stop}}
+\index{Set\+Next\+Stop@{Set\+Next\+Stop}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Set\+Next\+Stop()}{SetNextStop()}}
+{\footnotesize\ttfamily void Stop\+::\+Set\+Next\+Stop (\begin{DoxyParamCaption}\item[{\hyperlink{classStop}{Stop} $\ast$}]{next }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The set next stop function for \hyperlink{classStop}{Stop} objects. 
+
+This function sets the next\+Stop member of the stop to the argument. Also increments number of passengers at stop.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \hyperlink{classStop}{Stop}} & $\ast$ next stop to which next\+Stop will be set to\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int id of the stop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStop_aa373ae256ce6bc01ef13e876dfdec5bd}\label{classStop_aa373ae256ce6bc01ef13e876dfdec5bd}} 
+\index{Stop@{Stop}!Update@{Update}}
+\index{Update@{Update}!Stop@{Stop}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Stop\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The stop updater function for \hyperlink{classStop}{Stop} objects. 
+
+This function updates the \hyperlink{classStop}{Stop} by updating all the passengers on the stop.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mamox017/3081\+\_\+f19/repo-\/mamox017/project/src/\hyperlink{stop_8h}{stop.\+h}\item 
+/home/mamox017/3081\+\_\+f19/repo-\/mamox017/project/src/\hyperlink{stop_8cc}{stop.\+cc}\end{DoxyCompactItemize}
