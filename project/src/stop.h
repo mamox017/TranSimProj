@@ -10,6 +10,7 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include <list>
 #include <iostream>
 
@@ -19,6 +20,7 @@
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
+
 class Bus;
 /**
  * @brief The main class for a stop.
@@ -40,13 +42,46 @@ class Stop {
   * @return Stop object with id, longitude and latitude
   */
   explicit Stop(int, double = 44.973723, double = -93.235365);
+/**
+  * @brief The stop set id function for Stop objects.
+  * 
+  * This function changes the stop's id to the argument.
+  *
+  * @return void
+  */
   void setId(int i);
+/**
+  * @brief The stop set longitude function for Stop objects.
+  * 
+  * This function changes the stop's longitude.
+  *
+  * @return void
+  */
   void setLongitude(double l);
+/**
+  * @brief The stop set latitude function for Stop objects.
+  * 
+  * This function changes the stop's latitude.
+  *
+  * @return void
+  */
   void setLatitude(double lat);
-  int getId();
+/**
+  * @brief The stop get longitude function for Stop objects.
+  * 
+  * This function accesses the stop's longitude.
+  *
+  * @return double longitude of the stop
+  */
   double getLong();
+/**
+  * @brief The stop get id function for Stop objects.
+  * 
+  * This function accesses the stop's latitude.
+  *
+  * @return double latitude of the stop
+  */
   double getLat();
-  // Adding passengers to the stop (from the generator)
 /**
   * @brief The stop get id function for Stop objects.
   * 
@@ -145,12 +180,8 @@ class Stop {
   Stop * nextStop;
   double distance;
   int id_;
-  // std::list<Passenger *>const_iterator itera;
-  std::list<Passenger *> passengers_;  // considered array, vector, queue, list
+  std::list<Passenger *> passengers_;
   double longitude_;
-  double latitude_;  // are we using long/lat coords?
-  // derived information - not needed depending on passengers_
-  // data structure implementation?
-  // int passengers_present_;
+  double latitude_;
 };
 #endif  // SRC_STOP_H_

@@ -7,6 +7,7 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include <iostream>
 #include <vector>
 
@@ -15,11 +16,9 @@
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
+
 Stop::Stop(int id, double longitude, double latitude) : id_(id),
 longitude_(longitude), latitude_(latitude) {
-  // Defaults to Westbound Coffman Union stop
-  // no initialization of list of passengers necessary
-  // itera = passengers_.begin();
 }
 
 void Stop::setId(int i) {
@@ -44,33 +43,13 @@ double Stop::getLat() {
 
 int Stop::LoadPassengers(Bus * bus) {
   int i = 0;
-  // std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&   " <<
-  // static_cast<int>(passengers_.size()) << std::endl;
-  // adds to bus
-  /*
-  std::cout<<passengers_.size()<<std::endl;
-  for (std::list<Passenger *>::iterator it = passengers_.begin();
-  it != passengers_.end(); it++) {
-    (*it)->GetOnBus();
-    bus->LoadPassenger(*it);
-    i++;
-  }*/
-  // std::list<Passenger *> busList = bus->GetPassengerList();
   std::list<Passenger *>::iterator f = passengers_.begin();
   while (f != passengers_.end()) {
     (*f)->GetOnBus();
     bus->LoadPassenger(*f);
     passengers_.erase(f++);
-    // passengers_.erase(f++);
-    // busList.push_back(*f);
     i++;
   }
-
-  // removes from stop
-  /*std::list<Passenger *>::iterator j = passengers_.begin();
-  while (j != passengers_.end()) {
-    passengers_.erase(j++);  // alternatively, i = items.erase(i);
-  }*/
   return i;
 }
 

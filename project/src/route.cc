@@ -3,13 +3,14 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include "src/route.h"
 #include <stdlib.h>
 
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
-// for testing
+
 std::string Route::GetName() {
   return name_;
 }
@@ -52,12 +53,10 @@ it != stops_.end(); it++) {
 }
 
 Route * Route::Clone() {
-  // maybe make distances_between_ a pointer?
-  // PassengerGenerator gen2;
-  // gen2 = generator_;
-
   Stop ** newstops = new Stop *[stops_.size()];
   int i = 0;
+  double * dists = new double[distances_between_.size()];
+  int j = 0;
 
   for (std::list<Stop *>::iterator iter = stops_.begin();
   iter != stops_.end(); iter++) {
@@ -69,9 +68,6 @@ Route * Route::Clone() {
     i++;
   }
 
-  double * dists = new double[distances_between_.size()];
-  int j = 0;
-
   for (std::list<double>::iterator it2 = distances_between_.begin();
 it2 != distances_between_.end(); it2++) {
     dists[j] = (*it2);
@@ -79,8 +75,6 @@ it2 != distances_between_.end(); it2++) {
   }
 
   return new Route(name_, newstops, dists, num_stops_, generator_);
-  // Route a = new Route(*this);
-  // return a;
 }
 
 void Route::Report(std::ostream& o) {
@@ -95,16 +89,6 @@ it != stops_.end(); it++) {
 }
 
 int Route::GenerateNewPassengers() {
-  // iterate through stops and generate passengers?
-  /*
-  for (std::list<Stop *>::iterator it = stops_.begin();
-  it != stops_.end(); it++) {
-    int numPass = generator_->GeneratePassengers();
-    Passenger * pass_list_ = generator_->PassengerListMaker(numPass, (it*));
-    for (int x = 0; i < numPass; i++;) {
-      (it*)->AddPassengers(pass_list);
-    }
-  }*/
   int pass = generator_->GeneratePassengers();
   return pass;
 }
@@ -120,9 +104,6 @@ it2 != distances_between_.end(); it2++) {
 }
 
 double Route::GetNextStopDistance() {
-  // std::list<double>::const_iterator it2 = distances_between_.begin();
-  // advance(it2, 1);
-  // return (*it2);
   double d = destination_stop_->getDistance();
   return d;
 }
@@ -130,15 +111,6 @@ double Route::GetNextStopDistance() {
 Stop * Route::GetLastStop() {
   return stops_.back();
 }
-
-/*
-Stop * Route::SetToNextRouteStop(Stop * otherRouteStop) {
-  currentStop = destination_stop_;
-  destination_stop_ = otherRouteStop;
-  destination_stop_index_ = 0;
-  return destination_stop_;
-}*/
-
 
 Stop * Route::GetFirstStop() {
   Stop * first = stops_.front();
@@ -151,8 +123,6 @@ Stop * Route::GetDestinationStop() const {
 }
 
 void Route::NextStop() {
-  /*if (destination_stop_->GetNextStop() != NULL && destination_stop_index_ > (int)stops_.size()-1){
-    }*/
   currentStop = destination_stop_;
   destination_stop_ = destination_stop_->GetNextStop();
   destination_stop_index_++;
@@ -165,20 +135,6 @@ std::list<double> Route::GetDistanceList() {
 double Route::GetFirstDistance() {
   return distances_between_.front();
 }
-
-/*
-void Route::DistanceCombiner(std::list<double> otherList) {
-  std::list<double> combinedList;
-  for (std::list<double>::const_iterator it = distances_between_.begin();
-  it != distances_between_.end(); it++) {
-    combinedList.push_back(*it);
-  }
-  for (std::list<double>::const_iterator it2 = otherList.begin();
-  it2 != otherList.end(); it2++) {
-    combinedList.push_back(*it2);
-  }
-  distances_between_ = combinedList;
-}*/
 
 bool Route::IsAtEnd() const {
   if (currentStop == stops_.back()) {

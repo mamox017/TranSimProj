@@ -3,11 +3,13 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include "src/bus.h"
 
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
+
 Bus::Bus(std::string name, Route * out, Route * in,
 int capacity, double speed) {
   name_ = name;
@@ -25,29 +27,18 @@ int capacity, double speed) {
 }
 
 bool Bus::LoadPassenger(Passenger * new_passenger) {
-  // if (((int)passengers_.size()+1) <= passenger_max_capacity_) {
   passengers_.push_back(new_passenger);
   return true;
-  // }
-  // return false;
 }
 
 bool Bus::UnloadPassengers() {
   bool success = false;
-  /*for (std::list<Passenger *>::iterator it = passengers_.begin();
-  it != passengers_.end(); it++) {
-    if ((*it)->GetDestination() == currentStop->GetId()){
-      (*it)->GetOffBus();
-      // ?
-      passengers_.remove(*it);
-      success = true;
-    }*/
   std::list<Passenger *>::iterator i = passengers_.begin();
   while (i != passengers_.end()) {
     int pass_id_ = (*i)->GetDestination();
     if (pass_id_ == currentStop->GetId()) {
         (*i)->GetOffBus();
-        passengers_.erase(i++);  // alternatively, i = items.erase(i);
+        passengers_.erase(i++);
     } else {
         ++i;
     }
@@ -55,8 +46,6 @@ bool Bus::UnloadPassengers() {
   }
   return success;
 }
-// if at end of
-//      if (currentRoute->IsAtEnd() && hasSwitchedRoutes == false){
 
 
 bool Bus::Move() {
@@ -86,11 +75,9 @@ bool Bus::Move() {
         skipcase = true;
       } else if (!(currentRoute->IsAtEnd())) {  // landed at stop has a next
         distance_remaining_ = currentRoute->GetNextStopDistance();
-        // currentStop->LoadPassengers(this);
       } else {
         complete = true;
       }
-      // currentStop->LoadPassengers(this);
       return true;
     }
   }
@@ -119,11 +106,6 @@ std::list<Passenger *> Bus::GetPassengerList() {
 
 
 bool Bus::IsTripComplete() {
-  // change to and
-  /*if (incoming_route_->IsAtEnd() && outgoing_route_->IsAtEnd()) {
-    return true;
-  }
-  return false;*/
   return complete;
 }
 

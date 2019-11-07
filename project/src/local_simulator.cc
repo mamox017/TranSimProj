@@ -7,6 +7,7 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include "src/local_simulator.h"
 
 #include <vector>
@@ -20,14 +21,10 @@
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
+
 bool LocalSimulator::Start() {
   simulation_time_elapsed_ = 0;  // init, but also allows restart
 
-// <<<<<<< HEAD
-  // pass_ = new Passenger(1, "Kaywinnit");
-// =======
-
-  // int num_round_trips = 10;
   int num_round_trips = 1;
   for (int i = 0; i < num_round_trips; i++) {
     time_since_last_bus_generation_.push_back(0);
@@ -184,7 +181,6 @@ CC_WB_stops, CC_WB_distances, 9, CC_WB_generator);
   // active_buses_.push_back(new Bus(std::to_string(bus_counters_[0]),
   // prototype_routes[0].Clone(), prototype_routes[1].Clone(), 60, 1));
   // bus_counters_[0]++;
-  // >>>>>>> 2b3c10910ec406d400757eb9a456367ca13f2acd
 
   return true;
 }
@@ -194,12 +190,6 @@ bool LocalSimulator::Update() {
   simulation_time_elapsed_++;
   std::cout << "~~~~~~~~~~~~~ The time is now " << simulation_time_elapsed_;
   std::cout << " ~~~~~~~~~~~~~" << std::endl;
-// <<<<<<< HEAD
-
-  // pass_->Update();
-  // pass_->Report(std::cout);
-
-// =======
 
   // various route-indexed list iterators
   std::vector<int>::iterator bus_gen_timing_iter = bus_start_timings_.begin();
@@ -262,6 +252,5 @@ bool LocalSimulator::Update() {
     (*route_iter)->Report(std::cout);
   }
 
-// >>>>>>> 2b3c10910ec406d400757eb9a456367ca13f2acd
   return true;
 }

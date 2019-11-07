@@ -10,6 +10,7 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include <list>
 #include <iostream>
 #include <string>
@@ -20,6 +21,7 @@
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
+
 class PassengerGenerator;
 class Stop;
 /**
@@ -54,7 +56,6 @@ class Route {
   * @return Route * copy of Route object
   */
   Route * Clone();
-  // void setCurrentStop();
 /**
   * @brief The route updater function for Route objects.
   * 
@@ -137,7 +138,6 @@ class Route {
   * @return double distance away of first stop
   */
   double GetFirstDistance();
-  // Stop * SetToNextRouteStop(Stop * otherRouteStop);
 /**
   * @brief The get last stop for Route objects.
   * 
@@ -184,7 +184,7 @@ class Route {
   int GenerateNewPassengers();       // generates passengers on its route
   PassengerGenerator * generator_;
   std::list<Stop *> stops_;
-  std::list<double> distances_between_;  // length = num_stops_ - 1
+  std::list<double> distances_between_;
   std::string name_;
   int num_stops_;
   std::list<double>::iterator distIterator;
