@@ -65,6 +65,8 @@ bool Bus::Move() {
     distance_remaining_ = distance_remaining_ - speed_;
     // if at stop
     if (distance_remaining_ <= 0) {
+      UnloadPassengers();
+      currentStop->LoadPassengers(this);
       // normal case, in middle of route
       // land at stop
       if (static_cast<int>(distance_remaining_) == 0 || skipcase == true) {
@@ -97,11 +99,7 @@ bool Bus::Move() {
 
 void Bus::Update() {  // using common Update format
   if (!IsTripComplete()) {
-    bool is_at_stop_ = Move();
-    if (is_at_stop_) {
-      UnloadPassengers();
-      currentStop->LoadPassengers(this);
-    }
+    Move();
     for (std::list<Passenger *>::iterator it = passengers_.begin();
     it != passengers_.end(); it++) {
       (*it)->Update();

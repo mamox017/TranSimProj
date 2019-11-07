@@ -20,7 +20,6 @@ longitude_(longitude), latitude_(latitude) {
   // Defaults to Westbound Coffman Union stop
   // no initialization of list of passengers necessary
   // itera = passengers_.begin();
-  num_waiters = 0;
 }
 
 void Stop::setId(int i) {
@@ -78,7 +77,6 @@ int Stop::LoadPassengers(Bus * bus) {
 
 int Stop::AddPassengers(Passenger * pass) {
   passengers_.push_back(pass);
-  num_waiters++;
   return 0;
 }
 

@@ -145,7 +145,6 @@ class Stop {
   Stop * nextStop;
   double distance;
   int id_;
-  int num_waiters;
   // std::list<Passenger *>const_iterator itera;
   std::list<Passenger *> passengers_;  // considered array, vector, queue, list
   double longitude_;
