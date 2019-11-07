@@ -102,6 +102,10 @@ void Bus::Update() {  // using common Update format
       UnloadPassengers();
       currentStop->LoadPassengers(this);
     }
+    for (std::list<Passenger *>::iterator it = passengers_.begin();
+    it != passengers_.end(); it++) {
+      (*it)->Update();
+    }
   }
 }
 
