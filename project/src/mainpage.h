@@ -7,7 +7,7 @@
  *
  * \section intro_sec Project TransitSim: a Proof-of-Concept Transit System Simulator: Iteration 1
  *
- * This is the introduction.
+ * Hello
  *
  */
 

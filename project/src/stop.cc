@@ -17,30 +17,38 @@
  * Member Functions
  ******************************************************************************/
 
+// Constructor
 Stop::Stop(int id, double longitude, double latitude) : id_(id),
 longitude_(longitude), latitude_(latitude) {
 }
 
+// Setter
 void Stop::setId(int i) {
   id_ = i;
 }
 
+// Setter
 void Stop::setLongitude(double l) {
   longitude_ = l;
 }
 
+// Setter
 void Stop::setLatitude(double lat) {
   latitude_ = lat;
 }
 
+// Getter
 double Stop::getLong() {
   return longitude_;
 }
 
+// Getter
 double Stop::getLat() {
   return latitude_;
 }
 
+// Loads passengers by iterating through list and putting them on bus
+// passenger list, also erases them from stop passenger list
 int Stop::LoadPassengers(Bus * bus) {
   int i = 0;
   std::list<Passenger *>::iterator f = passengers_.begin();
@@ -53,20 +61,23 @@ int Stop::LoadPassengers(Bus * bus) {
   return i;
 }
 
-
+// Adds passengers onto passenger list for stop
 int Stop::AddPassengers(Passenger * pass) {
   passengers_.push_back(pass);
   return 0;
 }
 
+// Setter
 void Stop::setDistance(double dis) {
   distance = dis;
 }
 
+// Getter
 double Stop::getDistance() {
   return distance;
 }
 
+// Updater
 void Stop::Update() {
   for (std::list<Passenger *>::iterator it = passengers_.begin();
 it != passengers_.end(); it++) {
@@ -74,14 +85,17 @@ it != passengers_.end(); it++) {
   }
 }
 
+// Getter
 int Stop::GetId() const {
   return id_;
 }
 
+// Getter
 std::list<Passenger *> Stop::GetPassengerList() {
   return passengers_;
 }
 
+// Reporter
 void Stop::Report(std::ostream& o) const {
   o << "ID: " << id_ << std::endl;
   o << "Passengers waiting: " << passengers_.size() << std::endl;
@@ -91,7 +105,7 @@ it != passengers_.end(); it++) {
   }
 }
 
-
+// Getter
 Stop * Stop::GetNextStop() {
   return nextStop;
 }
