@@ -60,8 +60,8 @@ Route * Route::Clone() {
   int i = 0;
 
   for (std::list<Stop *>::iterator iter = stops_.begin();
-iter != stops_.end(); iter++) {
-    Stop * newstop = new Stop(0,0,0);
+  iter != stops_.end(); iter++) {
+    Stop * newstop = new Stop(0, 0, 0);
     newstop->setId((*iter)->GetId());
     newstop->setLongitude((*iter)->getLong());
     newstop->setLatitude((*iter)->getLat());

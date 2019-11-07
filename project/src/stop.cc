@@ -25,7 +25,7 @@ longitude_(longitude), latitude_(latitude) {
 
 void Stop::setId(int i) {
   id_ = i;
-};
+}
 
 void Stop::setLongitude(double l) {
   longitude_ = l;
@@ -62,7 +62,7 @@ int Stop::LoadPassengers(Bus * bus) {
     (*f)->GetOnBus();
     bus->LoadPassenger(*f);
     passengers_.erase(f++);
-    //passengers_.erase(f++);
+    // passengers_.erase(f++);
     // busList.push_back(*f);
     i++;
   }
