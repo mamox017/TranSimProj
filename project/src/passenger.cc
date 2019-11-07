@@ -22,7 +22,7 @@ Passenger::Passenger(int destination_stop_id, std::string name): name_(name),
 }
 
 void Passenger::Update() {
-  if (this->IsOnBus()) {
+  if (IsOnBus()) {
     time_on_bus_++;
   } else {
     wait_at_stop_++;
@@ -34,7 +34,7 @@ void Passenger::GetOffBus() {
 }
 
 void Passenger::GetOnBus() {
-  time_on_bus_ = 1;
+  time_on_bus_ += 1;
 }
 
 int Passenger::GetTotalWait() const {

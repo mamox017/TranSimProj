@@ -4,7 +4,6 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-<<<<<<< HEAD
 /*******************************************************************************
  * Includes
  ******************************************************************************/
@@ -16,12 +15,9 @@
 /*******************************************************************************
  * Member Functions
  ******************************************************************************/
-=======
-#include "src/random_passenger_generator.h"
 
 std::minstd_rand0 RandomPassengerGenerator::my_rand(time(0));
 
->>>>>>> 169eafece3c9752253ea4b237db970b65677c702
 // Nothing to do here, just pass args along
 RandomPassengerGenerator::RandomPassengerGenerator(std::list<double> probs,
     std::list<Stop *> stops) : PassengerGenerator(probs, stops) {}
