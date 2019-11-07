@@ -23,6 +23,25 @@ longitude_(longitude), latitude_(latitude) {
   num_waiters = 0;
 }
 
+void Stop::setId(int i) {
+  id_ = i;
+};
+
+void Stop::setLongitude(double l) {
+  longitude_ = l;
+}
+
+void Stop::setLatitude(double lat) {
+  latitude_ = lat;
+}
+
+double Stop::getLong() {
+  return longitude_;
+}
+
+double Stop::getLat() {
+  return latitude_;
+}
 
 int Stop::LoadPassengers(Bus * bus) {
   int i = 0;
@@ -37,25 +56,22 @@ int Stop::LoadPassengers(Bus * bus) {
     bus->LoadPassenger(*it);
     i++;
   }*/
-  std::list<Passenger *> busList = bus->GetPassengerList();
+  // std::list<Passenger *> busList = bus->GetPassengerList();
   std::list<Passenger *>::iterator f = passengers_.begin();
   while (f != passengers_.end()) {
     (*f)->GetOnBus();
-    busList.push_back(*f);
-    ++f;
+    bus->LoadPassenger(*f);
+    passengers_.erase(f++);
+    //passengers_.erase(f++);
+    // busList.push_back(*f);
+    i++;
   }
 
   // removes from stop
-  std::list<Passenger *>::iterator j = passengers_.begin();
+  /*std::list<Passenger *>::iterator j = passengers_.begin();
   while (j != passengers_.end()) {
-    bool pass_on_bus_ = (*j)->IsOnBus();
-    if (pass_on_bus_) {
-        (*j)->GetOnBus();
-        passengers_.erase(j++);  // alternatively, i = items.erase(i);
-    } else {
-        ++j;
-    }
-  }
+    passengers_.erase(j++);  // alternatively, i = items.erase(i);
+  }*/
   return i;
 }
 

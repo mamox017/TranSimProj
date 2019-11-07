@@ -40,6 +40,12 @@ class Stop {
   * @return Stop object with id, longitude and latitude
   */
   explicit Stop(int, double = 44.973723, double = -93.235365);
+  void setId(int i);
+  void setLongitude(double l);
+  void setLatitude(double lat);
+  int getId();
+  double getLong();
+  double getLat();
   // Adding passengers to the stop (from the generator)
 /**
   * @brief The stop get id function for Stop objects.
@@ -74,7 +80,8 @@ class Stop {
   * @brief The set next stop function for Stop objects.
   *
   * This function sets the nextStop member of the stop to the argument.
-  * 
+  * Also increments number of passengers at stop.
+  *
   * @param[in] Stop * next stop to which nextStop will be set to
   *
   * @return int id of the stop
