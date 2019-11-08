@@ -121,7 +121,6 @@ class Bus {
   Stop * currentStop;
   bool skipcase;
   bool hasSwitchedRoutes;
-  bool firstIter;
   std::list<Passenger *> passengers_;
   int passenger_max_capacity_;
   std::string name_;

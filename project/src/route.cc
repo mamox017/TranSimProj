@@ -53,12 +53,12 @@ int num_stops, PassengerGenerator * gen) {
 
 // Updater
 void Route::Update() {
-  // Looks through stops and updates them and adds passengers also
+  // Looks through stops and updates them and generates passengers also
   for (std::list<Stop *>::iterator it = stops_.begin();
 it != stops_.end(); it++) {
     (*it)->Update();
-    GenerateNewPassengers();
   }
+  GenerateNewPassengers();
 }
 
 // Cloner of routes
