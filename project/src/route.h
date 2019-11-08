@@ -187,7 +187,6 @@ class Route {
   std::list<double> distances_between_;
   std::string name_;
   int num_stops_;
-  std::list<double>::iterator distIterator;
 
   int destination_stop_index_;  // always starts at zero, no init needed
   Stop * currentStop;

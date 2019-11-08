@@ -1,18 +1,20 @@
-### Feedback for Lab 10
+### Assessment for Lab 10
 
-Run on October 19, 07:47:36 AM.
+#### Total score: _100.0_ / _100_
+
+Run on October 19, 09:13:05 AM.
 
 
 ### Necessary Files and Structure
 
-+ Pass: Check that directory "labs" exists.
++  _10_ / _10_ : Pass: Check that directory "labs" exists.
 
-+ Pass: Check that directory "labs/lab10_advanced_git" exists.
++  _10_ / _10_ : Pass: Check that directory "labs/lab10_advanced_git" exists.
 
 
 ### Git Usage
 
-+ Pass: Run git ls-remote to check for existence of specific branch- Branch devel found
++  _10_ / _10_ : Pass: Run git ls-remote to check for existence of specific branch- Branch devel found
 
 + Pass: Checkout devel branch.
 
@@ -26,11 +28,11 @@ Run on October 19, 07:47:36 AM.
 
 		5ec2491ea7cf90b04ceffdafdcdef92191c41f55	refs/heads/fix/02-compilation-errors
 
-		a1010f31f680b904eb3a06b69c17747d806f2c49	refs/heads/master
+		7a62a19e6b503cf710a314ac43cd168bc5b06e50	refs/heads/master
 
 
 
-+ Pass: Checking for the correct number of branches
++  _10_ / _10_ : Pass: Checking for the correct number of branches
 
 Sufficient branches found (found=2, required=2):
 
@@ -98,7 +100,7 @@ fix/02-compilation-errors
 
 
 
-+ Pass: Check git commit history
++  _5_ / _5_ : Pass: Check git commit history
 Sufficient commits (found=12,required=4)
 
 
@@ -118,7 +120,7 @@ Sufficient commits (found=12,required=4)
 
 + Pass: Run ghi for total number of closed issues in Github repo (Found: 0)
 
-+ Pass: Run ghi for total number of issues in Github repo (Found: 2, Expected: 2) 
++  _10.0_ / _10_ : Pass: Run ghi for total number of issues in Github repo (Found: 2, Expected: 2) 
 
  [OPEN issue #2] :  Issue 2 [enhancement]
 
@@ -137,13 +139,15 @@ Sufficient commits (found=12,required=4)
 
 
 
-+ Pass: Check that directory "project" exists.
++  _10_ / _10_ : Pass: Check that directory "project" exists.
 
 + Pass: Change into directory "project".
 
-+ Pass: Check that file "makefile" exists.
++  _5_ / _5_ : Pass: Check that file "makefile" exists.
 
-+ Pass: Check that make compiles.
++  _30_ / _30_ : Pass: Check that make compiles.
 
 
+
+#### Total score: _100.0_ / _100_
 

@@ -1,5 +1,6 @@
 var searchData=
 [
+<<<<<<< HEAD
   ['generate',['Generate',['../classPassengerFactory.html#a2952ba78ceb285f445bc768d287230d2',1,'PassengerFactory']]],
   ['generatepassengers',['GeneratePassengers',['../classPassengerGenerator.html#ad2db96a13b34fcf35977287c06b31d47',1,'PassengerGenerator::GeneratePassengers()'],['../classRandomPassengerGenerator.html#aba2d80cde33371cf9c3d033f1b8ba6b8',1,'RandomPassengerGenerator::GeneratePassengers()']]],
   ['getdestination',['GetDestination',['../classPassenger.html#a49db0ee527377aae6077df190a11501c',1,'Passenger']]],
@@ -22,4 +23,14 @@ var searchData=
   ['getpassengerlist',['GetPassengerList',['../classBus.html#a0662511d51f1c4ba7466e626be3c2ca0',1,'Bus::GetPassengerList()'],['../classStop.html#a57c093d381664512dd576cf02a88bea6',1,'Stop::GetPassengerList()']]],
   ['gettotalroutedistance',['GetTotalRouteDistance',['../classRoute.html#af4e0add4a9f6b22963398b41313f9e69',1,'Route']]],
   ['gettotalwait',['GetTotalWait',['../classPassenger.html#a25158560f790ef7ef06d94c414b34f25',1,'Passenger']]]
+=======
+  ['passenger',['Passenger',['../classPassenger.html',1,'Passenger'],['../classPassenger.html#a5c3addb9a6fd03e5e5642ed844e2702c',1,'Passenger::Passenger()']]],
+  ['passenger_2eh',['passenger.h',['../passenger_8h.html',1,'']]],
+  ['passenger_5ffactory_2ecc',['passenger_factory.cc',['../passenger__factory_8cc.html',1,'']]],
+  ['passenger_5ffactory_2eh',['passenger_factory.h',['../passenger__factory_8h.html',1,'']]],
+  ['passenger_5fgenerator_2ecc',['passenger_generator.cc',['../passenger__generator_8cc.html',1,'']]],
+  ['passenger_5fgenerator_2eh',['passenger_generator.h',['../passenger__generator_8h.html',1,'']]],
+  ['passengerfactory',['PassengerFactory',['../classPassengerFactory.html',1,'']]],
+  ['passengergenerator',['PassengerGenerator',['../classPassengerGenerator.html',1,'']]]
+>>>>>>> master
 ];

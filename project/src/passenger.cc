@@ -25,17 +25,24 @@ Passenger::Passenger(int destination_stop_id, std::string name): name_(name),
 
 // Updater
 void Passenger::Update() {
+<<<<<<< HEAD
   // Adds 1 to time on bus if on bus or to wait at stop if at stop
   if (IsOnBus()) {
+=======
+  if (this->IsOnBus()) {
+>>>>>>> master
     time_on_bus_++;
   } else {
     wait_at_stop_++;
   }
+<<<<<<< HEAD
 }
 
 // Changes time on bus to 0, not necessary
 void Passenger::GetOffBus() {
   time_on_bus_ = 0;
+=======
+>>>>>>> master
 }
 
 // Adds 1 to passengers time to signify on bus

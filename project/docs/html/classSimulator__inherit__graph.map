@@ -1,3 +1,7 @@
 <map id="Simulator" name="Simulator">
+<<<<<<< HEAD
 <area shape="rect" id="node2" href="$classLocalSimulator.html" title="The main class for a localsimulator. " alt="" coords="5,204,185,355"/>
+=======
+<area shape="rect" id="node2" href="$classLocalSimulator.html" title="{LocalSimulator\n||+ Start()\l+ Update()\l}" alt="" coords="40,204,148,296"/>
+>>>>>>> master
 </map>

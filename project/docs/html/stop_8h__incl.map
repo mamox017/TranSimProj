@@ -1,7 +1,13 @@
 <map id="/home/mamox017/3081_f19/repo&#45;mamox017/project/src/stop.h" name="/home/mamox017/3081_f19/repo&#45;mamox017/project/src/stop.h">
+<<<<<<< HEAD
 <area shape="rect" id="node4" href="$bus_8h.html" title="src/bus.h" alt="" coords="182,109,258,136"/>
 <area shape="rect" id="node6" href="$passenger_8h.html" title="src/passenger.h" alt="" coords="195,408,309,435"/>
 <area shape="rect" id="node7" href="$route_8h.html" title="src/route.h" alt="" coords="358,184,442,211"/>
 <area shape="rect" id="node8" href="$passenger__generator_8h.html" title="./passenger_generator.h" alt="" coords="499,259,661,285"/>
 <area shape="rect" id="node9" href="$passenger__factory_8h.html" title="src/passenger_factory.h" alt="" coords="499,333,661,360"/>
+=======
+<area shape="rect" id="node4" href="$bus_8h.html" title="src/bus.h" alt="" coords="147,109,223,136"/>
+<area shape="rect" id="node6" href="$passenger_8h.html" title="src/passenger.h" alt="" coords="273,184,387,211"/>
+<area shape="rect" id="node7" href="$route_8h.html" title="src/route.h" alt="" coords="63,184,147,211"/>
+>>>>>>> master
 </map>

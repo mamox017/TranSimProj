@@ -1,3 +1,7 @@
 <map id="PassengerGenerator" name="PassengerGenerator">
+<<<<<<< HEAD
 <area shape="rect" id="node2" href="$classPassengerFactory.html" title="The main class for the generation of passengers. " alt="" coords="25,5,161,97"/>
+=======
+<area shape="rect" id="node2" href="$classPassengerFactory.html" title="The main class for the generation of passengers. " alt="" coords="29,5,157,83"/>
+>>>>>>> master
 </map>

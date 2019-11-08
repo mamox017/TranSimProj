@@ -5,6 +5,7 @@ var menudata={children:[
 {text:"Class Index",url:"classes.html"},
 {text:"Class Hierarchy",url:"inherits.html"},
 {text:"Class Members",url:"functions.html",children:[
+<<<<<<< HEAD
 {text:"All",url:"functions.html",children:[
 {text:"a",url:"functions.html#index_a"},
 {text:"b",url:"functions.html#index_b"},
@@ -31,5 +32,9 @@ var menudata={children:[
 {text:"r",url:"functions_func.html#index_r"},
 {text:"s",url:"functions_func.html#index_s"},
 {text:"u",url:"functions_func.html#index_u"}]}]}]},
+=======
+{text:"All",url:"functions.html"},
+{text:"Functions",url:"functions_func.html"}]}]},
+>>>>>>> master
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"}]}]}

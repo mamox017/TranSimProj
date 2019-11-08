@@ -1,6 +1,9 @@
 <map id="Bus" name="Bus">
+<<<<<<< HEAD
 <area shape="rect" id="node2" href="$classStop.html" title="The main class for a stop. " alt="" coords="7,160,146,443"/>
 <area shape="rect" id="node3" href="$classRoute.html" title="The main class for a route. " alt="" coords="177,520,363,832"/>
 <area shape="rect" id="node4" href="$classPassengerGenerator.html" title="The main class for the passenger generator. " alt="" coords="255,248,431,355"/>
 <area shape="rect" id="node5" href="$classPassengerFactory.html" title="The main class for the generation of passengers. " alt="" coords="275,5,411,97"/>
+=======
+>>>>>>> master
 </map>
