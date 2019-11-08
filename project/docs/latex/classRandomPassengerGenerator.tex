@@ -2,8 +2,21 @@
 \label{classRandomPassengerGenerator}\index{Random\+Passenger\+Generator@{Random\+Passenger\+Generator}}
 
 
+<<<<<<< HEAD
+The main class for the random passenger generator.  
+
+
+
+
+{\ttfamily \#include $<$random\+\_\+passenger\+\_\+generator.\+h$>$}
+
+
+
+Inheritance diagram for Random\+Passenger\+Generator\+:\nopagebreak
+=======
 Inheritance diagram for Random\+Passenger\+Generator\+:
 \nopagebreak
+>>>>>>> master
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +25,12 @@ Inheritance diagram for Random\+Passenger\+Generator\+:
 \end{figure}
 
 
+<<<<<<< HEAD
+Collaboration diagram for Random\+Passenger\+Generator\+:\nopagebreak
+=======
 Collaboration diagram for Random\+Passenger\+Generator\+:
 \nopagebreak
+>>>>>>> master
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,15 +40,80 @@ Collaboration diagram for Random\+Passenger\+Generator\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+<<<<<<< HEAD
+\hyperlink{classRandomPassengerGenerator_a1be1b4abfe82bfe95eb0a078d9a3342d}{Random\+Passenger\+Generator} (std\+::list$<$ double $>$, std\+::list$<$ \hyperlink{classStop}{Stop} $\ast$$>$)
+\begin{DoxyCompactList}\small\item\em Constructs a random passenger generator with a double list and \hyperlink{classStop}{Stop} $\ast$ list. \end{DoxyCompactList}\item 
+int \hyperlink{classRandomPassengerGenerator_aba2d80cde33371cf9c3d033f1b8ba6b8}{Generate\+Passengers} () override
+\begin{DoxyCompactList}\small\item\em The generate passengers function for \hyperlink{classRandomPassengerGenerator}{Random\+Passenger\+Generator} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRandomPassengerGenerator_af695eeece3acf5f2e2a7f25f9c46bfbe}\label{classRandomPassengerGenerator_af695eeece3acf5f2e2a7f25f9c46bfbe}} 
+static std\+::minstd\+\_\+rand0 {\bfseries my\+\_\+rand}
+=======
 \mbox{\Hypertarget{classRandomPassengerGenerator_a1be1b4abfe82bfe95eb0a078d9a3342d}\label{classRandomPassengerGenerator_a1be1b4abfe82bfe95eb0a078d9a3342d}} 
 {\bfseries Random\+Passenger\+Generator} (std\+::list$<$ double $>$, std\+::list$<$ \hyperlink{classStop}{Stop} $\ast$$>$)
 \item 
 \mbox{\Hypertarget{classRandomPassengerGenerator_aba2d80cde33371cf9c3d033f1b8ba6b8}\label{classRandomPassengerGenerator_aba2d80cde33371cf9c3d033f1b8ba6b8}} 
 int {\bfseries Generate\+Passengers} () override
+>>>>>>> master
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+<<<<<<< HEAD
+\subsection{Detailed Description}
+The main class for the random passenger generator. 
+
+Creates a new instance of a \hyperlink{classRandomPassengerGenerator}{Random\+Passenger\+Generator} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRandomPassengerGenerator_a1be1b4abfe82bfe95eb0a078d9a3342d}\label{classRandomPassengerGenerator_a1be1b4abfe82bfe95eb0a078d9a3342d}} 
+\index{Random\+Passenger\+Generator@{Random\+Passenger\+Generator}!Random\+Passenger\+Generator@{Random\+Passenger\+Generator}}
+\index{Random\+Passenger\+Generator@{Random\+Passenger\+Generator}!Random\+Passenger\+Generator@{Random\+Passenger\+Generator}}
+\subsubsection{\texorpdfstring{Random\+Passenger\+Generator()}{RandomPassengerGenerator()}}
+{\footnotesize\ttfamily Random\+Passenger\+Generator\+::\+Random\+Passenger\+Generator (\begin{DoxyParamCaption}\item[{std\+::list$<$ double $>$}]{probs,  }\item[{std\+::list$<$ \hyperlink{classStop}{Stop} $\ast$$>$}]{stops }\end{DoxyParamCaption})}
+
+
+
+Constructs a random passenger generator with a double list and \hyperlink{classStop}{Stop} $\ast$ list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em std\+::list$<$double$>$} & holding the probabilities of generation \\
+\hline
+\mbox{\tt in}  & {\em std\+::list$<$\+Stop} & $\ast$$>$ holding the stops to generate passengers on\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classRandomPassengerGenerator}{Random\+Passenger\+Generator} object with double and \hyperlink{classStop}{Stop} $\ast$ list 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRandomPassengerGenerator_aba2d80cde33371cf9c3d033f1b8ba6b8}\label{classRandomPassengerGenerator_aba2d80cde33371cf9c3d033f1b8ba6b8}} 
+\index{Random\+Passenger\+Generator@{Random\+Passenger\+Generator}!Generate\+Passengers@{Generate\+Passengers}}
+\index{Generate\+Passengers@{Generate\+Passengers}!Random\+Passenger\+Generator@{Random\+Passenger\+Generator}}
+\subsubsection{\texorpdfstring{Generate\+Passengers()}{GeneratePassengers()}}
+{\footnotesize\ttfamily int Random\+Passenger\+Generator\+::\+Generate\+Passengers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The generate passengers function for \hyperlink{classRandomPassengerGenerator}{Random\+Passenger\+Generator} objects. 
+
+This function overrides the base class to generate passengers on the \hyperlink{classStop}{Stop} $\ast$ list with the probabilities from the double list.
+
+\begin{DoxyReturn}{Returns}
+int number of passengers generated 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classPassengerGenerator_ad2db96a13b34fcf35977287c06b31d47}{Passenger\+Generator}.
+
+
+
+=======
+>>>>>>> master
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 /home/mamox017/3081\+\_\+f19/repo-\/mamox017/project/src/\hyperlink{random__passenger__generator_8h}{random\+\_\+passenger\+\_\+generator.\+h}\item 

@@ -4,13 +4,14 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-#ifndef PASSENGER_FACTORY_H_
-#define PASSENGER_FACTORY_H_
+#ifndef SRC_PASSENGER_FACTORY_H_
+#define SRC_PASSENGER_FACTORY_H_
 
 
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include <string>
 
 #include "src/passenger.h"
@@ -18,6 +19,7 @@
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
+
 /**
  * @brief The main class for the generation of passengers.
  *
@@ -45,4 +47,4 @@ class PassengerFactory {
   */
   static std::string NameGeneration();
 };
-#endif  // PASSENGER_FACTORY_H_
+#endif  // SRC_PASSENGER_FACTORY_H_

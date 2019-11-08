@@ -2,8 +2,21 @@
 \label{classPassengerGenerator}\index{Passenger\+Generator@{Passenger\+Generator}}
 
 
+<<<<<<< HEAD
+The main class for the passenger generator.  
+
+
+
+
+{\ttfamily \#include $<$passenger\+\_\+generator.\+h$>$}
+
+
+
+Inheritance diagram for Passenger\+Generator\+:\nopagebreak
+=======
 Inheritance diagram for Passenger\+Generator\+:
 \nopagebreak
+>>>>>>> master
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +25,12 @@ Inheritance diagram for Passenger\+Generator\+:
 \end{figure}
 
 
+<<<<<<< HEAD
+Collaboration diagram for Passenger\+Generator\+:\nopagebreak
+=======
 Collaboration diagram for Passenger\+Generator\+:
 \nopagebreak
+>>>>>>> master
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,12 +40,19 @@ Collaboration diagram for Passenger\+Generator\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+<<<<<<< HEAD
+\hyperlink{classPassengerGenerator_a33eeed8b68d5d596ceef5381c697e49d}{Passenger\+Generator} (std\+::list$<$ double $>$, std\+::list$<$ \hyperlink{classStop}{Stop} $\ast$$>$)
+\begin{DoxyCompactList}\small\item\em Constructs a passenger generator with a double list and \hyperlink{classStop}{Stop} $\ast$ list. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classPassengerGenerator_ad2db96a13b34fcf35977287c06b31d47}{Generate\+Passengers} ()=0
+\begin{DoxyCompactList}\small\item\em The generate passengers function for \hyperlink{classPassengerGenerator}{Passenger\+Generator} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+=======
 \mbox{\Hypertarget{classPassengerGenerator_a33eeed8b68d5d596ceef5381c697e49d}\label{classPassengerGenerator_a33eeed8b68d5d596ceef5381c697e49d}} 
 {\bfseries Passenger\+Generator} (std\+::list$<$ double $>$, std\+::list$<$ \hyperlink{classStop}{Stop} $\ast$$>$)
 \item 
 \mbox{\Hypertarget{classPassengerGenerator_ad2db96a13b34fcf35977287c06b31d47}\label{classPassengerGenerator_ad2db96a13b34fcf35977287c06b31d47}} 
 virtual int {\bfseries Generate\+Passengers} ()=0
 \end{DoxyCompactItemize}
+>>>>>>> master
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,6 +67,59 @@ std\+::list$<$ \hyperlink{classStop}{Stop} $\ast$ $>$ {\bfseries stops\+\_\+}
 \end{DoxyCompactItemize}
 
 
+<<<<<<< HEAD
+\subsection{Detailed Description}
+The main class for the passenger generator. 
+
+Creates a new instance of a \hyperlink{classPassengerGenerator}{Passenger\+Generator} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPassengerGenerator_a33eeed8b68d5d596ceef5381c697e49d}\label{classPassengerGenerator_a33eeed8b68d5d596ceef5381c697e49d}} 
+\index{Passenger\+Generator@{Passenger\+Generator}!Passenger\+Generator@{Passenger\+Generator}}
+\index{Passenger\+Generator@{Passenger\+Generator}!Passenger\+Generator@{Passenger\+Generator}}
+\subsubsection{\texorpdfstring{Passenger\+Generator()}{PassengerGenerator()}}
+{\footnotesize\ttfamily Passenger\+Generator\+::\+Passenger\+Generator (\begin{DoxyParamCaption}\item[{std\+::list$<$ double $>$}]{probs,  }\item[{std\+::list$<$ \hyperlink{classStop}{Stop} $\ast$$>$}]{stops }\end{DoxyParamCaption})}
+
+
+
+Constructs a passenger generator with a double list and \hyperlink{classStop}{Stop} $\ast$ list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em std\+::list$<$double$>$} & holding the probabilities of generation \\
+\hline
+\mbox{\tt in}  & {\em std\+::list$<$\+Stop} & $\ast$$>$ holding the stops to generate passengers on\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classPassengerGenerator}{Passenger\+Generator} object with double and \hyperlink{classStop}{Stop} $\ast$ list 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPassengerGenerator_ad2db96a13b34fcf35977287c06b31d47}\label{classPassengerGenerator_ad2db96a13b34fcf35977287c06b31d47}} 
+\index{Passenger\+Generator@{Passenger\+Generator}!Generate\+Passengers@{Generate\+Passengers}}
+\index{Generate\+Passengers@{Generate\+Passengers}!Passenger\+Generator@{Passenger\+Generator}}
+\subsubsection{\texorpdfstring{Generate\+Passengers()}{GeneratePassengers()}}
+{\footnotesize\ttfamily virtual int Passenger\+Generator\+::\+Generate\+Passengers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The generate passengers function for \hyperlink{classPassengerGenerator}{Passenger\+Generator} objects. 
+
+This pure virtual function is to be used by inheriting classes to generate passengers on the \hyperlink{classStop}{Stop} $\ast$ list with the probabilities from the double list.
+
+\begin{DoxyReturn}{Returns}
+int = 0, number of passengers generated 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classRandomPassengerGenerator_aba2d80cde33371cf9c3d033f1b8ba6b8}{Random\+Passenger\+Generator}.
+
+
+
+=======
+>>>>>>> master
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 /home/mamox017/3081\+\_\+f19/repo-\/mamox017/project/src/\hyperlink{passenger__generator_8h}{passenger\+\_\+generator.\+h}\item 

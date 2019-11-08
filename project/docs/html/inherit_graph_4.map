@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<<<<<<< HEAD
+<area shape="rect" id="node1" href="$classRoute.html" title="The main class for a route. " alt="" coords="5,5,63,32"/>
+=======
 <area shape="rect" id="node1" href="$classRoute.html" title="Route" alt="" coords="5,5,63,32"/>
+>>>>>>> master
 </map>

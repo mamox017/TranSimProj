@@ -4,7 +4,6 @@
 # with TA John Harwell's 3081W Makefiles from Fall 2016, which introduced
 # auto-dependency generation and several other exciting features.
 
-
 ### Section 0: Change this when compiling on non-CSELabs machines ###
 
 PROJECT_NAME = transit_sim

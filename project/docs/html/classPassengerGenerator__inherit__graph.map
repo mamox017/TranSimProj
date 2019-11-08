@@ -1,3 +1,7 @@
 <map id="PassengerGenerator" name="PassengerGenerator">
+<<<<<<< HEAD
+<area shape="rect" id="node2" href="$classRandomPassengerGenerator.html" title="The main class for the random passenger generator. " alt="" coords="5,175,216,267"/>
+=======
 <area shape="rect" id="node2" href="$classRandomPassengerGenerator.html" title="{RandomPassengerGenerator\n||+ RandomPassengerGenerator()\l+ GeneratePassengers()\l}" alt="" coords="5,175,216,267"/>
+>>>>>>> master
 </map>

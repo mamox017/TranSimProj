@@ -1,4 +1,19 @@
 <map id="/home/mamox017/3081_f19/repo&#45;mamox017/project/src/passenger.h" name="/home/mamox017/3081_f19/repo&#45;mamox017/project/src/passenger.h">
+<<<<<<< HEAD
+<area shape="rect" id="node2" href="$bus_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/bus.h" alt="" coords="348,109,535,165"/>
+<area shape="rect" id="node4" href="$stop_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/stop.h" alt="" coords="348,213,535,269"/>
+<area shape="rect" id="node6" href="$passenger__generator_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/passenger_generator.cc" alt="" coords="871,421,1057,477"/>
+<area shape="rect" id="node13" href="$passenger__factory_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/passenger_factory.h" alt="" coords="689,109,876,165"/>
+<area shape="rect" id="node3" href="$local__simulator_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/local_simulator.cc" alt="" coords="275,733,461,789"/>
+<area shape="rect" id="node10" href="$simulator_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/simulator.h" alt="" coords="480,525,667,581"/>
+<area shape="rect" id="node5" href="$passenger__generator_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/passenger_generator.h" alt="" coords="609,317,796,373"/>
+<area shape="rect" id="node7" href="$random__passenger__generator_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/random_passenger_generator.h" alt="" coords="94,421,325,477"/>
+<area shape="rect" id="node9" href="$route_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/route.h" alt="" coords="349,421,536,477"/>
+<area shape="rect" id="node12" href="$stop_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/stop.cc" alt="" coords="348,317,535,373"/>
+<area shape="rect" id="node8" href="$random__passenger__generator_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/random_passenger_generator.cc" alt="" coords="93,525,331,581"/>
+<area shape="rect" id="node11" href="$local__simulator_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/local_simulator.h" alt="" coords="473,629,660,685"/>
+<area shape="rect" id="node14" href="$passenger__factory_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/passenger_factory.cc" alt="" coords="689,213,876,269"/>
+=======
 <area shape="rect" id="node2" href="$bus_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/bus.h" alt="" coords="213,109,400,165"/>
 <area shape="rect" id="node6" href="$stop_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/stop.h" alt="" coords="304,213,491,269"/>
 <area shape="rect" id="node11" href="$passenger__generator_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/passenger_generator.cc" alt="" coords="695,421,881,477"/>
@@ -11,4 +26,5 @@
 <area shape="rect" id="node9" href="$random__passenger__generator_8h.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/random_passenger_generator.h" alt="" coords="437,421,667,477"/>
 <area shape="rect" id="node10" href="$random__passenger__generator_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/random_passenger_generator.cc" alt="" coords="485,525,723,581"/>
 <area shape="rect" id="node13" href="$passenger__factory_8cc.html" title="/home/mamox017/3081\l_f19/repo&#45;mamox017/project\l/src/passenger_factory.cc" alt="" coords="515,213,701,269"/>
+>>>>>>> master
 </map>
