@@ -11,6 +11,28 @@
  * Member Functions
  ******************************************************************************/
 
+void Route::UpdateRouteData() {
+  std::vector<StopData> StopDataCollector;
+  for (std::list<Stop *>::iterator iter = stops_.begin();
+    iter != stops_.end(); iter++) {
+
+    StopData thisStop;
+    Position thisStopPosition;
+
+    thisStopPosition.x = (*iter)->getLong();
+    thisStopPosition.y = (*iter)->getLat();
+
+    thisStop.id = (*iter)->GetId();
+    thisStop.pos = thisStopPosition;
+    thisStop.numPeople = (*iter)->GetNumPassengers();
+
+    StopDataCollector.push_back(thisStop);
+  }
+
+  rData.id = name_;
+  rData.stops = StopDataCollector;
+}
+
 // Getter for name
 std::string Route::GetName() {
   return name_;

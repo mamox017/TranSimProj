@@ -175,6 +175,14 @@ class Stop {
   * @return std::list<Passenger *> list of passengers on stop
   */
   std::list<Passenger *> GetPassengerList();
+/**
+  * @brief The get passenger number for Stop objects.
+  * 
+  * This function accesses the passengers_ list size.
+  *
+  * @return size_t number of passengers on stop
+  */
+  size_t GetNumPassengers();
 
  private:
   Stop * nextStop;

@@ -47,6 +47,10 @@ double Stop::getLat() {
   return latitude_;
 }
 
+size_t Stop::GetNumPassengers() {
+  return passengers_.size();
+}
+
 // Loads passengers by iterating through list and putting them on bus
 // passenger list, also erases them from stop passenger list
 int Stop::LoadPassengers(Bus * bus) {

@@ -19,6 +19,7 @@
 
 #include "./passenger_generator.h"
 #include "./stop.h"
+#include "src/data_structs.h"
 
 /*******************************************************************************
  * Class Definitions
@@ -182,6 +183,13 @@ class Route {
   */
   PassengerGenerator * GetGenerator();
 
+  // WRITE DOCUMENTATION CODE UPDATEROUTEDATA
+  void UpdateRouteData();
+
+  std::list<Stop *> GetStops() {return stops_;}
+
+  RouteData GetRouteData() {return rData;}  
+
  private:
 /**
   * @brief The passenger generator for Route objects.
@@ -191,7 +199,8 @@ class Route {
   *
   * @return int number of passengers generated
   */
-  int GenerateNewPassengers(std::ostream& o = std::cout);       // generates passengers on its route
+  int GenerateNewPassengers(std::ostream& o = std::cout);      // generates passengers on its route
+  RouteData rData;
   PassengerGenerator * generator_;
   std::list<Stop *> stops_;
   std::list<double> distances_between_;

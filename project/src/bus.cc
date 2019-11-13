@@ -24,7 +24,34 @@ int capacity, double speed) {
   hasSwitchedRoutes = false;
   distance_remaining_ = 0;
   currentStop = incoming_route_->GetFirstStop();
+  nextStop = GetNextStop();
   currentRoute = incoming_route_;
+}
+
+void Bus::UpdateBusData() {
+  Position bPos;
+  // maybe use previous stop instead of currentStop
+  Stop * followingStop = GetNextStop();
+
+  bPos.x = static_cast<float>((currentStop->getLong()+
+    followingStop->getLong())/2.0);
+  bPos.y = static_cast<float>((currentStop->getLat()+
+    followingStop->getLat())/2.0);
+
+  bData.id = name_;
+  bData.pos = bPos;
+  bData.numPassengers = static_cast<int>(GetNumPassengers());
+  bData.capacity = GetCapacity();
+}
+
+Stop * Bus::GetNextStop() {
+  if (currentStop != NULL) {
+    if (currentStop->GetNextStop() != NULL) {
+      nextStop = currentStop->GetNextStop();
+      return nextStop;
+    }
+  }
+  return NULL;
 }
 
 // Loads passengers onto the bus by pushing them on list

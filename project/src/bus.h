@@ -17,6 +17,7 @@
 #include "src/passenger.h"
 #include "src/route.h"
 #include "src/stop.h"
+#include "src/data_structs.h"
 
 /*******************************************************************************
  * Class Definitions
@@ -108,7 +109,7 @@ class Bus {
   * @return bool object that is true if complete or false if incomplete
   */
   bool IsTripComplete();
-  /**
+/**
   * @brief The bus GetPassengerList function for Bus objects.
   * 
   * This function accesses the private member variable passenger_
@@ -117,8 +118,23 @@ class Bus {
   */
   std::list<Passenger *> GetPassengerList();
 
+  // WRITE DOCUMENTATION CODE UPDATEBUSDATA
+  void UpdateBusData();
+
+  BusData GetBusData() {return bData;}
+
+  std::string GetName() const {return name_;}
+
+  Stop * GetNextStop();
+
+  size_t GetNumPassengers() {return passengers_.size();};
+
+  int GetCapacity() {return passenger_max_capacity_;};
+
  private:
+  BusData bData;
   Stop * currentStop;
+  Stop * nextStop;
   bool skipcase;
   bool hasSwitchedRoutes;
   std::list<Passenger *> passengers_;
