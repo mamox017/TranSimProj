@@ -1,6 +1,6 @@
 ### Feedback for Iter 02
 
-Run on November 13, 14:00:39 PM.
+Run on November 13, 15:27:43 PM.
 
 
 ### Basic Tests on Devel
@@ -30,10 +30,7 @@ This feedback is being batched and will run every few hours. Note that these fee
 
 + Fail: Compiling capture_transit_sim target of the src/ makefile...
 
-<pre>PROJECTNAME = capture_transit_sim
-make: PROJECTNAME: Command not found
-makefile:150: recipe for target 'capture_transit_sim' failed
-make: *** [capture_transit_sim] Error 127
+<pre>make: *** No rule to make target 'capture_transit_sim'.  Stop.
 </pre>
 
 
@@ -62,13 +59,13 @@ make: *** [capture_transit_sim] Error 127
 
 + Pass: Run git ls-remote gather all branches in repo
 
-		a9c5b1535f3aa0d489612f736f5eaa79de17d987	refs/heads/devel
+		f16627677bcc437df03052ef0f149cf17f419ebe	refs/heads/devel
 
 		8960f5b87bb57f5dbb449b5dd2f5f467a05d0716	refs/heads/fix/01-compilation-errors
 
 		5ec2491ea7cf90b04ceffdafdcdef92191c41f55	refs/heads/fix/02-compilation-errors
 
-		ace9658f51a2f6aae81b82a9674600d7db979e66	refs/heads/master
+		268b286d59d03b8afd36c1cc741344552d76a51d	refs/heads/master
 
 
 
