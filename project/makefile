@@ -7,7 +7,7 @@ check-style-cse:
 	cd src; make check-style-cse
 
 capture_transit_sim:
-	cd src; make -j
+	cd src/captureMakeFile; make -j
 
 TransitSim:
 	cd src; make -j

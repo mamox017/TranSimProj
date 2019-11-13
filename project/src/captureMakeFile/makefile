@@ -6,7 +6,7 @@
 
 ### Section 0: Change this when compiling on non-CSELabs machines ###
 
-PROJECT_NAME = transit_sim
+PROJECT_NAME = capture_transit_sim
 
 # Path to root of repo
 REPOROOTDIR = $(shell git rev-parse --show-toplevel)
@@ -14,8 +14,8 @@ REPOROOTDIR = $(shell git rev-parse --show-toplevel)
 ### Section I: Definitions ###
 
 # Root of the source tree for the project (e.g., could be just . or ./src)
-SRCDIR = .
-DRIVERDIR = ../drivers
+SRCDIR = ../
+DRIVERDIR = ../../drivers
 
 # Output directories for the build process
 PROJ_DIR = $(REPOROOTDIR)/project
@@ -145,6 +145,9 @@ $(EXEFILE): $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME)
 %_test: $(DRIVEROBJDIR)/%_driver.o $(addprefix $(OBJDIR)/, $(OBJFILES)) | $(BINDIR)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $< -o $(BINDIR)/$@ $(LDLIBS)
+
+capture_transit_sim:
+	PROJECTNAME = capture_transit_sim
 
 check-style:
 	@echo "==== Checking style is correct ===="
