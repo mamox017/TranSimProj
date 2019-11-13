@@ -4,6 +4,7 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
+// fix generatepassengers input documentation
 #ifndef SRC_RANDOM_PASSENGER_GENERATOR_H_
 #define SRC_RANDOM_PASSENGER_GENERATOR_H_
 
@@ -50,7 +51,7 @@ class RandomPassengerGenerator : public PassengerGenerator{
   *
   * @return int number of passengers generated
   */
-  int GeneratePassengers() override;
+  int GeneratePassengers(std::ostream &o = std::cout) override;
 
  private:
   static std:: minstd_rand0 my_rand;

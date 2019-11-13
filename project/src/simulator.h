@@ -3,6 +3,8 @@
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
+
+// fix start/update input documentation
 #ifndef SRC_SIMULATOR_H_
 #define SRC_SIMULATOR_H_
 
@@ -38,7 +40,7 @@ class Simulator {
   *
   * @return bool = 0, indicates whether simulation successfully starts
   */
-  virtual bool Start() = 0;
+  virtual bool Start(std::ostream&o = std::cout) = 0;
 /**
   * @brief The Update function for Simulator objects.
   * 
@@ -47,7 +49,7 @@ class Simulator {
   *
   * @return bool = 0, indicates whether simulation successfully updates
   */
-  virtual bool Update() = 0;
+  virtual bool Update(std::ostream& o = std::cout) = 0;
 
  protected:
   // bus and stop list will be iterated over to update

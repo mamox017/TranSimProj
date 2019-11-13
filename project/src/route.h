@@ -4,6 +4,8 @@
  * @Copyright 2019 3081 Staff, All rights reserved.
  */
 
+
+// document input of ostream to generatenewpassengers & update
 #ifndef SRC_ROUTE_H_
 #define SRC_ROUTE_H_
 
@@ -64,7 +66,7 @@ class Route {
   *
   * @return void
   */
-  void Update();
+  void Update(std::ostream &o = std::cout);
 /**
   * @brief The report function for Route objects.
   * 
@@ -181,7 +183,15 @@ class Route {
   PassengerGenerator * GetGenerator();
 
  private:
-  int GenerateNewPassengers();       // generates passengers on its route
+/**
+  * @brief The passenger generator for Route objects.
+  * 
+  * This generates passengers along all the stops on the route
+  * by calling the Generate function on the generator
+  *
+  * @return int number of passengers generated
+  */
+  int GenerateNewPassengers(std::ostream& o = std::cout);       // generates passengers on its route
   PassengerGenerator * generator_;
   std::list<Stop *> stops_;
   std::list<double> distances_between_;

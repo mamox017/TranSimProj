@@ -6,7 +6,7 @@
 
 ### Section 0: Change this when compiling on non-CSELabs machines ###
 
-PROJECT_NAME = transit_sim
+PROJECT_NAME = capture_transit_sim
 
 # Path to root of repo
 REPOROOTDIR = $(shell git rev-parse --show-toplevel)
@@ -146,7 +146,9 @@ $(EXEFILE): $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $< -o $(BINDIR)/$@ $(LDLIBS)
 
-	
+capture_transit_sim:
+	PROJECTNAME = capture_transit_sim
+
 check-style:
 	@echo "==== Checking style is correct ===="
 	$(REPOROOTDIR)/cpplint/cpplint.py --root=.. *.cc *.h

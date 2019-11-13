@@ -4,6 +4,7 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
+//fix generatepassengers input documentation
 #ifndef SRC_PASSENGER_GENERATOR_H_
 #define SRC_PASSENGER_GENERATOR_H_
 
@@ -48,7 +49,7 @@ class PassengerGenerator {
   *
   * @return int = 0, number of passengers generated
   */
-  virtual int GeneratePassengers() = 0;  // pure virtual
+  virtual int GeneratePassengers(std::ostream &o = std::cout) = 0;  // pure virtual
   // PassengerGenerator(const PassengerGenerator& p);
   // void operator = (const PassengerGenerator &p);
   // std::list<Passenger *> Generate();
