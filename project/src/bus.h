@@ -127,9 +127,9 @@ class Bus {
 
   Stop * GetNextStop();
 
-  size_t GetNumPassengers() {return passengers_.size();};
+  size_t GetNumPassengers() {return passengers_.size();}
 
-  int GetCapacity() {return passenger_max_capacity_;};
+  int GetCapacity() {return passenger_max_capacity_;}
 
  private:
   BusData bData;

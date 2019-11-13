@@ -15,7 +15,6 @@ void Route::UpdateRouteData() {
   std::vector<StopData> StopDataCollector;
   for (std::list<Stop *>::iterator iter = stops_.begin();
     iter != stops_.end(); iter++) {
-
     StopData thisStop;
     Position thisStopPosition;
 
