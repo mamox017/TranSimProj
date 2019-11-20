@@ -22,8 +22,8 @@ void Route::UpdateRouteData() {
     thisStopPosition.y = (*iter)->getLat();
 
     thisStop.id = (*iter)->GetId();
-    thisStop.pos = thisStopPosition;
-    thisStop.numPeople = (*iter)->GetNumPassengers();
+    thisStop.position = thisStopPosition;
+    thisStop.num_people = (*iter)->GetNumPassengers();
 
     StopDataCollector.push_back(thisStop);
   }

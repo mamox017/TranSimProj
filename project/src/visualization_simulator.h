@@ -6,7 +6,7 @@
 #include <vector>
 #include <list>
 
-#include "src/web_interface.h"
+#include "web_interface.h"
 #include "src/config_manager.h"
 
 class Route;

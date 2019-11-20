@@ -4,7 +4,6 @@
 # with TA John Harwell's 3081W Makefiles from Fall 2016, which introduced
 # auto-dependency generation and several other exciting features.
 
-
 ### Section 0: Change this when compiling on non-CSELabs machines ###
 
 PROJECT_NAME = transit_sim
@@ -13,11 +12,8 @@ PROJECT_NAME = transit_sim
 REPOROOTDIR = $(shell git rev-parse --show-toplevel)
 
 # Path to web and library code
-# driver file for visualization_simulator is ‘main.cpp’ in the web directory of 
-# the project directory of the path assigned to CS3081DIR above --> Take a look
-# the files in this project directory are necessary to build the visualizer sim.
 CS3081DIR = /classes/grades/Fall-2019/csci3081/project
-
+# driver file for visualization_simulator is ‘main.cpp’ in the web directory of above --> Take a look
 
 ### Section I: Definitions ###
 
@@ -30,18 +26,10 @@ PROJ_DIR = $(REPOROOTDIR)/project
 BUILDDIR = $(PROJ_DIR)/build
 BINDIR = $(BUILDDIR)/bin
 OBJDIR = $(BUILDDIR)/obj/$(PROJECT_NAME)
-# Below you need to assign WEBOBJDIR to store the object files for
-# building the visulizer and configuation panel. 
-# the value of WEBOBJDIR will be similar to OBJDIR above (but not the same). 
-# it will use the BUILDIR directory as the root and store object files for the
-# web objects in a new object directory (webobj, for example) which should contain a 
-# directory with the same name as the target 
 DRIVEROBJDIR = $(BUILDDIR)/objdrivers
 WEBOBJDIR = $(BUILDDIR)/webobj/visualizer_sim
 
-# Below are the libraries and library directories necessary to create 
-# the visual simulation executable, the C++ linker needs these
-VISLIBS = -lCppWebServer -lwebsockets -lcrypto -lssl -lz
+LIBS = -lCppWebServer -lwebsockets -lcrypto -lssl -lz
 LIBDIR = -L$(CS3081DIR)/external/lib
 
 EXTERNAL_DIR = $(PROJ_DIR)/src/external
@@ -53,33 +41,16 @@ EXEFILE = $(BINDIR)/$(PROJECT_NAME)
 # The list of files to compile for this project.  Defaults to all
 # of the .cpp and .cc files in the source directory.  (We use both .cpp
 # and .cc in order to support two different popular naming conventions.)
-SRCFILES = $(wildcard $(SRCDIR)/*.cc)
-# Below, you need to add a variable named WEBSRCFILES which will be similar to 
-# the SRCFILES but point to the directory that contains the source code files
-# (.cc, and .ccp files) for the web server. Take a look at the CS3081DIR listed above
-# and find where the *.cc files are.
-WEBSRCFILES = $(wildcard $(WEBOBJDIR)/*.cc, *.ccp, *.cpp)
+SRCFILES = $(wildcard $(SRCDIR)/*.cpp) $(wildcard $(SRCDIR)/*.cc)
+WEBSRCFILES = $(wildcard $(CS3081DIR)/web/*.cpp) $(wildcard $(CS3081DIR)/web/*.cc)
 
 # For each of the source files found above, replace .cpp (or .cc) with
 # .o in order to generate the list of .o files make should create.
-OBJFILES = $(notdir $(patsubst %.cc,%.o,$(SRCFILES)))
-# Below, you need to add a variable named WEBOBJFILES which will be similar to 
-# the OBJFILES but use the web source files (WEBSRCFILES)
+OBJFILES = $(notdir $(patsubst %.cc,%.o,$(patsubst %.cpp,%.o,$(SRCFILES))))
 WEBOBJFILES = $(notdir $(patsubst %.cc,%.o,$(patsubst %.cpp,%.o,$(WEBSRCFILES))))
 
 # Add -Idirname to add directories to the compiler search path for finding .h files
-INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(SRCDIR)/.. -I$(DRIVERDIR) \
-	-I$(CS3081DIR)/web \
-	-isystem$(CS3081DIR)/external/include \
-	-isystem$(CS3081DIR)/external/include/cppwebserver \
-	-isystem$(CS3081DIR)/external/include/gtest \
-	-isystem$(CS3081DIR)/external/include/websockets
-
-# Above, you'll need to add the include directives specified in the README.md
-# file that specify the directories which hold the source code and other files 
-# necessary to create the executable file for visual simulation below. 
-# You might want to add them to the same line, or be sure to use the make
-# line continuation character if you add them one line at a time. 
+INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(SRCDIR)/.. -I$(DRIVERDIR) -I$(CS3081DIR)/web -isystem$(CS3081DIR)/external/include -isystem$(CS3081DIR)/external/include/cppwebserver -isystem$(CS3081DIR)/external/include/gtest -isystem$(CS3081DIR)/external/include/websockets
 
 # The command to run for the C++ compiler and linker
 CXX = /soft/gcc/7.1.0/Linux_x86_64/bin/g++
@@ -93,42 +64,29 @@ CXXFLAGS = -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -W
 
 -include ../../Makefile.local
 
-# Below you set the LDFLAGS variable to arguments to pass to the C++ linker
-# for the visualizer sim such as -L<pathname>, but not -l<name> 
-# locate the variable assigned those items defined earlier an assign it accordingly
-LDFLAGS = -L$(LIBDIR)
-
-# Below you need to set the LDLIBS variable to library names to pass to the C++ linker
-# for the visualizer sim such as -l<name>.
-# Locate the variable assigned those items defined earlier and assign it accordingly
-LIBS = -lCppWebServer -lwebsockets -lcrypto -lssl -lz
-LDLIBS = -l$(LIBS)
+LDFLAGS = $(LIBDIR)
+LDLIBS = $(LIBS)
 
 # This is a list of "phony targets" -- targets that do not specify the name of a file.
 # Rather they specify the name of a recipe to run whenever make is envoked with the target name.
-# Below, for the visual sim, you'll need to add the variable you created above 
-# that holds the path to the web server's object files
 .PHONY: clean all $(BINDIR) $(OBJDIR) $(WEBOBJDIR)
 
+
 # The default target which will be run if the user just types "make"
-# Below, you'll need change the line to the make the "target" for the
-# visual simulation 
-all: vis_sim #config_sim
+all: vis_sim
 
 # This rule says that each .o file in $(OBJDIR)/ depends on the
 # presence of the $(OBJDIR)/ directory.
 $(addprefix $(OBJDIR)/, $(OBJFILES)): | $(OBJDIR)
 
-# Below, you'll need to add a version of the rule above that uses the WEBOBJDIR,and
-# WEBOBJFILES you defined earlier to build the visual simulation
 $(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)): | $(WEBOBJDIR)
 
 # And, this rule provides a recipe for creating that objdir.  The same rule applies
 # to the bindir, where the exe will be output.
-# Below, you will need to add the reference to the variable that holds the path to 
-# the object directories for the visual simulation that you defined earlier
-$(OBJDIR) $(BINDIR) $(DRIVEROBJDIR) $(WEBOBJDIR):
+$(WEBOBJDIR) $(OBJDIR) $(BINDIR) $(DRIVEROBJDIR):
 	@mkdir -p $@
+
+
 
 # COMPILING (USING A PATTERN RULE):
 # Since every .cpp (or .cc) file must be compiled into a .o, we will write this
@@ -136,39 +94,26 @@ $(OBJDIR) $(BINDIR) $(DRIVEROBJDIR) $(WEBOBJDIR):
 # $(SRCDIR)/filename.cpp can be turned into $(OBJDIR)/filename.o.
 
 # The same thing will also work for files with a .cc extension
-$(OBJDIR)/%.o: $(SRCDIR)/%.cc 
+$(OBJDIR)/%.o: $(SRCDIR)/%.cc $(MINGFX_DIR)
 	@echo "==== Auto-Generating Dependencies for $<. ===="
 	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
 	@echo "==== Compiling $< into $@. ===="
 	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
-	
-# Below, you'll need to add a 2 (TWO) rules to compile the web visualizer and
-# configuration panel for the visual simulation similar to the rule above.
-# It will use the variable with the location of 
-# (that is, path to) the object files for the visual simulation that you defined 
-# earlier for the target
-# and the path to the source code files for the visual simulation,
-# specifically: 
-#                 $(CS3081DIR)/web
-# in the dependencies. 
-# One rule will make C++ objects from  .cpp source files
-$(WEBOBJDIR)/%.o: $(CS3081DIR)/web/%.cpp 
-	@echo "==== Auto-Generating Dependencies for $<. ===="
-	@$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
-	@echo "==== Compiling $< into $@. ===="
-	@$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
-
-# The other rule will make objects from .cc source files
-$(WEBOBJDIR)/%.o: $(CS3081DIR)/web/%.cc 
-	@echo "==== Auto-Generating Dependencies for $<. ===="
-	@$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
-	@echo "==== Compiling $< into $@. ===="
-	@$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
-
-
 
 # The same thing will also work for files with a .cc extension
 $(DRIVEROBJDIR)/%_driver.o: $(DRIVERDIR)/%_driver.cc | $(DRIVEROBJDIR)
+	@echo "==== Auto-Generating Dependencies for $<. ===="
+	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
+	@echo "==== Compiling $< into $@. ===="
+	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
+$(WEBOBJDIR)/%.o: $(CS3081DIR)/web/%.cpp
+	@echo "==== Auto-Generating Dependencies for $<. ===="
+	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
+	@echo "==== Compiling $< into $@. ===="
+	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
+$(WEBOBJDIR)/%.o: $(CS3081DIR)/web/%.cc
 	@echo "==== Auto-Generating Dependencies for $<. ===="
 	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
 	@echo "==== Compiling $< into $@. ===="
@@ -180,6 +125,7 @@ $(DRIVEROBJDIR)/$(PROJECT_NAME).o: $(DRIVERDIR)/$(PROJECT_NAME).cc | $(DRIVEROBJ
 	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
 	@echo "==== Compiling $< into $@. ===="
 	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
 	
 # WITH AUTO-GENERATED DEPENDENCIES:
 # Note that there are actually two steps to the compiling recipe above.  The second
@@ -209,12 +155,8 @@ make-depend-cxx=$(CXX) -MM -MF $3 -MP -MT $2 $(CXXFLAGS) $1
 # written in this file.  This is done with make's own "include" command, which
 # enables us to include one Makefile within another.
 -include $(addprefix $(OBJDIR)/,$(OBJFILES:.o=.d))
-
-# Below, add an include directive for the visualization simulation, similar 
-# to the -include line above, that refers to the variables you defined 
-# for the visual simulation earlier (which were assigned paths to the 
-# object directory and object files for the visual simulation.
 -include $(addprefix $(WEBOBJDIR)/,$(WEBOBJFILES:.o=.d))
+
 
 # LINKING:
 # This rule is for the linking step of building a program.  The dependencies mean that
@@ -226,20 +168,14 @@ $(EXEFILE): $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $@ $(LDLIBS)
 
-# Below you'll need to add a target/dependency and rule to make the visual simulation 
-# create the executable similar to the one BELOW, but using the variables that 
-# you defined pointing to the  components of the visual simulation (WEBOBJDIR, 
-# WEBOBJFILES) that you defined earlier. The vis_sim target will also need the OBJDIR and OBJFILES.
-# For example:
 vis_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)) | $(BINDIR)
 	@echo "==== Linking $@. ===="
-	@$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)) -o $(BINDIR)/$@ $(LDLIBS)
+	@$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)) -o $(BINDIR)/$@ $(LDLIBS)
 
 %_test: $(DRIVEROBJDIR)/%_driver.o $(addprefix $(OBJDIR)/, $(OBJFILES)) | $(BINDIR)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $< -o $(BINDIR)/$@ $(LDLIBS)
 
-	
 check-style:
 	@echo "==== Checking style is correct ===="
 	$(REPOROOTDIR)/cpplint/cpplint.py --root=.. *.cc *.h
@@ -249,11 +185,10 @@ check-style-cse:
 	$(REPOROOTDIR)/cpplint/cpplint-cse.sh --root=.. *.cc *.h
 
 # Clean up the project, removing ALL files generated during a build.
-# BELOW, You should add a remove command to get rid of the object files
-# created for the visual simulation (located in path assigned to WEBOBJDIR)
+#TODO - Need to add driver cleaning here
 clean:
+	@rm -rf $(WEBOBJDIR)
 	@rm -rf $(OBJDIR)
 	@rm -rf $(EXEFILE)
-	@rm -rf $(WEBOBJDIR)
 	@rm -rf $(BINDIR)/*_test
 	

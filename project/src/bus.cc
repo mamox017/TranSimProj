@@ -39,8 +39,8 @@ void Bus::UpdateBusData() {
     followingStop->getLat())/2.0);
 
   bData.id = name_;
-  bData.pos = bPos;
-  bData.numPassengers = static_cast<int>(GetNumPassengers());
+  bData.position = bPos;
+  bData.num_passengers = static_cast<int>(GetNumPassengers());
   bData.capacity = GetCapacity();
 }
 
