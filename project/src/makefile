@@ -6,7 +6,8 @@
 
 ### Section 0: Change this when compiling on non-CSELabs machines ###
 
-PROJECT_NAME = transit_sim
+PROJECT_NAME = capture_transit_sim
+PROJECT_NAME2 = transit_sim
 
 # Path to root of repo
 REPOROOTDIR = $(shell git rev-parse --show-toplevel)
@@ -73,7 +74,7 @@ LDLIBS = $(LIBS)
 
 
 # The default target which will be run if the user just types "make"
-all: vis_sim
+all: vis_sim config_sim
 
 # This rule says that each .o file in $(OBJDIR)/ depends on the
 # presence of the $(OBJDIR)/ directory.
@@ -167,6 +168,14 @@ make-depend-cxx=$(CXX) -MM -MF $3 -MP -MT $2 $(CXXFLAGS) $1
 $(EXEFILE): $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o | $(BINDIR) 
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $@ $(LDLIBS)
+
+capture_transit_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o | $(BINDIR) 
+	@echo "==== Linking $@. ===="
+	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $(BINDIR)/$@ $(LDLIBS)
+
+config_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o | $(BINDIR) 
+	@echo "==== Linking $@. ===="
+	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $(BINDIR)/$@ $(LDLIBS)
 
 vis_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)) | $(BINDIR)
 	@echo "==== Linking $@. ===="

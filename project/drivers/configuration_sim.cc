@@ -26,6 +26,20 @@ int main(int argc, char**argv) {
   //     Call Update on ConfigurationSimulator
   // else 
   //   echo info to the user about needing a config file name
+  if (argc > 1) {
+    ConfigManager *configManager_;
+    configManager_->ReadConfig(argv[1]);
 
+    ConfigurationSimulator *configSim;
+    configSim->Start();
+
+    int lengthofsim = 0;  // find out how to find length of simulation
+    for (int i = 0; i < lengthofsim; i++) {
+      configSim->Update();
+    }
+  } else {
+    std::cout << "Error: You need to input a config file name" << std::endl;
+    return 1;
+  }
   return 0;
 }
