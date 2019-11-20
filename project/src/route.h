@@ -188,7 +188,7 @@ class Route {
 
   std::list<Stop *> GetStops() {return stops_;}
 
-  RouteData GetRouteData() {return rData;}
+  RouteData GetRouteData() {return *rData;}
 
  private:
 /**
@@ -200,7 +200,7 @@ class Route {
   * @return int number of passengers generated
   */
   int GenerateNewPassengers(std::ostream& o = std::cout);
-  RouteData rData;
+  RouteData * rData;
   PassengerGenerator * generator_;
   std::list<Stop *> stops_;
   std::list<double> distances_between_;

@@ -11,27 +11,60 @@
  * Member Functions
  ******************************************************************************/
 
+// Constructor
+Route::Route(std::string name, Stop ** stops, double * distances,
+int num_stops, PassengerGenerator * gen) {
+  // Sets stops and their next stops accordingly
+  // Which is technically a linked list of stops
+  rData = new RouteData();
+  rData->id = name;
+  //std::vector<StopData> stopDatas;
+
+  for (int i = 0; i < num_stops; i++) {
+    if (i < num_stops) {
+      stops[i]->SetNextStop(stops[i+1]);
+    }
+    stops_.push_back(stops[i]);
+
+    //StopData * curStop = new StopData();
+    //curStop->id = stops[i]->GetId();
+    //curStop->position = stops[i]->getPos();
+    //curStop->num_people = stops[i]->GetNumPassengers();
+    //stopDatas.push_back(*curStop);
+  }
+  //rData->stops = stopDatas;
+
+  // Makes a list of distances
+  // Sets each stop's distance to its respective stop
+  for (int i = 0; i < num_stops - 1; i++) {
+    distances_between_.push_back(distances[i]);
+    stops[i]->setDistance(distances[i]);
+  }
+
+  generator_ = gen;
+  name_ = name;
+  num_stops_ = num_stops;
+
+  // Sets the first stop
+  currentStop = stops_.front();
+}
+
 void Route::UpdateRouteData() {
+  rData->id = name_;
   std::vector<StopData> StopDataCollector;
 
   for (std::list<Stop *>::iterator iter = stops_.begin();
     iter != stops_.end(); iter++) {
-    
-    StopData thisStop;
-    Position thisStopPosition;
+    StopData * thisStop = new StopData();
+    int tempid = (*iter)->GetId();
+    thisStop->id = std::to_string(tempid);
+    thisStop->position = (*iter)->getPos();
+    thisStop->num_people = (*iter)->GetNumPassengers();
 
-    thisStopPosition.x = (*iter)->getLong();
-    thisStopPosition.y = (*iter)->getLat();
-
-    thisStop.id = (*iter)->GetId();
-    thisStop.position = thisStopPosition;
-    thisStop.num_people = (*iter)->GetNumPassengers();
-
-    StopDataCollector.push_back(thisStop);
+    StopDataCollector.push_back(*thisStop);
   }
 
-  rData.id = name_;
-  rData.stops = StopDataCollector;
+  rData->stops = StopDataCollector;
 }
 
 // Getter for name
@@ -49,30 +82,6 @@ PassengerGenerator * Route::GetGenerator() {
   return generator_;
 }
 
-// Constructor
-Route::Route(std::string name, Stop ** stops, double * distances,
-int num_stops, PassengerGenerator * gen) {
-  // Sets stops and their next stops accordingly
-  // Which is technically a linked list of stops
-  for (int i = 0; i < num_stops; i++) {
-    if (i < num_stops) {
-      stops[i]->SetNextStop(stops[i+1]);
-    }
-    stops_.push_back(stops[i]);
-  }
-  // Makes a list of distances
-  // Sets each stop's distance to its respective stop
-  for (int i = 0; i < num_stops - 1; i++) {
-    distances_between_.push_back(distances[i]);
-    stops[i]->setDistance(distances[i]);
-  }
-  generator_ = gen;
-  name_ = name;
-  num_stops_ = num_stops;
-
-  // Sets the first stop
-  currentStop = stops_.front();
-}
 
 // Updater
 void Route::Update(std::ostream& o) {
@@ -82,6 +91,8 @@ it != stops_.end(); it++) {
     (*it)->Update();
   }
   GenerateNewPassengers(o);
+
+  UpdateRouteData();
 }
 
 // Cloner of routes

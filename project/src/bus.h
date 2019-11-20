@@ -121,7 +121,7 @@ class Bus {
   // WRITE DOCUMENTATION CODE UPDATEBUSDATA
   void UpdateBusData();
 
-  BusData GetBusData() {return bData;}
+  BusData GetBusData() {return *bData;}
 
   std::string GetName() const {return name_;}
 
@@ -132,7 +132,7 @@ class Bus {
   int GetCapacity() {return passenger_max_capacity_;}
 
  private:
-  BusData bData;
+  BusData * bData;
   Stop * currentStop;
   Stop * nextStop;
   bool skipcase;

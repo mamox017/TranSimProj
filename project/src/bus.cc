@@ -14,6 +14,13 @@
 Bus::Bus(std::string name, Route * out, Route * in,
 int capacity, double speed) {
   // Sets all member variables
+
+  bData = new BusData();
+  bData->id = name;
+  // add position?
+  bData->num_passengers = passengers_.size();
+  bData->capacity = capacity;
+
   name_ = name;
   outgoing_route_ = out;
   incoming_route_ = in;
@@ -29,19 +36,25 @@ int capacity, double speed) {
 }
 
 void Bus::UpdateBusData() {
-  Position bPos;
   // maybe use previous stop instead of currentStop
   Stop * followingStop = GetNextStop();
 
-  bPos.x = static_cast<float>((currentStop->getLong()+
-    followingStop->getLong())/2.0);
-  bPos.y = static_cast<float>((currentStop->getLat()+
-    followingStop->getLat())/2.0);
+  Position * bPos = new Position();
 
-  bData.id = name_;
-  bData.position = bPos;
-  bData.num_passengers = static_cast<int>(GetNumPassengers());
-  bData.capacity = GetCapacity();
+  //bPos->x = static_cast<float>((currentStop->getLong()+
+    //followingStop->getLong())/2.0);
+  //bPos->y = static_cast<float>((currentStop->getLat()+
+    //followingStop->getLat())/2.0);
+  *bPos = currentStop->getPos(); // fix to average
+
+  //if (distance_remaining_ < 0) {
+    //*bPos = followingStop->getPos();
+  //}
+
+  bData->id = name_;
+  bData->position = *bPos;
+  bData->num_passengers = static_cast<int>(GetNumPassengers());
+  bData->capacity = GetCapacity();
 }
 
 Stop * Bus::GetNextStop() {
@@ -87,6 +100,7 @@ bool Bus::Move() {
   if (!(currentRoute->IsAtEnd() && hasSwitchedRoutes == true)) {
     // Distance is corrected with each time step
     distance_remaining_ = distance_remaining_ - speed_;
+    UpdateBusData();
     // If at stop
     if (distance_remaining_ <= 0) {
       // Passengers are taken care of

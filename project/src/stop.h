@@ -4,6 +4,7 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
+// DOCUMENT getPos
 #ifndef SRC_STOP_H_
 #define SRC_STOP_H_
 
@@ -16,6 +17,7 @@
 
 #include "src/bus.h"
 #include "src/passenger.h"
+#include "src/data_structs.h"
 
 /*******************************************************************************
  * Class Definitions
@@ -183,6 +185,7 @@ class Stop {
   * @return size_t number of passengers on stop
   */
   size_t GetNumPassengers();
+  Position getPos();
 
  private:
   Stop * nextStop;

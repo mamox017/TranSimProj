@@ -9,6 +9,10 @@
 
 struct Position {
     Position() : x(0), y(0) {}
+    Position(float x_, float y_) {
+        x = x_;
+        y = y_;
+    }
     float x;
     float y;
 };

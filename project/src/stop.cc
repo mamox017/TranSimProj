@@ -22,6 +22,13 @@ Stop::Stop(int id, double longitude, double latitude) : id_(id),
 longitude_(longitude), latitude_(latitude) {
 }
 
+Position Stop::getPos() {
+  Position * thisStopPosition = new Position();
+  thisStopPosition->x = longitude_;
+  thisStopPosition->y = latitude_;
+  return *thisStopPosition;
+}
+
 // Setter
 void Stop::setId(int i) {
   id_ = i;
