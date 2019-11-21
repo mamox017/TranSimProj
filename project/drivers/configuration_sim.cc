@@ -7,6 +7,7 @@
 
 #include "src/config_manager.h"
 #include "src/configuration_simulator.h"
+#include <fstream>
 
 int main(int argc, char**argv) {
   // NOTE: this usage will change depending on
@@ -26,15 +27,20 @@ int main(int argc, char**argv) {
   //     Call Update on ConfigurationSimulator
   // else 
   //   echo info to the user about needing a config file name
+  ConfigManager * configManager_ = new ConfigManager();
   if (argc > 1) {
-    ConfigManager *configManager_;
     configManager_->ReadConfig(argv[1]);
+    ConfigurationSimulator *configSim = new ConfigurationSimulator(configManager_);
 
-    ConfigurationSimulator *configSim;
-    configSim->Start();
+    std::vector<int> timings;
+    for(int i = 0; i < 25; i++){ // HOW TO FIND ARGS?
+      timings.push_back(5);
+    }
 
-    int lengthofsim = 0;  // find out how to find length of simulation
-    for (int i = 0; i < lengthofsim; i++) {
+    configSim->Start(timings,25);
+
+    // find out how to find length of simulation
+    for (int i = 0; i < 25; i++) {
       configSim->Update();
     }
   } else {

@@ -6,8 +6,9 @@
 
 ### Section 0: Change this when compiling on non-CSELabs machines ###
 
-PROJECT_NAME = capture_transit_sim
+PROJECT_NAME = configuration_sim
 PROJECT_NAME2 = transit_sim
+PROJECT_NAME3 = capture_transit_sim
 
 # Path to root of repo
 REPOROOTDIR = $(shell git rev-parse --show-toplevel)
@@ -27,6 +28,7 @@ PROJ_DIR = $(REPOROOTDIR)/project
 BUILDDIR = $(PROJ_DIR)/build
 BINDIR = $(BUILDDIR)/bin
 OBJDIR = $(BUILDDIR)/obj/$(PROJECT_NAME)
+OBJDIR3 = $(BUILDDIR)/obj/$(PROJECT_NAME3)
 DRIVEROBJDIR = $(BUILDDIR)/objdrivers
 WEBOBJDIR = $(BUILDDIR)/webobj/visualizer_sim
 
@@ -127,6 +129,12 @@ $(DRIVEROBJDIR)/$(PROJECT_NAME).o: $(DRIVERDIR)/$(PROJECT_NAME).cc | $(DRIVEROBJ
 	@echo "==== Compiling $< into $@. ===="
 	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
 
+$(DRIVEROBJDIR)/$(PROJECT_NAME3).o: $(DRIVERDIR)/$(PROJECT_NAME3).cc | $(DRIVEROBJDIR)
+	@echo "==== Auto-Generating Dependencies for $<. ===="
+	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
+	@echo "==== Compiling $< into $@. ===="
+	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
 	
 # WITH AUTO-GENERATED DEPENDENCIES:
 # Note that there are actually two steps to the compiling recipe above.  The second
@@ -169,9 +177,9 @@ $(EXEFILE): $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $@ $(LDLIBS)
 
-capture_transit_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o | $(BINDIR) 
+capture_transit_sim: $(addprefix $(OBJDIR3)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME3).o | $(BINDIR) 
 	@echo "==== Linking $@. ===="
-	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $(BINDIR)/$@ $(LDLIBS)
+	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR3)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME3).o -o $(BINDIR)/$@ $(LDLIBS)
 
 config_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o | $(BINDIR) 
 	@echo "==== Linking $@. ===="
