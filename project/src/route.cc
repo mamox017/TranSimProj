@@ -180,8 +180,10 @@ void Route::NextStop() {
 }
 
 void Route::NextDestinationStop() {
-  destination_stop_ = destination_stop_->GetNextStop();
-  destination_stop_index_++;
+  if (destination_stop_ != NULL) {
+    destination_stop_ = destination_stop_->GetNextStop();
+    destination_stop_index_++;
+  }
 }
 
 // Getter
@@ -196,7 +198,7 @@ double Route::GetFirstDistance() {
 
 // Checks if current stop matches the last stop
 bool Route::IsAtEnd() const {
-  if (destination_stop_ == NULL) {
+  if (currentStop == stops_.back()) {
     return true;
   }
   return false;

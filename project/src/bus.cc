@@ -30,8 +30,8 @@ int capacity, double speed) {
   skipcase = false;
   complete = false;
   hasSwitchedRoutes = false;
-  distance_remaining_ = 0;
   currentStop = outgoing_route_->GetFirstStop();
+  distance_remaining_ = 0;  // or currenStop-distance?
   nextStop = GetNextStop();
   currentRoute = outgoing_route_;
 }
@@ -119,29 +119,31 @@ bool Bus::Move() {
         passengers_.clear();
         distance_remaining_ = 0;
         complete = true;
-        UpdateBusData();
+        //UpdateBusData();
         return true;
       }
-      currentRoute->NextDestinationStop();
+      // std::cout << "#&%(*Q#&%(*!&#current stop: " << currentStop->GetNextStop()->GetId() << std::endl;
 
       if ((currentRoute->IsAtEnd())) {
-        // std::cout << "SWITCHED ROUTES####################" << std::endl;
+        std::cout << "SWITCHED ROUTES####################" << std::endl;
         // empties all first route passengers
         passengers_.clear();
         // switches routes over
         currentRoute = incoming_route_;
         // sets next stop to first of new route
         currentStop->SetNextStop(incoming_route_->GetFirstStop());
-        distance_remaining_ = 0;
+        distance_remaining_ = currentRoute->GetFirstDistance();
         hasSwitchedRoutes = true;
-        UpdateBusData();
+        //UpdateBusData();
       } else {
         distance_remaining_ = currentStop->getDistance();
         currentStop->LoadPassengers(this);
-        UpdateBusData();
+        currentRoute->NextDestinationStop();
+        //UpdateBusData();
       }
       return true;
     }
+    //UpdateBusData();
     return false;
   }
 
@@ -151,11 +153,11 @@ void Bus::Update() {  // using common Update format
   // maybe test to see if removing if statement makes no seg
   if (!IsTripComplete()) {
     Move();
+    UpdateBusData();
     for (std::list<Passenger *>::iterator it = passengers_.begin();
     it != passengers_.end(); it++) {
       (*it)->Update();
     }
-    UpdateBusData();
   }
 }
 
@@ -183,7 +185,7 @@ void Bus::Report(std::ostream& o) {
   o << "Name: " << name_ << std::endl;
   o << "Speed: " << speed_ << std::endl;
   o << "Distance to next stop: " << distance_remaining_ << std::endl;
-  // o << "CURRENT STOP: " << currentStop->GetId() << std::endl;
+  o << "CURRENT STOP: " << currentStop->GetId() << std::endl;
   // o << "NEXT STOP: " << currentStop->GetNextStop()->GetId() << std::endl;
   o << "\tPassengers (" << passengers_.size() << "): " << std::endl;
   for (std::list<Passenger *>::iterator it = passengers_.begin();
