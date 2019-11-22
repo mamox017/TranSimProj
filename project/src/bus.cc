@@ -32,9 +32,10 @@ int capacity, double speed) {
   hasSwitchedRoutes = false;
   currentStop = outgoing_route_->GetFirstStop();
   distance_remaining_ = currentStop->getDistance();  // or currenStop-distance?
-  // bData->position = currentStop->getPos();
+  
   nextStop = GetNextStop();
   currentRoute = outgoing_route_;
+  bData->position = outgoing_route_->GetFirstStop()->getPos();
 }
 
 void Bus::UpdateBusData() {
@@ -57,8 +58,8 @@ void Bus::UpdateBusData() {
   } else {
     bPos->x = x;
     bPos->y = y;
-  }*/
-  *bPos = currentStop->getPos();
+  } */
+  *bPos = currentStop->getPos();  // make average
   //if (distance_remaining_ < 0) {
     //*bPos = followingStop->getPos();
   //}
