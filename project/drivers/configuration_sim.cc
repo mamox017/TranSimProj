@@ -27,25 +27,43 @@ int main(int argc, char**argv) {
   //     Call Update on ConfigurationSimulator
   // else 
   //   echo info to the user about needing a config file name
+
+  // can take length of simulation from arg need default value
+  // dont cout print to a file
+  // ./config_sim config.txt outputfilename lengthofsim
+  // needs to be able to run just as ./config_sim with defaults
+  // also notify if missing
   ConfigManager * configManager_ = new ConfigManager();
   if (argc > 1) {
     configManager_->ReadConfig(argv[1]);
-    ConfigurationSimulator *configSim = new ConfigurationSimulator(configManager_);
-
-    std::vector<int> timings;
-    for(int i = 0; i < 25; i++){ // HOW TO FIND ARGS?
-      timings.push_back(5);
-    }
-
-    configSim->Start(timings,25);
-
-    // find out how to find length of simulation
-    for (int i = 0; i < 25; i++) {
-      configSim->Update();
-    }
   } else {
-    std::cout << "Error: You need to input a config file name" << std::endl;
-    return 1;
+    configManager_->ReadConfig("config.txt");
   }
+  ConfigurationSimulator *configSim = new ConfigurationSimulator(configManager_);
+
+  std::ofstream myFilePtr;
+  if (argc > 2) {
+    myFilePtr.open(argv[2]);
+  } else {
+    myFilePtr.open("config_sim_output");
+  }
+
+  int lengthofsim = 25;
+  if (argc > 3) {
+    lengthofsim = std::stoi(argv[3]);
+  }
+
+  std::vector<int> timings;  // maybe arg?
+  // for(int i = 0; i < lengthofsim; i++){  // HOW TO FIND ARGS?
+  timings.push_back(10);
+  // }
+
+  configSim->Start(timings,lengthofsim);
+
+  // find out how to find length of simulation
+  for (int i = 0; i < lengthofsim; i++) {
+    configSim->Update();
+  }
+  myFilePtr.close();  // write to this
   return 0;
 }

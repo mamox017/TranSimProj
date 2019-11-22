@@ -47,6 +47,7 @@ int num_stops, PassengerGenerator * gen) {
 
   // Sets the first stop
   currentStop = stops_.front();
+  destination_stop_ = currentStop->GetNextStop();
 }
 
 void Route::UpdateRouteData() {
@@ -106,11 +107,6 @@ Route * Route::Clone() {
   // Looks through stops and initializes a new stop for each
   for (std::list<Stop *>::iterator iter = stops_.begin();
   iter != stops_.end(); iter++) {
-    // Stop * newstop = new Stop(0, 0, 0);
-    // newstop->setId((*iter)->GetId());
-    // newstop->setLongitude((*iter)->getLong());
-    // newstop->setLatitude((*iter)->getLat());
-    // Puts stop in Stop ** list
     newstops[i] = (*iter);
     i++;
   }
@@ -181,6 +177,9 @@ Stop * Route::GetDestinationStop() const {
 // Also moves destination_stop_ to next
 void Route::NextStop() {
   currentStop = destination_stop_;
+}
+
+void Route::NextDestinationStop() {
   destination_stop_ = destination_stop_->GetNextStop();
   destination_stop_index_++;
 }
@@ -197,7 +196,15 @@ double Route::GetFirstDistance() {
 
 // Checks if current stop matches the last stop
 bool Route::IsAtEnd() const {
-  if (currentStop == stops_.back()) {
+  if (destination_stop_ == NULL) {
+    return true;
+  }
+  return false;
+}
+
+
+bool Route::IsEnd(Stop * test) {
+  if (test == stops_.back()) {
     return true;
   }
   return false;

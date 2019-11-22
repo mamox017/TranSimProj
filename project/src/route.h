@@ -5,7 +5,7 @@
  */
 
 
-// document input of ostream to generatenewpassengers & update
+// document input of ostream to generatenewpassengers & update & nextdestinationstop
 #ifndef SRC_ROUTE_H_
 #define SRC_ROUTE_H_
 
@@ -189,6 +189,9 @@ class Route {
   std::list<Stop *> GetStops() {return stops_;}
 
   RouteData GetRouteData() {return *rData;}
+
+  void NextDestinationStop();
+  bool IsEnd(Stop * test);
 
  private:
 /**

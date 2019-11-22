@@ -6,7 +6,7 @@
 
 int main(int argc, char * argv[]) {
     
-  int rounds = 50; //Number of rounds of generation to simulate in test
+  int rounds = 82; //Number of rounds of generation to simulate in test
   std::ofstream myFilePtr;
   if (argc > 1) {
   	myFilePtr.open(argv[1]);

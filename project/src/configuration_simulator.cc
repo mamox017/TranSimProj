@@ -13,7 +13,7 @@ ConfigurationSimulator::~ConfigurationSimulator() {
 }
 
 void ConfigurationSimulator::Start(const std::vector<int>& busStartTimings,
-    const int& numTimeSteps) {
+    const int& numTimeSteps, std::ostream& o) {
     busStartTimings_ = busStartTimings;
     numTimeSteps_ = numTimeSteps;
 
@@ -26,21 +26,21 @@ void ConfigurationSimulator::Start(const std::vector<int>& busStartTimings,
 
     prototypeRoutes_ = configManager_->GetRoutes();
     for (int i = 0; i < static_cast<int>(prototypeRoutes_.size()); i++) {
-        prototypeRoutes_[i]->Report(std::cout);
+        prototypeRoutes_[i]->Report(o);
 
         prototypeRoutes_[i]->UpdateRouteData();
         // webInterface_->UpdateRoute(prototypeRoutes_[i]->GetRouteData());
     }
 }
 
-void ConfigurationSimulator::Update() {
+void ConfigurationSimulator::Update(std::ostream& o) {
     simulationTimeElapsed_++;
 
-    std::cout << "~~~~~~~~~~ The time is now " << simulationTimeElapsed_;
-    std::cout << "~~~~~~~~~~" << std::endl;
+    o << "~~~~~~~~~~ The time is now " << simulationTimeElapsed_;
+    o << "~~~~~~~~~~" << std::endl;
 
-    std::cout << "~~~~~~~~~~ Generating new busses if needed ";
-    std::cout << "~~~~~~~~~~" << std::endl;
+    o << "~~~~~~~~~~ Generating new busses if needed ";
+    o << "~~~~~~~~~~" << std::endl;
 
     // Check if we need to generate new busses
     for (int i = 0; i < static_cast<int>(timeSinceLastBus_.size()); i++) {
@@ -63,8 +63,8 @@ void ConfigurationSimulator::Update() {
         }
     }
 
-    std::cout << "~~~~~~~~~ Updating busses ";
-    std::cout << "~~~~~~~~~" << std::endl;
+    o << "~~~~~~~~~ Updating busses ";
+    o << "~~~~~~~~~" << std::endl;
 
     // Update busses
     for (int i = static_cast<int>(busses_.size()) - 1; i >= 0; i--) {
@@ -79,11 +79,11 @@ void ConfigurationSimulator::Update() {
         // busses_[i]->UpdateBusData();
         // webInterface_->UpdateBus(busses_[i]->GetBusData());
 
-        busses_[i]->Report(std::cout);
+        busses_[i]->Report(o);
     }
 
-    std::cout << "~~~~~~~~~ Updating routes ";
-    std::cout << "~~~~~~~~~" << std::endl;
+    o << "~~~~~~~~~ Updating routes ";
+    o << "~~~~~~~~~" << std::endl;
     // Update routes
     for (int i = 0; i < static_cast<int>(prototypeRoutes_.size()); i++) {
         prototypeRoutes_[i]->Update();
@@ -91,6 +91,6 @@ void ConfigurationSimulator::Update() {
         // prototypeRoutes_[i]->UpdateRouteData();
         // webInterface_->UpdateRoute(prototypeRoutes_[i]->GetRouteData());
 
-        prototypeRoutes_[i]->Report(std::cout);
+        prototypeRoutes_[i]->Report(o);
     }
 }

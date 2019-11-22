@@ -3,6 +3,7 @@
 #ifndef SRC_CONFIGURATION_SIMULATOR_H_
 #define SRC_CONFIGURATION_SIMULATOR_H_
 
+#include <iostream>
 #include <vector>
 #include <list>
 
@@ -17,8 +18,9 @@ class ConfigurationSimulator {
     ConfigurationSimulator(ConfigManager*);
     ~ConfigurationSimulator();
 
-    void Start(const std::vector<int>&, const int&);
-    void Update();
+    void Start(const std::vector<int>&, const int&, std::ostream& o =
+        std::cout);
+    void Update(std::ostream& o = std::cout);
 
  private:
     ConfigManager* configManager_;
