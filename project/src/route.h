@@ -192,6 +192,7 @@ class Route {
 
   void NextDestinationStop();
   bool IsEnd(Stop * test);
+  int getCurrentStop();
 
  private:
 /**

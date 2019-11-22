@@ -83,6 +83,9 @@ PassengerGenerator * Route::GetGenerator() {
   return generator_;
 }
 
+int Route::getCurrentStop() {
+  return currentStop->GetId();
+}
 
 // Updater
 void Route::Update(std::ostream& o) {
