@@ -119,12 +119,13 @@ bool Bus::Move() {
         passengers_.clear();
         distance_remaining_ = 0;
         complete = true;
+        UpdateBusData();
         return true;
       }
       currentRoute->NextDestinationStop();
 
       if ((currentRoute->IsAtEnd())) {
-        std::cout << "SWITCHED ROUTES####################" << std::endl;
+        // std::cout << "SWITCHED ROUTES####################" << std::endl;
         // empties all first route passengers
         passengers_.clear();
         // switches routes over
@@ -133,9 +134,11 @@ bool Bus::Move() {
         currentStop->SetNextStop(incoming_route_->GetFirstStop());
         distance_remaining_ = 0;
         hasSwitchedRoutes = true;
+        UpdateBusData();
       } else {
         distance_remaining_ = currentStop->getDistance();
         currentStop->LoadPassengers(this);
+        UpdateBusData();
       }
       return true;
     }

@@ -45,7 +45,7 @@ int main(int argc, char**argv) {
   if (argc > 2) {
     myFilePtr.open(argv[2]);
   } else {
-    myFilePtr.open("config_sim_output");
+    myFilePtr.open("build/bin/config_sim_output");
   }
 
   int lengthofsim = 25;
@@ -55,15 +55,32 @@ int main(int argc, char**argv) {
 
   std::vector<int> timings;  // maybe arg?
   // for(int i = 0; i < lengthofsim; i++){  // HOW TO FIND ARGS?
-  timings.push_back(10);
+  timings.push_back(5);
+  //timings.push_back(5);
   // }
 
+  std::cout << "/*************************" << std::endl << std::endl;
+  std::cout << "         STARTING" << std::endl;
+  std::cout << "        SIMULATION" << std::endl;
+  std::cout << "*************************/" << std::endl;
+  // change everything to myFilePtr when fixed
   configSim->Start(timings,lengthofsim);
+
+  std::cout << "/*************************" << std::endl << std::endl;
+  std::cout << "           BEGIN" << std::endl;
+  std::cout << "          UPDATING" << std::endl;
+  std::cout << "*************************/" << std::endl;
 
   // find out how to find length of simulation
   for (int i = 0; i < lengthofsim; i++) {
     configSim->Update();
   }
+
+  std::cout << "/*************************" << std::endl << std::endl;
+  std::cout << "        SIMULATION" << std::endl;
+  std::cout << "         COMPLETE" << std::endl;
+  std::cout << "*************************/" << std::endl;
+
   myFilePtr.close();  // write to this
   return 0;
 }
