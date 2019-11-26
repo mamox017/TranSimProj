@@ -11,6 +11,7 @@
 #include "src/stop.h"
 #include "src/random_passenger_generator.h"
 
+
 ConfigManager::ConfigManager() : routes(std::vector<Route *>()) {
 }
 

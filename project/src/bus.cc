@@ -31,15 +31,16 @@ int capacity, double speed) {
   complete = false;
   hasSwitchedRoutes = false;
   currentStop = outgoing_route_->GetFirstStop();
-  distance_remaining_ = currentStop->getDistance();  // or currenStop-distance?
+  distance_remaining_ = currentStop->getDistance();
 
   nextStop = GetNextStop();
   currentRoute = outgoing_route_;
   bData->position = outgoing_route_->GetFirstStop()->getPos();
 }
 
+// BusData updater
 void Bus::UpdateBusData() {
-  // maybe use previous stop instead of currentStop
+  // instantiates position to set and retrieves next stop
   Stop * followingStop = GetNextStop();
   Position * bPos = new Position();
 
@@ -49,19 +50,23 @@ void Bus::UpdateBusData() {
     followingStop->getLong())/2.0);
     double y = static_cast<float>((currentStop->getLat()+
     followingStop->getLat())/2.0);
+    // set position attributes
     bPos->x = x;
     bPos->y = y;
   } else {  // else if landed at a stop, put bus visual on the stop
     *bPos = currentStop->getPos();
   }
 
+  // update BusData object attributes
   bData->id = name_;
   bData->position = *bPos;
   bData->num_passengers = static_cast<int>(GetNumPassengers());
   bData->capacity = GetCapacity();
 }
 
+// returns next stop of the bus
 Stop * Bus::GetNextStop() {
+  // if currentStop is not null, then return next Stop
   if (currentStop != NULL) {
     if (currentStop->GetNextStop() != NULL) {
       nextStop = currentStop->GetNextStop();
@@ -106,7 +111,7 @@ bool Bus::Move() {
       // Passengers are taken care of
       UnloadPassengers();
       // land at the stop
-      currentStop = currentStop->GetNextStop();  // stop is 16 now
+      currentStop = currentStop->GetNextStop();
       currentRoute->NextStop();
 
       if (currentRoute->IsAtEnd() && hasSwitchedRoutes == true) {
@@ -121,7 +126,6 @@ bool Bus::Move() {
         // UpdateBusData();
         return true;
       } else if ((currentRoute->IsAtEnd())) {  // switch route case
-        // std::cout << "SWITCHED ROUTES####################" << std::endl;
         // empties all first route passengers
         passengers_.clear();
         // switches routes over
@@ -130,12 +134,12 @@ bool Bus::Move() {
         currentStop->SetNextStop(incoming_route_->GetFirstStop());
         distance_remaining_ = 0;
         hasSwitchedRoutes = true;
-        // UpdateBusData();
-      } else {
+      } else {  // general case, in the middle of a route
+        // just updates distance remaining for next stop
         distance_remaining_ = currentStop->getDistance();
         currentStop->LoadPassengers(this);
         currentRoute->NextDestinationStop();
-      }
+      }  // returns true if at a new stop, false if not
       return true;
     }
     return false;
@@ -144,12 +148,14 @@ bool Bus::Move() {
 // Update
 void Bus::Update() {  // using common Update format
   // Stops running if trip is complete
-  // maybe test to see if removing if statement makes no seg
   if (!IsTripComplete()) {
+    // Handles a case, waits until at last stop to mark trip complete
     if (skipcase == true) {
       complete = true;
     }
+    // Moves the bus and updates the passengers and BusData object
     Move();
+    // Calls updater for BusData object
     UpdateBusData();
     for (std::list<Passenger *>::iterator it = passengers_.begin();
     it != passengers_.end(); it++) {
@@ -169,7 +175,7 @@ std::list<Passenger *> Bus::GetPassengerList() {
 //  fuel_ = max_fuel_;
 // }
 
-// Returns whether at end of both stops
+// Returns complete member variable, which is changed in Move()
 bool Bus::IsTripComplete() {
   return complete;
 }

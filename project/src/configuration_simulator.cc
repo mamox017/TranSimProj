@@ -4,14 +4,18 @@
 #include "src/bus.h"
 #include "src/route.h"
 
+// Same as visualization_simulator, but without webinterface
+// Constructor
 ConfigurationSimulator::ConfigurationSimulator(ConfigManager* configM) {
     // webInterface_ = webI;
     configManager_ = configM;
 }
 
+// Destructor
 ConfigurationSimulator::~ConfigurationSimulator() {
 }
 
+// Sets simulation in motion
 void ConfigurationSimulator::Start(const std::vector<int>& busStartTimings,
     const int& numTimeSteps, std::ostream& o) {
     busStartTimings_ = busStartTimings;
@@ -33,6 +37,7 @@ void ConfigurationSimulator::Start(const std::vector<int>& busStartTimings,
     }
 }
 
+// Updates all objects in simulation
 void ConfigurationSimulator::Update(std::ostream& o) {
     simulationTimeElapsed_++;
 

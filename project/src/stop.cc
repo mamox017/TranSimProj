@@ -22,7 +22,9 @@ Stop::Stop(int id, double longitude, double latitude) : id_(id),
 longitude_(longitude), latitude_(latitude) {
 }
 
+// Returns the position of the stop as a Position object
 Position Stop::getPos() {
+  // instanates it and sets members to longitude/latitude
   Position * thisStopPosition = new Position();
   thisStopPosition->x = longitude_;
   thisStopPosition->y = latitude_;

@@ -42,10 +42,15 @@ int num_stops, PassengerGenerator * gen) {
   destination_stop_ = currentStop->GetNextStop();
 }
 
+// Updates information in RouteData * rData
 void Route::UpdateRouteData() {
+  // updates name
   rData->id = name_;
+  // creates a vector list of StopData objects
   std::vector<StopData> StopDataCollector;
 
+  // iterates through stops on route and makes a StopData object
+  // for each Stop
   for (std::list<Stop *>::iterator iter = stops_.begin();
     iter != stops_.end(); iter++) {
     StopData * thisStop = new StopData();
@@ -57,6 +62,7 @@ void Route::UpdateRouteData() {
     StopDataCollector.push_back(*thisStop);
   }
 
+  // updates StopData vector list
   rData->stops = StopDataCollector;
 }
 
@@ -87,7 +93,7 @@ it != stops_.end(); it++) {
     (*it)->Update();
   }
   GenerateNewPassengers(o);
-
+  // updates the RouteData object
   UpdateRouteData();
 }
 
@@ -168,12 +174,12 @@ Stop * Route::GetDestinationStop() const {
   return destination_stop_;
 }
 
-// Moves current stop to destination and increase index
-// Also moves destination_stop_ to next
+// updates current stop to destination
 void Route::NextStop() {
   currentStop = destination_stop_;
 }
 
+// updates destination_stop_ and increments destination_stop_index
 void Route::NextDestinationStop() {
   if (destination_stop_ != NULL) {
     destination_stop_ = destination_stop_->GetNextStop();
@@ -199,7 +205,7 @@ bool Route::IsAtEnd() const {
   return false;
 }
 
-
+// Checks if argument is same as last stop
 bool Route::IsEnd(Stop * stopToCheck) {
   if (stopToCheck == stops_.back()) {
     return true;
