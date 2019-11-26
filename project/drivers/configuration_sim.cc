@@ -28,12 +28,6 @@ int main(int argc, char**argv) {
   // else 
   //   echo info to the user about needing a config file name
 
-  // can take length of simulation from arg need default value
-  // dont cout print to a file
-  // ./config_sim config.txt outputfilename lengthofsim
-  // needs to be able to run just as ./config_sim with defaults
-  // also notify if missing
-
   bool invalidName = false;
   ConfigManager * configManager_ = new ConfigManager();
   if (argc > 1) {
@@ -45,6 +39,8 @@ int main(int argc, char**argv) {
     }
   } else {
     configManager_->ReadConfig("config.txt");
+    std::cout << "Note: no config file given, config file set to default:"
+    " config.txt" << std::endl;
   }
   ConfigurationSimulator *configSim = new ConfigurationSimulator(configManager_);
 
@@ -54,11 +50,16 @@ int main(int argc, char**argv) {
     myFilePtr.open("build/bin/" + outfileName);
   } else {
     myFilePtr.open("build/bin/config_sim_output.txt");
+    std::cout << "Note: no output file given, output set to: build/bin/"
+    "config_sim_output.txt" << std::endl;
   }
 
   int lengthofsim = 25;
   if (argc > 3) {
     lengthofsim = std::stoi(argv[3]);
+  } else {
+    std::cout << "Note: no length of simulation given, sim length set to: 25"
+    << std::endl;
   }
 
   std::vector<int> timings;  // maybe arg?
@@ -68,7 +69,7 @@ int main(int argc, char**argv) {
   // }
 
   if (invalidName) {
-    std::cout << "invalid config filename given" << std::endl;
+    std::cout << "ERROR: invalid config filename given" << std::endl;
   } else if (myFilePtr.is_open()) {
     myFilePtr << "/*************************" << std::endl << std::endl;
     myFilePtr << "         STARTING" << std::endl;
@@ -93,7 +94,10 @@ int main(int argc, char**argv) {
     myFilePtr << "*************************/" << std::endl;
 
     myFilePtr.close();  // write to this
-    std::cout << "Config Sim output successfully written to file" << std::endl;
+    std::cout << "SUCCESS: config_sim output successfully written to"
+    " file" << std::endl;
+  } else {
+    std::cout << "ERROR: config_sim failure" << std::endl;
   }
   return 0;
 }
