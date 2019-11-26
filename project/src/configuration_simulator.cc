@@ -82,7 +82,7 @@ void ConfigurationSimulator::Update(std::ostream& o) {
     o << "~~~~~~~~~" << std::endl;
     // Update routes
     for (int i = 0; i < static_cast<int>(prototypeRoutes_.size()); i++) {
-        prototypeRoutes_[i]->Update();
+        prototypeRoutes_[i]->Update(o);
 
         // prototypeRoutes_[i]->UpdateRouteData();
         // webInterface_->UpdateRoute(prototypeRoutes_[i]->GetRouteData());

@@ -33,9 +33,16 @@ int main(int argc, char**argv) {
   // ./config_sim config.txt outputfilename lengthofsim
   // needs to be able to run just as ./config_sim with defaults
   // also notify if missing
+
+  bool invalidName = false;
   ConfigManager * configManager_ = new ConfigManager();
   if (argc > 1) {
-    configManager_->ReadConfig(argv[1]);
+    std::string fileName = argv[1];
+    configManager_->ReadConfig(fileName);
+    std::ifstream fileCheck("config/" + fileName);
+    if (fileCheck.fail()) {
+      invalidName = true;
+    }
   } else {
     configManager_->ReadConfig("config.txt");
   }
@@ -43,9 +50,10 @@ int main(int argc, char**argv) {
 
   std::ofstream myFilePtr;
   if (argc > 2) {
-    myFilePtr.open(argv[2]);
+    std::string outfileName = argv[2];
+    myFilePtr.open("build/bin/" + outfileName);
   } else {
-    myFilePtr.open("build/bin/config_sim_output");
+    myFilePtr.open("build/bin/config_sim_output.txt");
   }
 
   int lengthofsim = 25;
@@ -59,28 +67,33 @@ int main(int argc, char**argv) {
   //timings.push_back(5);
   // }
 
-  std::cout << "/*************************" << std::endl << std::endl;
-  std::cout << "         STARTING" << std::endl;
-  std::cout << "        SIMULATION" << std::endl;
-  std::cout << "*************************/" << std::endl;
-  // change everything to myFilePtr when fixed
-  configSim->Start(timings,lengthofsim);
+  if (invalidName) {
+    std::cout << "invalid config filename given" << std::endl;
+  } else if (myFilePtr.is_open()) {
+    myFilePtr << "/*************************" << std::endl << std::endl;
+    myFilePtr << "         STARTING" << std::endl;
+    myFilePtr << "        SIMULATION" << std::endl;
+    myFilePtr << "*************************/" << std::endl;
+    // change everything to myFilePtr when fixed
+    configSim->Start(timings,lengthofsim, myFilePtr);
 
-  std::cout << "/*************************" << std::endl << std::endl;
-  std::cout << "           BEGIN" << std::endl;
-  std::cout << "          UPDATING" << std::endl;
-  std::cout << "*************************/" << std::endl;
+    myFilePtr << "/*************************" << std::endl << std::endl;
+    myFilePtr << "           BEGIN" << std::endl;
+    myFilePtr << "          UPDATING" << std::endl;
+    myFilePtr << "*************************/" << std::endl;
 
-  // find out how to find length of simulation
-  for (int i = 0; i < lengthofsim; i++) {
-    configSim->Update();
+    // find out how to find length of simulation
+    for (int i = 0; i < lengthofsim; i++) {
+      configSim->Update(myFilePtr);
+    }
+
+    myFilePtr << "/*************************" << std::endl << std::endl;
+    myFilePtr << "        SIMULATION" << std::endl;
+    myFilePtr << "         COMPLETE" << std::endl;
+    myFilePtr << "*************************/" << std::endl;
+
+    myFilePtr.close();  // write to this
+    std::cout << "Config Sim output successfully written to file" << std::endl;
   }
-
-  std::cout << "/*************************" << std::endl << std::endl;
-  std::cout << "        SIMULATION" << std::endl;
-  std::cout << "         COMPLETE" << std::endl;
-  std::cout << "*************************/" << std::endl;
-
-  myFilePtr.close();  // write to this
   return 0;
 }
