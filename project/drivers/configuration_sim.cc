@@ -4,10 +4,10 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 #include <iostream>
+#include <fstream>
 
 #include "src/config_manager.h"
 #include "src/configuration_simulator.h"
-#include <fstream>
 
 int main(int argc, char**argv) {
   // NOTE: this usage will change depending on
@@ -25,7 +25,7 @@ int main(int argc, char**argv) {
   //   Call Start on ConfigurationSimulator
   //   Start for loop, length of simulation (where from?)
   //     Call Update on ConfigurationSimulator
-  // else 
+  // else
   //   echo info to the user about needing a config file name
 
   bool invalidName = false;
@@ -42,7 +42,8 @@ int main(int argc, char**argv) {
     std::cout << "Note: no config file given, config file set to default:"
     " config.txt" << std::endl;
   }
-  ConfigurationSimulator *configSim = new ConfigurationSimulator(configManager_);
+  ConfigurationSimulator *configSim =
+  new ConfigurationSimulator(configManager_);
 
   int lengthofsim = 25;
   if (argc > 2) {
@@ -63,7 +64,7 @@ int main(int argc, char**argv) {
   }
 
   std::vector<int> timings;
-  
+
   if (argc > 3) {
     int timing = std::stoi(argv[3]);
     if (timing > 10 || timing < 1) {
@@ -82,13 +83,13 @@ int main(int argc, char**argv) {
 
   if (invalidName) {
     std::cout << "ERROR: invalid config filename given" << std::endl;
-  } else if (myFilePtr.is_open() && argc>4) {
+  } else if (myFilePtr.is_open() && argc > 4) {
     myFilePtr << "/*************************" << std::endl << std::endl;
     myFilePtr << "         STARTING" << std::endl;
     myFilePtr << "        SIMULATION" << std::endl;
     myFilePtr << "*************************/" << std::endl;
     // change everything to myFilePtr when fixed
-    configSim->Start(timings,lengthofsim, myFilePtr);
+    configSim->Start(timings, lengthofsim, myFilePtr);
 
     myFilePtr << "/*************************" << std::endl << std::endl;
     myFilePtr << "           BEGIN" << std::endl;
@@ -114,7 +115,7 @@ int main(int argc, char**argv) {
     std::cout << "        SIMULATION" << std::endl;
     std::cout << "*************************/" << std::endl;
 
-    configSim->Start(timings,lengthofsim, std::cout);
+    configSim->Start(timings, lengthofsim, std::cout);
 
     std::cout << "/*************************" << std::endl << std::endl;
     std::cout << "           BEGIN" << std::endl;
