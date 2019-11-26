@@ -4,7 +4,6 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-// fix start/update input documentation
 #ifndef SRC_SIMULATOR_H_
 #define SRC_SIMULATOR_H_
 
@@ -38,6 +37,8 @@ class Simulator {
   * This pure virtual function is to be used by inheriting classes to start a
   *  simulation of given situations.
   *
+  * @param[in] std::ostream& outputstream of output information
+  *
   * @return bool = 0, indicates whether simulation successfully starts
   */
   virtual bool Start(std::ostream&o = std::cout) = 0;
@@ -46,6 +47,8 @@ class Simulator {
   * 
   * This pure virtual function is to be used by inheriting classes to update a
   *  simulation.
+  *
+  * @param[in] std::ostream& outputstream of output information
   *
   * @return bool = 0, indicates whether simulation successfully updates
   */

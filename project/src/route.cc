@@ -200,8 +200,8 @@ bool Route::IsAtEnd() const {
 }
 
 
-bool Route::IsEnd(Stop * test) {
-  if (test == stops_.back()) {
+bool Route::IsEnd(Stop * stopToCheck) {
+  if (stopToCheck == stops_.back()) {
     return true;
   }
   return false;

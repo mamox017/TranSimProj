@@ -4,7 +4,6 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-// fix generatepassengers input documentation
 #ifndef SRC_PASSENGER_GENERATOR_H_
 #define SRC_PASSENGER_GENERATOR_H_
 
@@ -46,6 +45,8 @@ class PassengerGenerator {
   * 
   * This pure virtual function is to be used by inheriting classes to generate
   *  passengers on the Stop * list with the probabilities from the double list.
+  *
+  * @param[in] std::ostream &o, outputstream of where to output information
   *
   * @return int = 0, number of passengers generated
   */

@@ -4,9 +4,6 @@
  * @Copyright 2019 3081 Staff, All rights reserved.
  */
 
-
-// document input of ostream to generatenewpassengers & update &
-// nextdestinationstop
 #ifndef SRC_ROUTE_H_
 #define SRC_ROUTE_H_
 
@@ -92,8 +89,7 @@ class Route {
 /**
   * @brief The next stop function for Route objects.
   * 
-  * This function changes currentStop to the destination_stop_ and changes the
-  *  destination_stop_ to next stop.  Also increments destination_stop_index_.
+  * This function changes currentStop to the destination_stop.
   *
   * @return void
   */
@@ -183,16 +179,53 @@ class Route {
   * @return PassengerGenerator generator of the route
   */
   PassengerGenerator * GetGenerator();
-
-  // WRITE DOCUMENTATION CODE UPDATEROUTEDATA
+/**
+  * @brief The route data updater function for Route objects.
+  * 
+  * This function updates all the attributes of the Route object belonging
+  * to this route.  The name and vector list of StopData objects are all
+  * updated.
+  *
+  * @return void
+  */
   void UpdateRouteData();
 
   std::list<Stop *> GetStops() {return stops_;}
-
+/**
+  * @brief The RouteData getter function for Route objects.
+  * 
+  * This function accesses the private RouteData member variable rData.
+  *
+  * @return RouteData object that holds information about this route
+  */
   RouteData GetRouteData() {return *rData;}
-
+/**
+  * @brief The next destination stop function for Route objects.
+  * 
+  * This function updates the member variables destination_stop_ to the next 
+  * stop and increments destination_stop_index.
+  *
+  * @return void
+  */
   void NextDestinationStop();
-  bool IsEnd(Stop * test);
+/**
+  * @brief The end of route checker function for Route objects.
+  * 
+  * This function checks if the Stop object argument is the same as the
+  * last Stop object in the stop list of the route.
+  *
+  * @param[in] Stop * stopToCheck, Stop object to be checked with last Stop
+  *
+  * @return bool of whether the argument matches last stop in stop list
+  */
+  bool IsEnd(Stop * stopToCheck);
+/**
+  * @brief The current stop getter function for Route objects.
+  * 
+  * This function accesses the private member variable currentStop.
+  *
+  * @return int id of the currentStop of the route
+  */
   int getCurrentStop();
 
  private:

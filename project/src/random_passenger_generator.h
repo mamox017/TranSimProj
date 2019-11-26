@@ -4,7 +4,6 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-// fix generatepassengers input documentation
 #ifndef SRC_RANDOM_PASSENGER_GENERATOR_H_
 #define SRC_RANDOM_PASSENGER_GENERATOR_H_
 
@@ -48,6 +47,8 @@ class RandomPassengerGenerator : public PassengerGenerator{
   * 
   * This function overrides the base class to generate passengers on the Stop *
   *  list with the probabilities from the double list.
+  *
+  * @param[in] std::ostream &o, outputstream of where to output information
   *
   * @return int number of passengers generated
   */

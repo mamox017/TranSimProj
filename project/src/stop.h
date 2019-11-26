@@ -4,7 +4,6 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-// DOCUMENT getPos
 #ifndef SRC_STOP_H_
 #define SRC_STOP_H_
 
@@ -185,6 +184,14 @@ class Stop {
   * @return size_t number of passengers on stop
   */
   size_t GetNumPassengers();
+/**
+  * @brief The get position function for Stop objects.
+  * 
+  * This function returns a Position object based on the longitude
+  * and latitude of the stop.
+  *
+  * @return Position object of this Stop object's position
+  */
   Position getPos();
 
  private:
