@@ -64,7 +64,7 @@
  *
  * Below is an image of a UML Diagram
  *
- * \image html UMLDiagram.png
+ * \image html Iteration_2_UML_Diagram.png
  *
  * <b>Thanks for reading!</b>
  */

@@ -41,7 +41,7 @@ class Simulator {
   *
   * @return bool = 0, indicates whether simulation successfully starts
   */
-  virtual bool Start(std::ostream&o = std::cout) = 0;
+  virtual bool Start(std::ostream& o = std::cout) = 0;
 /**
   * @brief The Update function for Simulator objects.
   * 

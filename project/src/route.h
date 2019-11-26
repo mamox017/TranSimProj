@@ -189,7 +189,13 @@ class Route {
   * @return void
   */
   void UpdateRouteData();
-
+/**
+  * @brief The route get stops function for Route objects.
+  * 
+  * This function accesses the Stop * list private member variable
+  *
+  * @return std::list<Stop *> stops_ list of Stop * objects
+  */
   std::list<Stop *> GetStops() {return stops_;}
 /**
   * @brief The RouteData getter function for Route objects.
