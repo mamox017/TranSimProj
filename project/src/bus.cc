@@ -40,29 +40,20 @@ int capacity, double speed) {
 
 void Bus::UpdateBusData() {
   // maybe use previous stop instead of currentStop
-  // Stop * followingStop = GetNextStop();
-
+  Stop * followingStop = GetNextStop();
   Position * bPos = new Position();
 
-  // double ratio = distance_remaining_ / length (pythagorean);
-  /*
-  double x = static_cast<float>((currentStop->getLong()-
+  // if in middle of travel to next stop, go half distance on visual
+  if (distance_remaining_ < currentStop->getDistance()) {
+    double x = static_cast<float>((currentStop->getLong()+
     followingStop->getLong())/2.0);
-  double y = static_cast<float>((currentStop->getLat()-
+    double y = static_cast<float>((currentStop->getLat()+
     followingStop->getLat())/2.0);
-
-  if (distance_remaining_ <= 0) {
-    Position tempPos = followingStop->getPos(); // fix to average
-    bPos->x = tempPos.x;
-    bPos->y = tempPos.y;
-  } else {
     bPos->x = x;
     bPos->y = y;
-  } */
-  *bPos = currentStop->getPos();  // make average
-  // if (distance_remaining_ < 0) {
-    // *bPos = followingStop->getPos();
-  //}
+  } else {  // else if landed at a stop, put bus visual on the stop
+    *bPos = currentStop->getPos();
+  }
 
   bData->id = name_;
   bData->position = *bPos;
