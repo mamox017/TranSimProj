@@ -5,7 +5,8 @@
  */
 
 
-// document input of ostream to generatenewpassengers & update & nextdestinationstop
+// document input of ostream to generatenewpassengers & update &
+// nextdestinationstop
 #ifndef SRC_ROUTE_H_
 #define SRC_ROUTE_H_
 

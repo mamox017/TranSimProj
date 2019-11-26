@@ -53,10 +53,6 @@ void ConfigurationSimulator::Update(std::ostream& o) {
                 outbound->Clone(), inbound->Clone(), 60, 1));
 
             busId++;
-
-            // busses_[busses_.size() - 1]->UpdateBusData();
-            // webInterface_->UpdateBus(busses_[busses_.size() - 1]->GetBusData());
-
             timeSinceLastBus_[i] = busStartTimings_[i];
         } else {
             timeSinceLastBus_[i]--;

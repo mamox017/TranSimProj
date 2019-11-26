@@ -83,11 +83,10 @@ TEST_F(StopTests, UpdateTest) {
     stop1->AddPassengers(new Passenger(10, "Bro"));
     stop1->Update();
     EXPECT_GT(stop1->GetPassengerList().front()->GetTotalWait(), 0);
-
 }
 
 TEST_F(StopTests, ReportTest) {
     std::ostringstream testString;
     stop1->Report(testString);
-    EXPECT_EQ(testString.str(),"ID: 5\nPassengers waiting: 0\n");
+    EXPECT_EQ(testString.str(), "ID: 5\nPassengers waiting: 0\n");
 }

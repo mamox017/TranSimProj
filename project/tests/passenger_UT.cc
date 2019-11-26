@@ -96,5 +96,6 @@ TEST_F(PassengerTests, ReportTest) {
     std::ostringstream testString;
     passenger4->Report(testString);
     EXPECT_EQ(testString.str(),
-"Name: David\nDestination: 21\nTotal Wait: 0\n\tWait at Stop: 0\n\tTime on bus: 0\n");
+"Name: David\nDestination: 21\nTotal Wait: 0\n\tWait at Stop: 0\n\t"
+"Time on bus: 0\n");
 }

@@ -144,6 +144,7 @@ class Bus {
   double GetDistRemaining() {return distance_remaining_;}
 
   Route * GetCurrRoute() {return currentRoute;}
+
  private:
   BusData * bData;
   Stop * currentStop;

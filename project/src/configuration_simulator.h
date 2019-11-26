@@ -15,7 +15,7 @@ class Stop;
 
 class ConfigurationSimulator {
  public:
-    ConfigurationSimulator(ConfigManager*);
+    explicit ConfigurationSimulator(ConfigManager*);
     ~ConfigurationSimulator();
 
     void Start(const std::vector<int>&, const int&, std::ostream& o =

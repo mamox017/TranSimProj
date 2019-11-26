@@ -32,7 +32,7 @@ int capacity, double speed) {
   hasSwitchedRoutes = false;
   currentStop = outgoing_route_->GetFirstStop();
   distance_remaining_ = currentStop->getDistance();  // or currenStop-distance?
-  
+
   nextStop = GetNextStop();
   currentRoute = outgoing_route_;
   bData->position = outgoing_route_->GetFirstStop()->getPos();
@@ -60,8 +60,8 @@ void Bus::UpdateBusData() {
     bPos->y = y;
   } */
   *bPos = currentStop->getPos();  // make average
-  //if (distance_remaining_ < 0) {
-    //*bPos = followingStop->getPos();
+  // if (distance_remaining_ < 0) {
+    // *bPos = followingStop->getPos();
   //}
 
   bData->id = name_;
@@ -115,7 +115,7 @@ bool Bus::Move() {
       // Passengers are taken care of
       UnloadPassengers();
       // land at the stop
-      currentStop = currentStop->GetNextStop(); // stop is 16 now
+      currentStop = currentStop->GetNextStop();  // stop is 16 now
       currentRoute->NextStop();
 
       if (currentRoute->IsAtEnd() && hasSwitchedRoutes == true) {
@@ -144,11 +144,9 @@ bool Bus::Move() {
         distance_remaining_ = currentStop->getDistance();
         currentStop->LoadPassengers(this);
         currentRoute->NextDestinationStop();
-        // UpdateBusData();
       }
       return true;
     }
-    //UpdateBusData();
     return false;
   }
 

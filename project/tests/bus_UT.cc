@@ -129,7 +129,7 @@ class BusTests : public ::testing::Test {
           CC_WB_distances[6] = 2;
           CC_WB_distances[7] = 3;
 
-          std::list<double> CC_EB_probs;  // realistic .15, .3, .025, .05, .05, 0
+          std::list<double> CC_EB_probs;
           CC_EB_probs.push_back(.15);   // WB
           CC_EB_probs.push_back(.3);    // CMU
           CC_EB_probs.push_back(.025);  // O&W
@@ -139,7 +139,7 @@ class BusTests : public ::testing::Test {
           CC_EB_probs.push_back(.01);   // Buford
           CC_EB_probs.push_back(0);     // SPSC - MUST BE 0
 
-          std::list<double> CC_WB_probs;  // realistic .35, .05, .01, .01, .2, 0
+          std::list<double> CC_WB_probs;
           CC_WB_probs.push_back(.35);     // SPSC
           CC_WB_probs.push_back(.05);     // Buford
           CC_WB_probs.push_back(.01);     // State fair
@@ -189,7 +189,7 @@ TEST_F(BusTests, ConstructorTest) {
     EXPECT_EQ(bus1->GetSpeed(), 2.0);
 }
 
-TEST_F (BusTests, LoadPassengerTest) {
+TEST_F(BusTests, LoadPassengerTest) {
     Passenger* passenger1 = new Passenger(5, "Bro");
     bus1->LoadPassenger(passenger1);
 
@@ -197,7 +197,7 @@ TEST_F (BusTests, LoadPassengerTest) {
     EXPECT_EQ(bus1->GetPassengerList().size(), 1);
 }
 
-TEST_F (BusTests, UnloadPassengerTest) {
+TEST_F(BusTests, UnloadPassengerTest) {
     Passenger* passenger1 = new Passenger(5, "Bro");
     bus1->LoadPassenger(passenger1);
     EXPECT_EQ(bus1->GetPassengerList().back(), passenger1);
@@ -209,7 +209,7 @@ TEST_F (BusTests, UnloadPassengerTest) {
     EXPECT_EQ(bus1->GetPassengerList().size(), 0);
 }
 
-TEST_F (BusTests, MoveTest) {  //Test SWITCHING ROUTES?
+TEST_F(BusTests, MoveTest) {  // Test SWITCHING ROUTES?
     // Tests general movement, if distance remaining is decreasing
     double initialDist = bus1->GetDistRemaining();
     bus1->Move();
@@ -218,7 +218,7 @@ TEST_F (BusTests, MoveTest) {  //Test SWITCHING ROUTES?
 
     // Tests stop arrival
     Stop * initialStop = bus1->GetStop();
-    for(int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++) {
         bus1->Move();
     }
     Stop * newStop = bus1->GetStop();
@@ -235,7 +235,7 @@ TEST_F (BusTests, MoveTest) {  //Test SWITCHING ROUTES?
     */
 }
 
-TEST_F (BusTests, UpdateTest) {
+TEST_F(BusTests, UpdateTest) {
     double initialDist = bus1->GetDistRemaining();
     bus1->Update();
     double newDist = bus1->GetDistRemaining();
@@ -244,7 +244,7 @@ TEST_F (BusTests, UpdateTest) {
 
     // Tests stop arrival
     Stop * initialStop = bus1->GetStop();
-    for(int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++) {
         bus1->Update();
     }
     Stop * newStop = bus1->GetStop();
@@ -252,7 +252,7 @@ TEST_F (BusTests, UpdateTest) {
 }
 
 
-TEST_F (BusTests, ReportTest) {
+TEST_F(BusTests, ReportTest) {
     std::ostringstream testString;
     bus1->Report(testString);
     EXPECT_EQ(testString.str(),

@@ -18,21 +18,13 @@ int num_stops, PassengerGenerator * gen) {
   // Which is technically a linked list of stops
   rData = new RouteData();
   rData->id = name;
-  //std::vector<StopData> stopDatas;
 
   for (int i = 0; i < num_stops; i++) {
     if (i < num_stops) {
       stops[i]->SetNextStop(stops[i+1]);
     }
     stops_.push_back(stops[i]);
-
-    //StopData * curStop = new StopData();
-    //curStop->id = stops[i]->GetId();
-    //curStop->position = stops[i]->getPos();
-    //curStop->num_people = stops[i]->GetNumPassengers();
-    //stopDatas.push_back(*curStop);
   }
-  //rData->stops = stopDatas;
 
   // Makes a list of distances
   // Sets each stop's distance to its respective stop

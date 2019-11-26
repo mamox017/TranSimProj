@@ -127,7 +127,7 @@ class RouteTests : public ::testing::Test {
           CC_WB_distances[6] = 2;
           CC_WB_distances[7] = 3;
 
-          std::list<double> CC_EB_probs;  // realistic .15, .3, .025, .05, .05, 0
+          std::list<double> CC_EB_probs;
           CC_EB_probs.push_back(.15);   // WB
           CC_EB_probs.push_back(.3);    // CMU
           CC_EB_probs.push_back(.025);  // O&W
@@ -183,16 +183,16 @@ report
 
 TEST_F(RouteTests, ConstructorTest) {
     EXPECT_EQ(route1->GetName(), "Campus Connector - Eastbound");
-    //EXPECT_EQ(route1->GetStops(), CC_EB_stops);
+    // EXPECT_EQ(route1->GetStops(), CC_EB_stops);
     EXPECT_EQ(route1->GetNumStops(), 8);
-    //EXPECT_EQ(route1->GetDistanceList(), CC_EB_distances);
-    //EXPECT_EQ(route1->GetGenerator(), CC_EB_generator);
+    // EXPECT_EQ(route1->GetDistanceList(), CC_EB_distances);
+    // EXPECT_EQ(route1->GetGenerator(), CC_EB_generator);
 
     EXPECT_EQ(route2->GetName(), "Campus Connector - Westbound");
-    //EXPECT_EQ(route2->GetStops(), CC_WB_stops);
+    // EXPECT_EQ(route2->GetStops(), CC_WB_stops);
     EXPECT_EQ(route2->GetNumStops(), 9);
-    //EXPECT_EQ(route2->GetDistanceList(), CC_WB_distances);
-    //EXPECT_EQ(route2->GetGenerator(), CC_WB_generator);
+    // EXPECT_EQ(route2->GetDistanceList(), CC_WB_distances);
+    // EXPECT_EQ(route2->GetGenerator(), CC_WB_generator);
 }
 
 
@@ -200,5 +200,9 @@ TEST_F(RouteTests, ConstructorTest) {
 TEST_F(RouteTests, ReportTest) {
     std::ostringstream testString;
     route1->Report(testString);
-    EXPECT_EQ(testString.str(),"Name: Campus Connector - Eastbound\nNum stops: 8\nID: 0\nPassengers waiting: 0\nID: 1\nPassengers waiting: 0\nID: 2\nPassengers waiting: 0\nID: 3\nPassengers waiting: 0\nID: 4\nPassengers waiting: 0\nID: 5\nPassengers waiting: 0\nID: 6\nPassengers waiting: 0\nID: 7\nPassengers waiting: 0\n");
+    EXPECT_EQ(testString.str(), "Name: Campus Connector - Eastbound\nNum stops:"
+        " 8\nID: 0\nPassengers waiting: 0\nID: 1\nPassengers waiting: 0\nID:"
+        " 2\nPassengers waiting: 0\nID: 3\nPassengers waiting: 0\nID: 4\n"
+        "Passengers waiting: 0\nID: 5\nPassengers waiting: 0\nID: 6\n"
+        "Passengers waiting: 0\nID: 7\nPassengers waiting: 0\n");
 }
