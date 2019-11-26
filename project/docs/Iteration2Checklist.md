@@ -56,11 +56,11 @@ _Note: This checklist is not authoratative. If something is missing on the check
 ### Documentation
 
 - [x] Class methods fit within a single perspective of abstraction.
-- [ ] Class and variable names are informative.
-- [ ] Public method comments describe intent.
+- [x] Class and variable names are informative.
+- [x] Public method comments describe intent.
 - [x] _mainpage.h_ or _mainpage.md_ is in the /src folder.
 - [x] I have compiled doxygen and looked at the generated mainpage.
-- [ ] I commented my code where necessary.
+- [x] I commented my code where necessary.
 
 ### Linter and Git
 - [x] My code complies with the style guide.
