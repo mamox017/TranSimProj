@@ -27,9 +27,18 @@ class RouteTests : public ::testing::Test {
     Route* route1;
     Route* route2;
 
+    Stop ** CC_EB_stops;
+    Stop ** CC_WB_stops;
+
+    double * CC_EB_distances;
+    double * CC_WB_distances;
+
+    RandomPassengerGenerator * CC_EB_generator;
+    RandomPassengerGenerator * CC_WB_generator;
+
     virtual void SetUp() {
-        Stop ** CC_EB_stops = new Stop *[8];
-        Stop ** CC_WB_stops = new Stop *[9];
+        CC_EB_stops = new Stop *[8];
+        CC_WB_stops = new Stop *[9];
         std::list<Stop *> CC_EB_stops_list;
         std::list<Stop *> CC_WB_stops_list;
 
@@ -108,8 +117,8 @@ class RouteTests : public ::testing::Test {
           CC_WB_stops_list.push_back(stop_CC_WB_9);
           CC_WB_stops[8] = stop_CC_WB_9;
 
-          double * CC_EB_distances = new double[7];
-          double * CC_WB_distances = new double[8];
+          CC_EB_distances = new double[7];
+           CC_WB_distances = new double[8];
           CC_EB_distances[0] = 4;
           CC_EB_distances[1] = 4;
           CC_EB_distances[2] = 2;
@@ -148,9 +157,9 @@ class RouteTests : public ::testing::Test {
           CC_WB_probs.push_back(.3);      // Bruininks
           CC_WB_probs.push_back(0);       // Blegen
 
-          RandomPassengerGenerator * CC_EB_generator
+          CC_EB_generator
             = new RandomPassengerGenerator(CC_EB_probs, CC_EB_stops_list);
-          RandomPassengerGenerator * CC_WB_generator
+          CC_WB_generator
             = new RandomPassengerGenerator(CC_WB_probs, CC_WB_stops_list);
 
           route1 = new Route("Campus Connector - Eastbound", CC_EB_stops,
@@ -184,15 +193,44 @@ report
 TEST_F(RouteTests, ConstructorTest) {
     EXPECT_EQ(route1->GetName(), "Campus Connector - Eastbound");
     // EXPECT_EQ(route1->GetStops(), CC_EB_stops);
+    std::list<Stop *> stopList = route1->GetStops();
+    int stopIndex = 0;
+    for (std::list<Stop *>::iterator it = stopList.begin(); it !=
+      stopList.end(); it++) {
+      EXPECT_EQ((*it), CC_EB_stops[stopIndex]);
+      stopIndex++;
+    } 
     EXPECT_EQ(route1->GetNumStops(), 8);
-    // EXPECT_EQ(route1->GetDistanceList(), CC_EB_distances);
-    // EXPECT_EQ(route1->GetGenerator(), CC_EB_generator);
+
+    std::list<double> distList = route1->GetDistanceList();
+    int distIndex = 0;
+    for (std::list<double>::iterator it2 = distList.begin(); it2 !=
+      distList.end(); it2++) {
+      EXPECT_EQ((*it2), CC_EB_distances[distIndex]);
+      distIndex++;
+    } 
+
+    EXPECT_EQ(route1->GetGenerator(), CC_EB_generator);
 
     EXPECT_EQ(route2->GetName(), "Campus Connector - Westbound");
-    // EXPECT_EQ(route2->GetStops(), CC_WB_stops);
+
+    std::list<Stop *> stopList2 = route2->GetStops();
+    int stopIndex2 = 0;
+    for (std::list<Stop *>::iterator it3 = stopList2.begin(); it3 !=
+      stopList2.end(); it3++) {
+      EXPECT_EQ((*it3), CC_WB_stops[stopIndex2]);
+      stopIndex2++;
+    } 
     EXPECT_EQ(route2->GetNumStops(), 9);
-    // EXPECT_EQ(route2->GetDistanceList(), CC_WB_distances);
-    // EXPECT_EQ(route2->GetGenerator(), CC_WB_generator);
+
+    std::list<double> distList2 = route2->GetDistanceList();
+    int distIndex2 = 0;
+    for (std::list<double>::iterator it4 = distList2.begin(); it4 !=
+      distList2.end(); it4++) {
+      EXPECT_EQ((*it4), CC_WB_distances[distIndex2]);
+      distIndex2++;
+    } 
+    EXPECT_EQ(route2->GetGenerator(), CC_WB_generator);
 }
 
 
