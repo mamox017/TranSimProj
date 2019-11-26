@@ -66,7 +66,7 @@ _Note: This checklist is not authoratative. If something is missing on the check
 - [x] My code complies with the style guide.
 - [x] The code complies with naming conventions for classes, methods, and members.
 - [x] There exists a history of git commit messages to show effort.
-- [] There exists a history of issues and branches to show effort.
+- [x] There exists a history of issues and branches to show effort.
 
 ### Reporting of Bugs
 - [x] Viewing issues on my repo and selecting _bug_ label shows all the known bugs in my code.
