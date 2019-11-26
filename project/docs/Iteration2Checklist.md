@@ -12,12 +12,12 @@ _Note: This checklist is not authoratative. If something is missing on the check
 - [ ] Submission is on the master branch of the my personal repo "repo-<username>".
 - [x] _/project folder exists.
 - [x] _/build_ is not in the repo.
-- [ ] _/html_ is not in _docs_. !DELETE AFTER MERGING TO MASTER
-- [ ] _/latex_ is not in _docs_. !DELETE AFTER MERGING TO MASTER
+- [x] _/html_ is not in _docs_. !DELETE AFTER MERGING TO MASTER
+- [x] _/latex_ is not in _docs_. !DELETE AFTER MERGING TO MASTER
 - [x] **__`make` from project/src completes without error.__**
 - [x] Both executables run without assert or a seg fault when given a config filename.
-- [ ] `cpplint-cse.sh *.cc` reports no errors for your code.
-- [ ] `cpplint-cse.sh --root=.. *.h` reports no errors for your code.
+- [x] `cpplint-cse.sh *.cc` reports no errors for your code.
+- [x] `cpplint-cse.sh --root=.. *.h` reports no errors for your code.
 - [x] `doxygen docs/Doxyfile` generates the documentation.
 - [x] Config files held in project/config.
 - [x] Test files held in project/tests.
