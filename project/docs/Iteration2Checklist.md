@@ -37,7 +37,7 @@ _Note: This checklist is not authoratative. If something is missing on the check
 | -------- | -------- | -------- | -------- | --------- |
 | **__Configuration__** |
 | Simulation properly uses config files to run simulations | x|  |  |  |
-| Invalid config file names are handled gracefully |  |  |  |  |
+| Invalid config file names are handled gracefully | x|  |  |  |
 | Missing config file name is handled gracefully | x|  |  |  |
 | **__Visualization__**
 | Routes are displayed properly | x|  |  |  |
