@@ -131,6 +131,19 @@ class Bus {
 
   int GetCapacity() {return passenger_max_capacity_;}
 
+  double GetSpeed() {return speed_;}
+
+  Route * GetIn() {return incoming_route_;}
+
+  Route * GetOut() {return outgoing_route_;}
+
+  void SetStop(Stop * stop) {currentStop = stop;}
+
+  Stop * GetStop() {return currentStop;}
+
+  double GetDistRemaining() {return distance_remaining_;}
+
+  Route * GetCurrRoute() {return currentRoute;}
  private:
   BusData * bData;
   Stop * currentStop;
