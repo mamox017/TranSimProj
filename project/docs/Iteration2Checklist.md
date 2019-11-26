@@ -49,7 +49,7 @@ _Note: This checklist is not authoratative. If something is missing on the check
 | Testing covers Stop class | x|  |  |  |
 | Testing covers Passenger class | x|  |  |  |
 | Command line interaction is tested appropriately | x|  |  |  |
-| Testing covers error-prone concepts |  |  |  |  |
+| Testing covers error-prone concepts | x|  |  |  |
 
 <hr>
 
