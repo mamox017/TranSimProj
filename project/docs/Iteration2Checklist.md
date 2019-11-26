@@ -8,20 +8,20 @@ _Note: This checklist is not authoratative. If something is missing on the check
 
 ### Compilation and Execution
 
-- [ ] I cloned **fresh** from github onto a cselabs machine to test compilation.
+- [x] I cloned **fresh** from github onto a cselabs machine to test compilation.
 - [ ] Submission is on the master branch of the my personal repo "repo-<username>".
-- [ ] _/project folder exists.
-- [ ] _/build_ is not in the repo.
+- [x] _/project folder exists.
+- [x] _/build_ is not in the repo.
 - [ ] _/html_ is not in _docs_.
 - [ ] _/latex_ is not in _docs_.
-- [ ] **__`make` from project/src completes without error.__**
-- [ ] Both executables run without assert or a seg fault when given a config filename.
+- [x] **__`make` from project/src completes without error.__**
+- [x] Both executables run without assert or a seg fault when given a config filename.
 - [ ] `cpplint-cse.sh *.cc` reports no errors for your code.
 - [ ] `cpplint-cse.sh --root=.. *.h` reports no errors for your code.
-- [ ] `doxygen docs/Doxyfile` generates the documentation.
-- [ ] Config files held in project/config.
-- [ ] Test files held in project/tests.
-- [ ] **__`make` from project/tests completes without error.__**
+- [x] `doxygen docs/Doxyfile` generates the documentation.
+- [x] Config files held in project/config.
+- [x] Test files held in project/tests.
+- [x] **__`make` from project/tests completes without error.__**
 
 ### Primary Functionality
 
@@ -36,18 +36,18 @@ _Note: This checklist is not authoratative. If something is missing on the check
 | Functionality | Good | Okay | Help | Time |
 | -------- | -------- | -------- | -------- | --------- |
 | **__Configuration__** |
-| Simulation properly uses config files to run simulations |  |  |  |  |
+| Simulation properly uses config files to run simulations | x|  |  |  |
 | Invalid config file names are handled gracefully |  |  |  |  |
-| Missing config file name is handled gracefully |  |  |  |  |
+| Missing config file name is handled gracefully | x|  |  |  |
 | **__Visualization__**
-| Routes are displayed properly |  |  |  |  |
-| Stops are displayed properly |  |  |  |  |
-| Bus appears at a stop when loading/unloading passengers |  |  |  |  |
+| Routes are displayed properly | x|  |  |  |
+| Stops are displayed properly | x|  |  |  |
+| Bus appears at a stop when loading/unloading passengers | x|  |  |  |
 | **__Testing__** |
-| Testing covers Bus class |  |  |  |  |
-| Testing covers Route class |  |  |  |  |
-| Testing covers Stop class |  |  |  |  |
-| Testing covers Passenger class |  |  |  |  |
+| Testing covers Bus class | x|  |  |  |
+| Testing covers Route class | x|  |  |  |
+| Testing covers Stop class | x|  |  |  |
+| Testing covers Passenger class | x|  |  |  |
 | Command line interaction is tested appropriately |  |  |  |  |
 | Testing covers error-prone concepts |  |  |  |  |
 
@@ -55,11 +55,11 @@ _Note: This checklist is not authoratative. If something is missing on the check
 
 ### Documentation
 
-- [ ] Class methods fit within a single perspective of abstraction.
+- [x] Class methods fit within a single perspective of abstraction.
 - [ ] Class and variable names are informative.
 - [ ] Public method comments describe intent.
-- [ ] _mainpage.h_ or _mainpage.md_ is in the /src folder.
-- [ ] I have compiled doxygen and looked at the generated mainpage.
+- [x] _mainpage.h_ or _mainpage.md_ is in the /src folder.
+- [x] I have compiled doxygen and looked at the generated mainpage.
 - [ ] I commented my code where necessary.
 
 ### Linter and Git
@@ -69,7 +69,7 @@ _Note: This checklist is not authoratative. If something is missing on the check
 - [ ] There exists a history of issues and branches to show effort.
 
 ### Reporting of Bugs
-- [ ] Viewing issues on my repo and selecting _bug_ label shows all the known bugs in my code.
+- [x] Viewing issues on my repo and selecting _bug_ label shows all the known bugs in my code.
 
 ## Ready For Submission
 
