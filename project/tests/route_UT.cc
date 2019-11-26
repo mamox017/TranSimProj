@@ -147,14 +147,14 @@ class RouteTests : public ::testing::Test {
           CC_EB_probs.push_back(0);     // SPSC - MUST BE 0
 
           std::list<double> CC_WB_probs;  // realistic .35, .05, .01, .01, .2, 0
-          CC_WB_probs.push_back(.35);     // SPSC
-          CC_WB_probs.push_back(.05);     // Buford
-          CC_WB_probs.push_back(.01);     // State fair
-          CC_WB_probs.push_back(.01);     // post-transit
-          CC_WB_probs.push_back(.025);    // pre-transit
-          CC_WB_probs.push_back(.05);     // Ridder
-          CC_WB_probs.push_back(.1);      // Jones-Eddy
-          CC_WB_probs.push_back(.3);      // Bruininks
+          CC_WB_probs.push_back(.9999);     // SPSC
+          CC_WB_probs.push_back(0.0);     // Buford
+          CC_WB_probs.push_back(0.0);     // State fair
+          CC_WB_probs.push_back(0.0);     // post-transit
+          CC_WB_probs.push_back(0.0);    // pre-transit
+          CC_WB_probs.push_back(0.0);     // Ridder
+          CC_WB_probs.push_back(0.0);      // Jones-Eddy
+          CC_WB_probs.push_back(0);      // Bruininks
           CC_WB_probs.push_back(0);       // Blegen
 
           CC_EB_generator
@@ -184,10 +184,10 @@ methods to test
 
 constructor
 update
-addPassengers
-LoadPassengers
-getters/setters
+updateroutedata
 report
+isatend
+clone
 */
 
 TEST_F(RouteTests, ConstructorTest) {
@@ -199,7 +199,7 @@ TEST_F(RouteTests, ConstructorTest) {
       stopList.end(); it++) {
       EXPECT_EQ((*it), CC_EB_stops[stopIndex]);
       stopIndex++;
-    } 
+    }
     EXPECT_EQ(route1->GetNumStops(), 8);
 
     std::list<double> distList = route1->GetDistanceList();
@@ -208,7 +208,7 @@ TEST_F(RouteTests, ConstructorTest) {
       distList.end(); it2++) {
       EXPECT_EQ((*it2), CC_EB_distances[distIndex]);
       distIndex++;
-    } 
+    }
 
     EXPECT_EQ(route1->GetGenerator(), CC_EB_generator);
 
@@ -220,7 +220,7 @@ TEST_F(RouteTests, ConstructorTest) {
       stopList2.end(); it3++) {
       EXPECT_EQ((*it3), CC_WB_stops[stopIndex2]);
       stopIndex2++;
-    } 
+    }
     EXPECT_EQ(route2->GetNumStops(), 9);
 
     std::list<double> distList2 = route2->GetDistanceList();
@@ -229,10 +229,57 @@ TEST_F(RouteTests, ConstructorTest) {
       distList2.end(); it4++) {
       EXPECT_EQ((*it4), CC_WB_distances[distIndex2]);
       distIndex2++;
-    } 
+    }
     EXPECT_EQ(route2->GetGenerator(), CC_WB_generator);
 }
 
+TEST_F(RouteTests, UpdateRouteDataTest) {
+  route1->UpdateRouteData();
+  // since every routedata starts as blank
+  // this test checks if the correct values
+  // are put into the routedata at update
+  RouteData rData = route1->GetRouteData();
+
+  std::vector<StopData> stop_datas_ = rData.stops;
+  std::vector<StopData>::iterator iter2 = stop_datas_.begin();
+  std::list<Stop *> stops_ = route1->GetStops();
+
+  for (std::list<Stop *>::iterator iter = stops_.begin();
+    iter != stops_.end(); iter++) {
+    int tempid = (*iter)->GetId();
+
+    EXPECT_EQ(tempid, std::stoi((*iter2).id));
+    iter2++;
+  }
+}
+
+
+TEST_F(RouteTests, CloneTest) {
+  Route * clonedRoute = route1->Clone();
+  EXPECT_EQ(clonedRoute->GetName(), route1->GetName());
+  EXPECT_EQ(clonedRoute->GetNumStops(), route1->GetNumStops());
+  EXPECT_EQ(clonedRoute->GetGenerator(), route1->GetGenerator());
+
+  std::list<Stop *> stopList = route1->GetStops();
+  std::list<Stop *> clonedList = clonedRoute->GetStops();
+
+  for (std::list<Stop *>::iterator it = stopList.begin(); it !=
+    stopList.end(); it++) {
+    EXPECT_EQ((*it)->GetId(), clonedList.front()->GetId());
+    clonedList.pop_front();
+  }
+}
+
+// When route2 updates it should guaranteed have generated at least 1 passenger
+// because the generation probabilities are all set to 1.0
+// hangs on time to generate! if probability is 1.0 so set to .9999
+// it will generate a passenger to the stop 9999/10000 times
+TEST_F(RouteTests, UpdateTest) {
+  std::ostringstream testString;
+  route2->Update(testString);
+  EXPECT_EQ(testString.str(), "Time to generate!\n");
+  EXPECT_GT(route2->GetFirstStop()->GetNumPassengers(), 0);
+}
 
 
 TEST_F(RouteTests, ReportTest) {
@@ -244,3 +291,19 @@ TEST_F(RouteTests, ReportTest) {
         "Passengers waiting: 0\nID: 5\nPassengers waiting: 0\nID: 6\n"
         "Passengers waiting: 0\nID: 7\nPassengers waiting: 0\n");
 }
+
+TEST_F(RouteTests, IsAtEndTest) {
+  for (int i = 0; i < route1->GetNumStops()-2; i++) {
+    route1->NextDestinationStop();
+    route1->NextStop();
+  }
+  EXPECT_EQ(route1->IsAtEnd(), true);
+}
+
+// Can't test generate as it was given as private function
+/*TEST_F(RouteTests, GenerateTest) {
+  std::ostringstream testString;
+  route2->GenerateNewPassengers(testString);
+  EXPECT_EQ(testString.str(), "Time to generate!\n");
+  EXPECT_GT(route2->GetFirstStop()->GetNumPassengers(), 0);
+} */

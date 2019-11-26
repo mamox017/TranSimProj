@@ -60,6 +60,8 @@ TEST_F(PassengerTests, ConstructorTest) {
     Passenger* passenger3 = new Passenger(10953, "Stanley");
     EXPECT_EQ(passenger3->GetDestination(), 10953);
     EXPECT_EQ(passenger3->GetName(), "Stanley");
+    // test that is expected to fail?
+    EXPECT_NE(passenger3->GetName(), "");
 }
 
 TEST_F(PassengerTests, UpdateTest) {

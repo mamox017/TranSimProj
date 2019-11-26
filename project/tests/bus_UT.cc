@@ -28,6 +28,8 @@
 class BusTests : public ::testing::Test {
  protected:
     Bus* bus1;
+    Route * CC_EB;
+    Route * CC_WB;
 
     virtual void SetUp() {
         Stop ** CC_EB_stops = new Stop *[8];
@@ -155,12 +157,12 @@ class BusTests : public ::testing::Test {
           RandomPassengerGenerator * CC_WB_generator
             = new RandomPassengerGenerator(CC_WB_probs, CC_WB_stops_list);
 
-          Route * CC_EB = new Route("Campus Connector - Eastbound", CC_EB_stops,
+          CC_EB = new Route("Campus Connector - Eastbound", CC_EB_stops,
                                     CC_EB_distances, 8, CC_EB_generator);
-          Route * CC_WB = new Route("Campus Connector - Westbound", CC_WB_stops,
+          CC_WB = new Route("Campus Connector - Westbound", CC_WB_stops,
                                     CC_WB_distances, 9, CC_WB_generator);
 
-        bus1 = new Bus("Coolbus", CC_EB, CC_WB, 70, 2.0);
+        bus1 = new Bus("Coolbus", CC_EB, CC_WB, 70, 1.0);
     }
 
     virtual void TearDown() {
@@ -177,8 +179,13 @@ class BusTests : public ::testing::Test {
 methods to test
 
 constructor
-update
+load
+unload
 report
+update
+move
+istripcomplete
+updatebusdata
 */
 
 TEST_F(BusTests, ConstructorTest) {
@@ -186,7 +193,7 @@ TEST_F(BusTests, ConstructorTest) {
     // EXPECT_EQ(bus1->GetOut(), CC_EB);
     // EXPECT_EQ(bus1->GetIn(), CC_WB);
     EXPECT_EQ(bus1->GetCapacity(), 70);
-    EXPECT_EQ(bus1->GetSpeed(), 2.0);
+    EXPECT_EQ(bus1->GetSpeed(), 1.0);
 }
 
 TEST_F(BusTests, LoadPassengerTest) {
@@ -224,16 +231,29 @@ TEST_F(BusTests, MoveTest) {  // Test SWITCHING ROUTES?
     Stop * newStop = bus1->GetStop();
     EXPECT_NE(initialStop, newStop);
 
-    /* Seg Faults
     // Tests route switching
     Route * initialRoute = bus1->GetCurrRoute();
-    for(int i = 0; i < 50; i++){
-        bus1->Move();
+    for (int i = 0; i < 50; i++) {
+        bus1->Update();
     }
     Route * newRoute = bus1->GetCurrRoute();
     EXPECT_NE(initialRoute, newRoute);
-    */
 }
+
+TEST_F(BusTests, UpdateBusDataTest) {
+  bus1->SetStop(CC_EB->GetFirstStop());
+  bus1->UpdateBusData();
+  // since every busdata starts as blank
+  // this test checks if the correct values
+  // are put into the busdata at update
+  BusData bData = bus1->GetBusData();
+
+  EXPECT_EQ(bData.position.x, CC_EB->GetFirstStop()->getPos().x);
+  EXPECT_EQ(bData.id, bus1->GetName());
+  EXPECT_EQ(bData.num_passengers, bus1->GetPassengerList().size());
+  EXPECT_EQ(bData.capacity, bus1->GetCapacity());
+}
+
 
 TEST_F(BusTests, UpdateTest) {
     double initialDist = bus1->GetDistRemaining();
@@ -251,10 +271,18 @@ TEST_F(BusTests, UpdateTest) {
     EXPECT_NE(initialStop, newStop);
 }
 
+TEST_F(BusTests, IsTripComplete) {
+  double totalDist = CC_WB->GetTotalRouteDistance() +
+    CC_EB->GetTotalRouteDistance();
+  for (int i = 0; i < totalDist; i++) {
+    bus1->Update();
+  }
+  EXPECT_EQ(bus1->IsTripComplete(), true);
+}
 
 TEST_F(BusTests, ReportTest) {
     std::ostringstream testString;
     bus1->Report(testString);
     EXPECT_EQ(testString.str(),
-    "Name: Coolbus\nSpeed: 2\nDistance to next stop: 4\n\tPassengers (0): \n");
+    "Name: Coolbus\nSpeed: 1\nDistance to next stop: 4\n\tPassengers (0): \n");
 }
