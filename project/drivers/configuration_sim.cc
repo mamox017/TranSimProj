@@ -44,33 +44,45 @@ int main(int argc, char**argv) {
   }
   ConfigurationSimulator *configSim = new ConfigurationSimulator(configManager_);
 
-  std::ofstream myFilePtr;
-  if (argc > 2) {
-    std::string outfileName = argv[2];
-    myFilePtr.open("build/bin/" + outfileName);
-  } else {
-    myFilePtr.open("build/bin/config_sim_output.txt");
-    std::cout << "Note: no output file given, output set to: build/bin/"
-    "config_sim_output.txt" << std::endl;
-  }
-
   int lengthofsim = 25;
-  if (argc > 3) {
-    lengthofsim = std::stoi(argv[3]);
+  if (argc > 2) {
+    lengthofsim = std::stoi(argv[2]);
   } else {
     std::cout << "Note: no length of simulation given, sim length set to: 25"
     << std::endl;
   }
 
-  std::vector<int> timings;  // maybe arg?
-  // for(int i = 0; i < lengthofsim; i++){  // HOW TO FIND ARGS?
-  timings.push_back(5);
-  //timings.push_back(5);
-  // }
+  std::ofstream myFilePtr;
+  if (argc > 4) {
+    std::string outfileName = argv[4];
+    myFilePtr.open("build/bin/" + outfileName);
+  } else {
+    // myFilePtr.open("build/bin/config_sim_output.txt");
+    std::cout << "Note: no output file given, output set to: std::cout"
+    << std::endl;
+  }
+
+  std::vector<int> timings;
+  
+  if (argc > 3) {
+    int timing = std::stoi(argv[3]);
+    if (timing > 10 || timing < 1) {
+      std::cout << "ERROR: Please input a timing between 1 and 10" << std::endl;
+      return 1;
+    }
+    timings.push_back(timing);
+  } else {
+    std::cout << "Note: no time between busses given, busTimings set to: 5"
+    << std::endl;
+    timings.push_back(5);
+  }
+
+
+
 
   if (invalidName) {
     std::cout << "ERROR: invalid config filename given" << std::endl;
-  } else if (myFilePtr.is_open()) {
+  } else if (myFilePtr.is_open() && argc>4) {
     myFilePtr << "/*************************" << std::endl << std::endl;
     myFilePtr << "         STARTING" << std::endl;
     myFilePtr << "        SIMULATION" << std::endl;
@@ -96,8 +108,31 @@ int main(int argc, char**argv) {
     myFilePtr.close();  // write to this
     std::cout << "SUCCESS: config_sim output successfully written to"
     " file" << std::endl;
+  } else if (argc <= 4) {
+    std::cout << "/*************************" << std::endl << std::endl;
+    std::cout << "         STARTING" << std::endl;
+    std::cout << "        SIMULATION" << std::endl;
+    std::cout << "*************************/" << std::endl;
+
+    configSim->Start(timings,lengthofsim, std::cout);
+
+    std::cout << "/*************************" << std::endl << std::endl;
+    std::cout << "           BEGIN" << std::endl;
+    std::cout << "          UPDATING" << std::endl;
+    std::cout << "*************************/" << std::endl;
+
+    // find out how to find length of simulation
+    for (int i = 0; i < lengthofsim; i++) {
+      configSim->Update(std::cout);
+    }
+
+    std::cout << "/*************************" << std::endl << std::endl;
+    std::cout << "        SIMULATION" << std::endl;
+    std::cout << "         COMPLETE" << std::endl;
+    std::cout << "*************************/" << std::endl;
   } else {
     std::cout << "ERROR: config_sim failure" << std::endl;
+    return 1;
   }
   return 0;
 }
