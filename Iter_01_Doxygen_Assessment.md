@@ -1,6 +1,6 @@
-### Iteration 1 - Doxygen Partial Assessment (Graded By: Shrivardhan Bharadwaj)
+### Iteration 1 - Doxygen Partial Assessment (Graded By: Anick Saha)
 
-Run on November 25, 14:11:50 PM.
+Run on November 26, 16:00:35 PM.
 
 <hr>
 
@@ -40,12 +40,7 @@ This Partial Assessment indicates a TA has begun grading your Doxygen-generated 
 
 + Pass: Check that file "html/index.html" exists.
 
-+ Fail: Inspecting Doxygen webpages...
-
-<pre>No protocol specified
-Unable to init server: Could not connect: Connection refused
-Error: cannot open display: :0
-</pre>
++ Pass: Inspecting Doxygen webpages...
 
 
 
