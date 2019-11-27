@@ -31,7 +31,7 @@ RandomPassengerGenerator::RandomPassengerGenerator(std::list<double> probs,
  *  Once the probability drops below .0001, we end our generation cycle for the stop.
  */
 
-int RandomPassengerGenerator::GeneratePassengers() {
+int RandomPassengerGenerator::GeneratePassengers(std::ostream& o) {
   int passengers_added = 0;
   std::list<double>::iterator prob_iter;
   std::list<Stop *>::iterator stop_iter;
@@ -41,7 +41,7 @@ int RandomPassengerGenerator::GeneratePassengers() {
   stop_iter--;
   int last_stop_index = (*stop_iter)->GetId();
   // TODO(Staff): check for accuracy
-  std::cout << "Time to generate!" << std::endl;
+  o << "Time to generate!" << std::endl;
   for (prob_iter = generation_probabilities_.begin(),
                           stop_iter = stops_.begin();
        prob_iter != generation_probabilities_.end()

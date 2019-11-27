@@ -3,6 +3,7 @@
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
+
 #ifndef SRC_LOCAL_SIMULATOR_H_
 #define SRC_LOCAL_SIMULATOR_H_
 
@@ -32,18 +33,22 @@ class LocalSimulator : public Simulator {
   * This function overrides the base class function to start a
   *  simulation of given situations.
   *
+  * @param[in] std::ostream& outputstream of output information
+  *
   * @return bool = 0, indicates whether simulation successfully starts
   */
-  bool Start() override;
+  bool Start(std::ostream& o = std::cout) override;
   /**
   * @brief The Update function for localsimulator objects.
   * 
   * This function overrides the base class function to update a
   *  simulation of given situations.
   *
+  * @param[in] std::ostream& outputstream of output information
+  *
   * @return bool = 0, indicates whether simulation successfully updates
   */
-  bool Update() override;
+  bool Update(std::ostream& o = std::cout) override;
 
  private:
   std::vector<int> bus_counters_;

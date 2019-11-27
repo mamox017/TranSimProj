@@ -60,6 +60,8 @@ TEST_F(PassengerTests, ConstructorTest) {
     Passenger* passenger3 = new Passenger(10953, "Stanley");
     EXPECT_EQ(passenger3->GetDestination(), 10953);
     EXPECT_EQ(passenger3->GetName(), "Stanley");
+    // test that is expected to fail?
+    EXPECT_NE(passenger3->GetName(), "");
 }
 
 TEST_F(PassengerTests, UpdateTest) {
@@ -96,5 +98,6 @@ TEST_F(PassengerTests, ReportTest) {
     std::ostringstream testString;
     passenger4->Report(testString);
     EXPECT_EQ(testString.str(),
-"Name: David\nDestination: 21\nTotal Wait: 0\n\tWait at Stop: 0\n\tTime on bus: 0\n");
+"Name: David\nDestination: 21\nTotal Wait: 0\n\tWait at Stop: 0\n\t"
+"Time on bus: 0\n");
 }

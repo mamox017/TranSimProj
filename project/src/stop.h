@@ -16,6 +16,7 @@
 
 #include "src/bus.h"
 #include "src/passenger.h"
+#include "src/data_structs.h"
 
 /*******************************************************************************
  * Class Definitions
@@ -175,6 +176,23 @@ class Stop {
   * @return std::list<Passenger *> list of passengers on stop
   */
   std::list<Passenger *> GetPassengerList();
+/**
+  * @brief The get passenger number for Stop objects.
+  * 
+  * This function accesses the passengers_ list size.
+  *
+  * @return size_t number of passengers on stop
+  */
+  size_t GetNumPassengers();
+/**
+  * @brief The get position function for Stop objects.
+  * 
+  * This function returns a Position object based on the longitude
+  * and latitude of the stop.
+  *
+  * @return Position object of this Stop object's position
+  */
+  Position getPos();
 
  private:
   Stop * nextStop;

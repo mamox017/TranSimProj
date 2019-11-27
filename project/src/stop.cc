@@ -22,6 +22,15 @@ Stop::Stop(int id, double longitude, double latitude) : id_(id),
 longitude_(longitude), latitude_(latitude) {
 }
 
+// Returns the position of the stop as a Position object
+Position Stop::getPos() {
+  // instanates it and sets members to longitude/latitude
+  Position * thisStopPosition = new Position();
+  thisStopPosition->x = longitude_;
+  thisStopPosition->y = latitude_;
+  return *thisStopPosition;
+}
+
 // Setter
 void Stop::setId(int i) {
   id_ = i;
@@ -45,6 +54,10 @@ double Stop::getLong() {
 // Getter
 double Stop::getLat() {
   return latitude_;
+}
+
+size_t Stop::GetNumPassengers() {
+  return passengers_.size();
 }
 
 // Loads passengers by iterating through list and putting them on bus

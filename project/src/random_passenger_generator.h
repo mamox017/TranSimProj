@@ -48,9 +48,11 @@ class RandomPassengerGenerator : public PassengerGenerator{
   * This function overrides the base class to generate passengers on the Stop *
   *  list with the probabilities from the double list.
   *
+  * @param[in] std::ostream &o, outputstream of where to output information
+  *
   * @return int number of passengers generated
   */
-  int GeneratePassengers() override;
+  int GeneratePassengers(std::ostream &o = std::cout) override;
 
  private:
   static std:: minstd_rand0 my_rand;

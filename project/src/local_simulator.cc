@@ -22,7 +22,7 @@
  * Member Functions
  ******************************************************************************/
 
-bool LocalSimulator::Start() {
+bool LocalSimulator::Start(std::ostream &o) {
   simulation_time_elapsed_ = 0;  // init, but also allows restart
 
   int num_round_trips = 1;
@@ -188,8 +188,9 @@ bool LocalSimulator::Start() {
   prototype_routes.push_back(CC_EB);
   prototype_routes.push_back(CC_WB);
 
-  prototype_routes[0]->Report(std::cout);
-  prototype_routes[1]->Report(std::cout);
+
+  prototype_routes[0]->Report(o);
+  prototype_routes[1]->Report(o);
 
   bus_counters_.push_back(10000);
 
@@ -204,11 +205,11 @@ bool LocalSimulator::Start() {
   return true;
 }
 
-bool LocalSimulator::Update() {
+bool LocalSimulator::Update(std::ostream &o) {
   // increase time
   simulation_time_elapsed_++;
-  std::cout << "~~~~~~~~~~~~~ The time is now " << simulation_time_elapsed_;
-  std::cout << " ~~~~~~~~~~~~~" << std::endl;
+  o << "~~~~~~~~~~~~~ The time is now " << simulation_time_elapsed_;
+  o << " ~~~~~~~~~~~~~" << std::endl;
 
   // various route-indexed list iterators
   std::vector<int>::iterator bus_gen_timing_iter = bus_start_timings_.begin();
@@ -250,7 +251,7 @@ bool LocalSimulator::Update() {
     // update bus
     (*bus_iter)->Update();
     // bus report
-    (*bus_iter)->Report(std::cout);
+    (*bus_iter)->Report(o);
 
     // REQUIRES USE OF IsTripComplete, which was not required
     // Buses which are "done" will just keep having Update() called
@@ -268,9 +269,10 @@ bool LocalSimulator::Update() {
   for (std::vector<Route *>::iterator route_iter = prototype_routes.begin();
       route_iter != prototype_routes.end(); route_iter++) {
     // update stop
-    (*route_iter)->Update();
-    (*route_iter)->Report(std::cout);
+    (*route_iter)->Update(o);
+    (*route_iter)->Report(o);
   }
 
   return true;
 }
+

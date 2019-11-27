@@ -46,9 +46,12 @@ class PassengerGenerator {
   * This pure virtual function is to be used by inheriting classes to generate
   *  passengers on the Stop * list with the probabilities from the double list.
   *
+  * @param[in] std::ostream &o, outputstream of where to output information
+  *
   * @return int = 0, number of passengers generated
   */
-  virtual int GeneratePassengers() = 0;  // pure virtual
+  virtual int GeneratePassengers(std::ostream &o = std::cout) = 0;
+  // pure virtual^
   // PassengerGenerator(const PassengerGenerator& p);
   // void operator = (const PassengerGenerator &p);
   // std::list<Passenger *> Generate();

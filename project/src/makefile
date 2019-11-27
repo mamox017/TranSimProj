@@ -6,10 +6,16 @@
 
 ### Section 0: Change this when compiling on non-CSELabs machines ###
 
-PROJECT_NAME = transit_sim
+PROJECT_NAME = configuration_sim
+PROJECT_NAME2 = transit_sim
+PROJECT_NAME3 = capture_transit_sim
 
 # Path to root of repo
 REPOROOTDIR = $(shell git rev-parse --show-toplevel)
+
+# Path to web and library code
+CS3081DIR = /classes/grades/Fall-2019/csci3081/project
+# driver file for visualization_simulator is ‘main.cpp’ in the web directory of above --> Take a look
 
 ### Section I: Definitions ###
 
@@ -22,8 +28,13 @@ PROJ_DIR = $(REPOROOTDIR)/project
 BUILDDIR = $(PROJ_DIR)/build
 BINDIR = $(BUILDDIR)/bin
 OBJDIR = $(BUILDDIR)/obj/$(PROJECT_NAME)
+OBJDIR3 = $(BUILDDIR)/obj/$(PROJECT_NAME3)
 DRIVEROBJDIR = $(BUILDDIR)/objdrivers
-LIBDIR = $(BUILDDIR)/lib
+WEBOBJDIR = $(BUILDDIR)/webobj/visualizer_sim
+
+LIBS = -lCppWebServer -lwebsockets -lcrypto -lssl -lz
+LIBDIR = -L$(CS3081DIR)/external/lib
+
 EXTERNAL_DIR = $(PROJ_DIR)/src/external
 #MINGFX_DIR = $(EXTERNAL_DIR)/MinGfx/build/install  #not using in F19
 
@@ -33,18 +44,19 @@ EXEFILE = $(BINDIR)/$(PROJECT_NAME)
 # The list of files to compile for this project.  Defaults to all
 # of the .cpp and .cc files in the source directory.  (We use both .cpp
 # and .cc in order to support two different popular naming conventions.)
-SRCFILES = $(wildcard $(SRCDIR)/*.cc)
+SRCFILES = $(wildcard $(SRCDIR)/*.cpp) $(wildcard $(SRCDIR)/*.cc)
+WEBSRCFILES = $(wildcard $(CS3081DIR)/web/*.cpp) $(wildcard $(CS3081DIR)/web/*.cc)
 
 # For each of the source files found above, replace .cpp (or .cc) with
 # .o in order to generate the list of .o files make should create.
-OBJFILES = $(notdir $(patsubst %.cc,%.o,$(SRCFILES)))
+OBJFILES = $(notdir $(patsubst %.cc,%.o,$(patsubst %.cpp,%.o,$(SRCFILES))))
+WEBOBJFILES = $(notdir $(patsubst %.cc,%.o,$(patsubst %.cpp,%.o,$(WEBSRCFILES))))
 
 # Add -Idirname to add directories to the compiler search path for finding .h files
-INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(SRCDIR)/.. -I$(DRIVERDIR)
+INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(SRCDIR)/.. -I$(DRIVERDIR) -I$(CS3081DIR)/web -isystem$(CS3081DIR)/external/include -isystem$(CS3081DIR)/external/include/cppwebserver -isystem$(CS3081DIR)/external/include/gtest -isystem$(CS3081DIR)/external/include/websockets
 
 # The command to run for the C++ compiler and linker
-#CXX = /soft/gcc/7.1.0/Linux_x86_64/bin/g++
-CXX = g++
+CXX = /soft/gcc/7.1.0/Linux_x86_64/bin/g++
 OMP = -fopenmp
 
 # Arguments to pass to the C++ compiler.
@@ -55,22 +67,26 @@ CXXFLAGS = -W -Wall -Wextra -fdiagnostics-color=always -Wfloat-equal -Wshadow -W
 
 -include ../../Makefile.local
 
+LDFLAGS = $(LIBDIR)
+LDLIBS = $(LIBS)
 
 # This is a list of "phony targets" -- targets that do not specify the name of a file.
 # Rather they specify the name of a recipe to run whenever make is envoked with the target name.
-.PHONY: clean all $(BINDIR) $(OBJDIR)
+.PHONY: clean all $(BINDIR) $(OBJDIR) $(WEBOBJDIR)
 
 
 # The default target which will be run if the user just types "make"
-all: $(EXEFILE) 
+all: vis_sim config_sim
 
 # This rule says that each .o file in $(OBJDIR)/ depends on the
 # presence of the $(OBJDIR)/ directory.
 $(addprefix $(OBJDIR)/, $(OBJFILES)): | $(OBJDIR)
 
+$(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)): | $(WEBOBJDIR)
+
 # And, this rule provides a recipe for creating that objdir.  The same rule applies
 # to the bindir, where the exe will be output.
-$(OBJDIR) $(BINDIR) $(DRIVEROBJDIR):
+$(WEBOBJDIR) $(OBJDIR) $(BINDIR) $(DRIVEROBJDIR):
 	@mkdir -p $@
 
 
@@ -94,12 +110,31 @@ $(DRIVEROBJDIR)/%_driver.o: $(DRIVERDIR)/%_driver.cc | $(DRIVEROBJDIR)
 	@echo "==== Compiling $< into $@. ===="
 	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
 
+$(WEBOBJDIR)/%.o: $(CS3081DIR)/web/%.cpp
+	@echo "==== Auto-Generating Dependencies for $<. ===="
+	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
+	@echo "==== Compiling $< into $@. ===="
+	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
+$(WEBOBJDIR)/%.o: $(CS3081DIR)/web/%.cc
+	@echo "==== Auto-Generating Dependencies for $<. ===="
+	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
+	@echo "==== Compiling $< into $@. ===="
+	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
 #NEED TO ADD EXECUTABLE RULE FOR BUILDING TransitSim.obj
 $(DRIVEROBJDIR)/$(PROJECT_NAME).o: $(DRIVERDIR)/$(PROJECT_NAME).cc | $(DRIVEROBJDIR)
 	@echo "==== Auto-Generating Dependencies for $<. ===="
 	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
 	@echo "==== Compiling $< into $@. ===="
 	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
+$(DRIVEROBJDIR)/$(PROJECT_NAME3).o: $(DRIVERDIR)/$(PROJECT_NAME3).cc | $(DRIVEROBJDIR)
+	@echo "==== Auto-Generating Dependencies for $<. ===="
+	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
+	@echo "==== Compiling $< into $@. ===="
+	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+
 	
 # WITH AUTO-GENERATED DEPENDENCIES:
 # Note that there are actually two steps to the compiling recipe above.  The second
@@ -129,7 +164,7 @@ make-depend-cxx=$(CXX) -MM -MF $3 -MP -MT $2 $(CXXFLAGS) $1
 # written in this file.  This is done with make's own "include" command, which
 # enables us to include one Makefile within another.
 -include $(addprefix $(OBJDIR)/,$(OBJFILES:.o=.d))
-
+-include $(addprefix $(WEBOBJDIR)/,$(WEBOBJFILES:.o=.d))
 
 
 # LINKING:
@@ -142,11 +177,22 @@ $(EXEFILE): $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $@ $(LDLIBS)
 
+capture_transit_sim: $(addprefix $(OBJDIR3)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME3).o | $(BINDIR) 
+	@echo "==== Linking $@. ===="
+	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR3)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME3).o -o $(BINDIR)/$@ $(LDLIBS)
+
+config_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o | $(BINDIR) 
+	@echo "==== Linking $@. ===="
+	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(DRIVEROBJDIR)/$(PROJECT_NAME).o -o $(BINDIR)/$@ $(LDLIBS)
+
+vis_sim: $(addprefix $(OBJDIR)/, $(OBJFILES)) $(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)) | $(BINDIR)
+	@echo "==== Linking $@. ===="
+	@$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $(addprefix $(WEBOBJDIR)/, $(WEBOBJFILES)) -o $(BINDIR)/$@ $(LDLIBS)
+
 %_test: $(DRIVEROBJDIR)/%_driver.o $(addprefix $(OBJDIR)/, $(OBJFILES)) | $(BINDIR)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) $< -o $(BINDIR)/$@ $(LDLIBS)
 
-	
 check-style:
 	@echo "==== Checking style is correct ===="
 	$(REPOROOTDIR)/cpplint/cpplint.py --root=.. *.cc *.h
@@ -158,6 +204,7 @@ check-style-cse:
 # Clean up the project, removing ALL files generated during a build.
 #TODO - Need to add driver cleaning here
 clean:
+	@rm -rf $(WEBOBJDIR)
 	@rm -rf $(OBJDIR)
 	@rm -rf $(EXEFILE)
 	@rm -rf $(BINDIR)/*_test

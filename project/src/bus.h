@@ -3,6 +3,7 @@
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
+
 #ifndef SRC_BUS_H_
 #define SRC_BUS_H_
 
@@ -17,6 +18,7 @@
 #include "src/passenger.h"
 #include "src/route.h"
 #include "src/stop.h"
+#include "src/data_structs.h"
 
 /*******************************************************************************
  * Class Definitions
@@ -82,7 +84,8 @@ class Bus {
   * 
   * This function updates the bus's state if the trip is not complete.  If the
   * bus is at a stop, as determined by Move(), passengers will be unloaded and
-  * loaded.
+  * loaded.  If the bus is at the end of a trip, it will update the complete
+  * member variable to true.
   *
   * @return void
   */
@@ -101,24 +104,137 @@ class Bus {
 /**
   * @brief The trip complete checker function for Bus objects.
   * 
-  * This function checks if the bus is at the end of both the incoming and
-  * outgoing routes by using IsAtEnd()
-  * *[EDIT]* This accessor function retrieves the member variable complete
+  * This function returns the member variable complete which is changed
+  * depending on if the bus is at the end of the trip.
   *
   * @return bool object that is true if complete or false if incomplete
   */
   bool IsTripComplete();
-  /**
-  * @brief The bus GetPassengerList function for Bus objects.
+/**
+  * @brief The passenger list getter function for Bus objects.
   * 
   * This function accesses the private member variable passenger_
   *
   * @return std::list<Passenger *> list of passengers onboard bus
   */
   std::list<Passenger *> GetPassengerList();
+/**
+  * @brief The bus data updater function for Bus objects.
+  * 
+  * This function updates all the attributes of the BusData object belonging
+  * to this bus.  The position, name_, num_passengers, and capacity are all
+  * updated.
+  *
+  * @return void
+  */
+  void UpdateBusData();
+/**
+  * @brief The BusData getter function for Bus objects.
+  * 
+  * This function accesses the private BusData member variable bData.
+  *
+  * @return BusData object that holds information about this bus
+  */
+  BusData GetBusData() {return *bData;}
+/**
+  * @brief The name getter function for Bus objects.
+  * 
+  * This function accesses the private member variable name_.
+  *
+  * @return std::string name_ bus's nickname is returned
+  */
+  std::string GetName() const {return name_;}
+/**
+  * @brief The next stop getter function for Bus objects.
+  * 
+  * This function accesses the private member variable nextStop;
+  *
+  * @return Stop * next stop object
+  */
+  Stop * GetNextStop();
+/**
+  * @brief The num passengers getter function for Bus objects.
+  * 
+  * This function accesses the size of the private member variable passenger_.
+  *
+  * @return size_t size of the list of passengers onboard bus
+  */
+  size_t GetNumPassengers() {return passengers_.size();}
+/**
+  * @brief The bus capacity getter function for Bus objects.
+  * 
+  * This function accesses the private member variable
+  * passenger_max_capacity_.
+  *
+  * @return int capacity of the bus
+  */
+  int GetCapacity() {return passenger_max_capacity_;}
+/**
+  * @brief The get bus speed function for Bus objects.
+  * 
+  * This function accesses the private member variable speed_.
+  *
+  * @return double speed of the bus
+  */
+  double GetSpeed() {return speed_;}
+/**
+  * @brief The get incoming route function for Bus objects.
+  * 
+  * This function accesses the private member variable
+  * incoming_route_.
+  *
+  * @return Route * route object for the incoming route
+  */
+  Route * GetIn() {return incoming_route_;}
+/**
+  * @brief The get outgoing route function for Bus objects.
+  * 
+  * This function accesses the private member variable
+  * outgoing_route_.
+  *
+  * @return Route * route object for the outgoing route
+  */
+  Route * GetOut() {return outgoing_route_;}
+/**
+  * @brief The set current stop function for Bus objects.
+  * 
+  * This function sets the private member variable currentStop.
+  *
+  * @param[in] Stop * stop, the Stop object which the currentStop will
+  * be set to.
+  *
+  * @return void
+  */
+  void SetStop(Stop * stop) {currentStop = stop;}
+/**
+  * @brief The get current stop function for Bus objects.
+  * 
+  * This function accesses the private member variable currentStop.
+  * 
+  * @return Stop * current stop of the bus
+  */
+  Stop * GetStop() {return currentStop;}
+/**
+  * @brief The get distance remaining function for Bus objects.
+  * 
+  * This function accesses the private member variable distance_remaining.
+  *
+  * @return double distance remaining to next stop
+  */
+  double GetDistRemaining() {return distance_remaining_;}
+/**
+  * @brief The get current route function for Bus objects.
+  * 
+  * This function accesses the private member variable currentRoute.
+  *
+  * @return Route * current route of the bus
+  */
+  Route * GetCurrRoute() {return currentRoute;}
 
  private:
+  BusData * bData;
   Stop * currentStop;
+  Stop * nextStop;
   bool skipcase;
   bool hasSwitchedRoutes;
   std::list<Passenger *> passengers_;

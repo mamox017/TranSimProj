@@ -5,6 +5,7 @@
  ******************************************************************************/
 
 #include "src/bus.h"
+#include <math.h>
 
 /*******************************************************************************
  * Member Functions
@@ -14,6 +15,13 @@
 Bus::Bus(std::string name, Route * out, Route * in,
 int capacity, double speed) {
   // Sets all member variables
+
+  bData = new BusData();
+  bData->id = name;
+
+  bData->num_passengers = passengers_.size();
+  bData->capacity = capacity;
+
   name_ = name;
   outgoing_route_ = out;
   incoming_route_ = in;
@@ -22,9 +30,50 @@ int capacity, double speed) {
   skipcase = false;
   complete = false;
   hasSwitchedRoutes = false;
-  distance_remaining_ = 0;
-  currentStop = incoming_route_->GetFirstStop();
-  currentRoute = incoming_route_;
+  currentStop = outgoing_route_->GetFirstStop();
+  distance_remaining_ = currentStop->getDistance();
+
+  nextStop = GetNextStop();
+  currentRoute = outgoing_route_;
+  bData->position = outgoing_route_->GetFirstStop()->getPos();
+}
+
+// BusData updater
+void Bus::UpdateBusData() {
+  // instantiates position to set and retrieves next stop
+  Stop * followingStop = GetNextStop();
+  Position * bPos = new Position();
+
+  // if in middle of travel to next stop, go half distance on visual
+  if (distance_remaining_ < currentStop->getDistance()) {
+    double x = static_cast<float>((currentStop->getLong()+
+    followingStop->getLong())/2.0);
+    double y = static_cast<float>((currentStop->getLat()+
+    followingStop->getLat())/2.0);
+    // set position attributes
+    bPos->x = x;
+    bPos->y = y;
+  } else {  // else if landed at a stop, put bus visual on the stop
+    *bPos = currentStop->getPos();
+  }
+
+  // update BusData object attributes
+  bData->id = name_;
+  bData->position = *bPos;
+  bData->num_passengers = static_cast<int>(GetNumPassengers());
+  bData->capacity = GetCapacity();
+}
+
+// returns next stop of the bus
+Stop * Bus::GetNextStop() {
+  // if currentStop is not null, then return next Stop
+  if (currentStop != NULL) {
+    if (currentStop->GetNextStop() != NULL) {
+      nextStop = currentStop->GetNextStop();
+      return nextStop;
+    }
+  }
+  return NULL;
 }
 
 // Loads passengers onto the bus by pushing them on list
@@ -55,55 +104,59 @@ bool Bus::UnloadPassengers() {
 
 // Moves the bus at given speed
 bool Bus::Move() {
-  // If not at end of outgoing_route
-  // hasSwitchedRoutes is false when the bus travels on incoming_route_
-  if (!(currentRoute->IsAtEnd() && hasSwitchedRoutes == true)) {
     // Distance is corrected with each time step
     distance_remaining_ = distance_remaining_ - speed_;
     // If at stop
     if (distance_remaining_ <= 0) {
       // Passengers are taken care of
       UnloadPassengers();
-      currentStop->LoadPassengers(this);
-
-      // This case resolves issues at route switching
-      // Lower cases take care of setting the next stop
-      if (static_cast<int>(distance_remaining_) == 0 || skipcase == true) {
-        skipcase = false;
-      } else {
-        // Sets the next stop as the current stop
-        currentStop = currentStop->GetNextStop();
-      }
-
-      // Sets the next stop of the route
+      // land at the stop
+      currentStop = currentStop->GetNextStop();
       currentRoute->NextStop();
-      // Case that occurs when incoming_route_ is finished
-      if (((currentRoute->IsAtEnd())) && hasSwitchedRoutes == false) {
-        // Switches routes over and sets the next stops accordingly
-        currentRoute = outgoing_route_;
-        currentStop->SetNextStop(currentRoute->GetFirstStop());
-        // Sets distance to first distance in the next route
-        distance_remaining_ = currentRoute->GetFirstDistance();
-        // Sets up the skip case mentioned above and signals it is outgoing now
-        hasSwitchedRoutes = true;
+
+      if (currentRoute->IsAtEnd() && hasSwitchedRoutes == true) {
+        passengers_.clear();
+        if (complete == true) {
+          distance_remaining_ = 0;
+        } else {
+          distance_remaining_ = currentStop->getDistance();
+        }
         skipcase = true;
-      } else if (!(currentRoute->IsAtEnd())) {  // Middle of the route case
-        distance_remaining_ = currentRoute->GetNextStopDistance();
-      } else {  // Case where at the end of trip
-        complete = true;
-      }
+        // currentRoute->NextDestinationStop();
+        // UpdateBusData();
+        return true;
+      } else if ((currentRoute->IsAtEnd())) {  // switch route case
+        // empties all first route passengers
+        passengers_.clear();
+        // switches routes over
+        currentRoute = incoming_route_;
+        // sets next stop to first of new route
+        currentStop->SetNextStop(incoming_route_->GetFirstStop());
+        distance_remaining_ = 0;
+        hasSwitchedRoutes = true;
+      } else {  // general case, in the middle of a route
+        // just updates distance remaining for next stop
+        distance_remaining_ = currentStop->getDistance();
+        currentStop->LoadPassengers(this);
+        currentRoute->NextDestinationStop();
+      }  // returns true if at a new stop, false if not
       return true;
     }
+    return false;
   }
-  return false;
-}
 
 // Update
 void Bus::Update() {  // using common Update format
   // Stops running if trip is complete
-  // maybe test to see if removing if statement makes no seg
   if (!IsTripComplete()) {
+    // Handles a case, waits until at last stop to mark trip complete
+    if (skipcase == true) {
+      complete = true;
+    }
+    // Moves the bus and updates the passengers and BusData object
     Move();
+    // Calls updater for BusData object
+    UpdateBusData();
     for (std::list<Passenger *>::iterator it = passengers_.begin();
     it != passengers_.end(); it++) {
       (*it)->Update();
@@ -122,11 +175,8 @@ std::list<Passenger *> Bus::GetPassengerList() {
 //  fuel_ = max_fuel_;
 // }
 
-// Returns whether at end of both stops
+// Returns complete member variable, which is changed in Move()
 bool Bus::IsTripComplete() {
-  if (incoming_route_->IsAtEnd() && outgoing_route_->IsAtEnd()) {
-    complete = true;
-  }
   return complete;
 }
 
@@ -135,6 +185,8 @@ void Bus::Report(std::ostream& o) {
   o << "Name: " << name_ << std::endl;
   o << "Speed: " << speed_ << std::endl;
   o << "Distance to next stop: " << distance_remaining_ << std::endl;
+  // o << "CURRENT STOP: " << currentStop->GetId() << std::endl;
+  // o << "NEXT STOP: " << currentStop->GetNextStop()->GetId() << std::endl;
   o << "\tPassengers (" << passengers_.size() << "): " << std::endl;
   for (std::list<Passenger *>::iterator it = passengers_.begin();
 it != passengers_.end(); it++) {

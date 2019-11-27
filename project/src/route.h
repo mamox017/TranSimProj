@@ -17,6 +17,7 @@
 
 #include "./passenger_generator.h"
 #include "./stop.h"
+#include "src/data_structs.h"
 
 /*******************************************************************************
  * Class Definitions
@@ -64,7 +65,7 @@ class Route {
   *
   * @return void
   */
-  void Update();
+  void Update(std::ostream &o = std::cout);
 /**
   * @brief The report function for Route objects.
   * 
@@ -88,8 +89,7 @@ class Route {
 /**
   * @brief The next stop function for Route objects.
   * 
-  * This function changes currentStop to the destination_stop_ and changes the
-  *  destination_stop_ to next stop.  Also increments destination_stop_index_.
+  * This function changes currentStop to the destination_stop.
   *
   * @return void
   */
@@ -179,9 +179,72 @@ class Route {
   * @return PassengerGenerator generator of the route
   */
   PassengerGenerator * GetGenerator();
+/**
+  * @brief The route data updater function for Route objects.
+  * 
+  * This function updates all the attributes of the Route object belonging
+  * to this route.  The name and vector list of StopData objects are all
+  * updated.
+  *
+  * @return void
+  */
+  void UpdateRouteData();
+/**
+  * @brief The route get stops function for Route objects.
+  * 
+  * This function accesses the Stop * list private member variable
+  *
+  * @return std::list<Stop *> stops_ list of Stop * objects
+  */
+  std::list<Stop *> GetStops() {return stops_;}
+/**
+  * @brief The RouteData getter function for Route objects.
+  * 
+  * This function accesses the private RouteData member variable rData.
+  *
+  * @return RouteData object that holds information about this route
+  */
+  RouteData GetRouteData() {return *rData;}
+/**
+  * @brief The next destination stop function for Route objects.
+  * 
+  * This function updates the member variables destination_stop_ to the next 
+  * stop and increments destination_stop_index.
+  *
+  * @return void
+  */
+  void NextDestinationStop();
+/**
+  * @brief The end of route checker function for Route objects.
+  * 
+  * This function checks if the Stop object argument is the same as the
+  * last Stop object in the stop list of the route.
+  *
+  * @param[in] Stop * stopToCheck, Stop object to be checked with last Stop
+  *
+  * @return bool of whether the argument matches last stop in stop list
+  */
+  bool IsEnd(Stop * stopToCheck);
+/**
+  * @brief The current stop getter function for Route objects.
+  * 
+  * This function accesses the private member variable currentStop.
+  *
+  * @return int id of the currentStop of the route
+  */
+  int getCurrentStop();
 
  private:
-  int GenerateNewPassengers();       // generates passengers on its route
+/**
+  * @brief The passenger generator for Route objects.
+  * 
+  * This generates passengers along all the stops on the route
+  * by calling the Generate function on the generator
+  *
+  * @return int number of passengers generated
+  */
+  int GenerateNewPassengers(std::ostream& o = std::cout);
+  RouteData * rData;
   PassengerGenerator * generator_;
   std::list<Stop *> stops_;
   std::list<double> distances_between_;
