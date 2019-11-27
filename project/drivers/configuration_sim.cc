@@ -30,6 +30,7 @@ int main(int argc, char**argv) {
 
   bool invalidName = false;
   ConfigManager * configManager_ = new ConfigManager();
+  // if there is a config file argument
   if (argc > 1) {
     std::string fileName = argv[1];
     configManager_->ReadConfig(fileName);
@@ -45,6 +46,7 @@ int main(int argc, char**argv) {
   ConfigurationSimulator *configSim =
   new ConfigurationSimulator(configManager_);
 
+  // if there is a second argument
   int lengthofsim = 25;
   if (argc > 2) {
     lengthofsim = std::stoi(argv[2]);
@@ -53,6 +55,7 @@ int main(int argc, char**argv) {
     << std::endl;
   }
 
+  // if there is a fourth argument
   std::ofstream myFilePtr;
   if (argc > 4) {
     std::string outfileName = argv[4];
@@ -65,13 +68,17 @@ int main(int argc, char**argv) {
 
   std::vector<int> timings;
 
+
+  // if there is a third argument
   if (argc > 3) {
     int timing = std::stoi(argv[3]);
     if (timing > 10 || timing < 1) {
       std::cout << "ERROR: Please input a timing between 1 and 10" << std::endl;
       return 1;
     }
+    // push back timings
     timings.push_back(timing);
+
   } else {
     std::cout << "Note: no time between busses given, busTimings set to: 5"
     << std::endl;
