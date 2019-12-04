@@ -47,8 +47,10 @@ void Bus::UpdateBusData() {
   // if in middle of travel to next stop, go half distance on visual
   if (distance_remaining_ < currentStop->getDistance()) {
     // replace temp with query refactor
-    float x = AvgDistCalc(followingStop, "long");
-    float y = AvgDistCalc(followingStop, "lat");
+    float x = static_cast<float>((currentStop->getLong()+
+    followingStop->getLong())/2.0);
+    float y = static_cast<float>((currentStop->getLat()+
+    followingStop->getLat())/2.0);
     // set position attributes
     bPos->x = x;
     bPos->y = y;
@@ -63,6 +65,8 @@ void Bus::UpdateBusData() {
   bData->capacity = GetCapacity();
 }
 
+// Refactoring not supposed to be in final submission
+// Function not used
 // replace temp with query refactor function
 float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
   // if we want to find avg dist between longitudes

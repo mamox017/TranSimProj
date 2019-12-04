@@ -36,9 +36,10 @@ int RandomPassengerGenerator::GeneratePassengers(std::ostream& o) {
   std::list<double>::iterator prob_iter;
   std::list<Stop *>::iterator stop_iter;
 
+  // refactoring not supposed to be in final submission?
   // refactored generation probability to 0 for final stop
-  generation_probabilities_.pop_back();
-  generation_probabilities_.push_back(0);
+  // generation_probabilities_.pop_back();
+  // generation_probabilities_.push_back(0);
 
   stop_iter = stops_.begin();
   int stop_index = (*stop_iter)->GetId();  // used for passenger generation
