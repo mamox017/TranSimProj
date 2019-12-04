@@ -230,6 +230,16 @@ class Bus {
   * @return Route * current route of the bus
   */
   Route * GetCurrRoute() {return currentRoute;}
+/**
+  * @brief The avg dist calc function for Bus objects.
+  * 
+  * This function finds the average distance between the latitudes or
+  * longitudes of two stops.
+  *
+  * @return float average distance between latitudes or longitudes
+  */
+  float AvgDistCalc(Stop * currStop, Stop * followStop,
+    std::string lat_or_long);
 
  private:
   BusData * bData;
