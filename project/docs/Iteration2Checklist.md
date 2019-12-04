@@ -2,6 +2,10 @@
 
 > The iteration 2 code and documentation is due on WEDNESDAY, November 27 at 11:55pm.
 
+> VERSION 3: Added "root" flag to CPPLINT check for .cc files
+
+> VERSION 2: Updated Doxygen requirements to run from within docs/
+
 **__Please copy this file into your project/docs folder__**. Place an 'x' in each of the `[ ]` boxes for items that are complete. Push this completed checklist to github. When it displays on Github, it will show an actual checkbox with a check mark.
 
 _Note: This checklist is not authoratative. If something is missing on the checklist, that does not imply it is not needed or that you don't need to do it. The requirments and rubric are the source-of-truth on what you need to do. This is merely a guide to help walk you through submission._
@@ -9,7 +13,7 @@ _Note: This checklist is not authoratative. If something is missing on the check
 ### Compilation and Execution
 
 - [x] I cloned **fresh** from github onto a cselabs machine to test compilation.
-- [ ] Submission is on the master branch of the my personal repo "repo-<username>".
+- [x] Submission is on the master branch of the my personal repo "repo-<username>".
 - [x] _/project folder exists.
 - [x] _/build_ is not in the repo.
 - [x] _/html_ is not in _docs_. !DELETE AFTER MERGING TO MASTER
@@ -75,8 +79,8 @@ _Note: This checklist is not authoratative. If something is missing on the check
 
 When everything above is as you want it (or it is 11:50pm on Wednesday), it is time to submit!
 
-- [ ] I pushed this file and any changes resulting from this checklist.
-- [ ] Everything is in the **__master__** branch.
+- [x] I pushed this file and any changes resulting from this checklist.
+- [x] Everything is in the **__master__** branch.
 
 _One more thing -- check that what you think you pushed was really pushed to github on the master branch. Go to your repo on github.umn.edu and look at your files. If you can see it there, we can see it. If you can't, we can't._
 
