@@ -1,0 +1,43 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~ Replace Temp With Query
+
+
+Look through your code and identify a temporary variable that is referenced multiple times and holds the result of an expression. Create a function that evaluates the expression and replace all references to the temp with this function call. Complete the following tasks:
+
+IN THE BRANCH refactor/iter3, refactor the code in your iteration3 source code (/project/src).
+
+Create a text or web-viewable document called refactor.xxx in the /docs directory, that contains these:
+
+A list of the files and methods added and/or changed.
+The code, filename, and line number where the temporary variable was defined.
+The name of the new method you created and where it is located. Identify clearly also where any changes were made to call the new function.
+A brief explanation of what behavior this is replacing. What does the new function specifically do? (No more than one paragraph.)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~ Change Variable and/or Method Names
+
+
+Look through your code and identify two names (either class variables or methods) that do not provide meaningful information about the data they store or their functionality, respectively. Update your variable and/or method names and make all necessary naming changes. Complete the following tasks:
+
+IN THE BRANCH refactor/iter3, refactor the code in the original file(s) in your iteration 3 source code (/project/src).
+Create a text or web-viewable document called refactor.xxx in your /docs folder, that contains:
+
+A list of the files and methods where you are making your changes.
+The original variable and/or method names that you are changing and what their new names are called after the refactor.
+A brief explanation of how your new names are better than the old ones (no more than one paragraph.)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~ Extract Method
+
+
+Look through your code and identify a method that is too long and extract at least one method from this. Be sure to update all method calls as needed. Look at Lab09(?) if you get stuck on how to approach this. Complete the following tasks:
+
+IN THE BRANCH refactor/iter3, refactor the code in the original file(s) in your iteration 3 source code (/project/src).
+
+Create a text or web-viewable document called refactor.xxx in your /docs folder that contains:
+
+A list of the files and the method(s) you are changing.
+The location of the changes. Be sure you explain briefly what you are doing at each location.
+A brief explanation of how this improves your code (no more than one paragraph.)
