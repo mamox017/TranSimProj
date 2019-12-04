@@ -9,35 +9,53 @@ IN THE BRANCH refactor/iter3, refactor the code in your iteration3 source code (
 Create a text or web-viewable document called refactor.xxx in the /docs directory, that contains these:
 
 A list of the files and methods added and/or changed.
+- Method Added: AvgDistCalc(Stop *, Stop *, std::string)
+- Method Changed: UpdateBusData()
+
+
 The code, filename, and line number where the temporary variable was defined.
+
+The temporary variables defined were the average distances between the current stop and following stop that is given to the BusData when it is updated in UpdateBusData during the movement from one stop to another
+
+Filename: bus.cc
+
+Line 49:	double x = static_cast<float>((currentStop->getLong()+followingStop->getLong())/2.0);
+Line 51:	double y = static_cast<float>((currentStop->getLat()+followingStop->getLat())/2.0);
+
+
 The name of the new method you created and where it is located. Identify clearly also where any changes were made to call the new function.
+
+New Method Name: AvgDistCalc
+It is located on lines 67-81 of bus.cc
+
+The temporary variables were now initialized with function calls instead of calculations
+Line 50:     float x = AvgDistCalc(followingStop, "long");
+Line 51:     float y = AvgDistCalc(followingStop, "lat");
+
+
 A brief explanation of what behavior this is replacing. What does the new function specifically do? (No more than one paragraph.)
 
+AvgDistCalc Function:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~ Change Variable and/or Method Names
+// replace temp with query refactor function
+float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
+  // if we want to find avg dist between longitudes
+  if  (lat_or_lon.compare("long") == 0) {
+    float x = static_cast<float>((currentStop->getLong()+
+    followStop->getLong())/2.0);
+    return x;
+  } else if (lat_or_lon.compare("lat") == 0) {
+    // if we want to find avg dist between latitudes
+    float y = static_cast<float>((currentStop->getLat()+
+    followStop->getLat())/2.0);
+    return y;
+  } else {
+    return 0;
+  }
+}
 
-
-Look through your code and identify two names (either class variables or methods) that do not provide meaningful information about the data they store or their functionality, respectively. Update your variable and/or method names and make all necessary naming changes. Complete the following tasks:
-
-IN THE BRANCH refactor/iter3, refactor the code in the original file(s) in your iteration 3 source code (/project/src).
-Create a text or web-viewable document called refactor.xxx in your /docs folder, that contains:
-
-A list of the files and methods where you are making your changes.
-The original variable and/or method names that you are changing and what their new names are called after the refactor.
-A brief explanation of how your new names are better than the old ones (no more than one paragraph.)
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~ Extract Method
-
-
-Look through your code and identify a method that is too long and extract at least one method from this. Be sure to update all method calls as needed. Look at Lab09(?) if you get stuck on how to approach this. Complete the following tasks:
-
-IN THE BRANCH refactor/iter3, refactor the code in the original file(s) in your iteration 3 source code (/project/src).
-
-Create a text or web-viewable document called refactor.xxx in your /docs folder that contains:
-
-A list of the files and the method(s) you are changing.
-The location of the changes. Be sure you explain briefly what you are doing at each location.
-A brief explanation of how this improves your code (no more than one paragraph.)
+The average distance calc function takes in a Stop * called followStop and a std::string called lat_or_lon.  The lat_or_lon identifies whether or not it is the latitudes or longitudes that we want to deal with.  
+We use std::string.compare() to discover which input we are working on, the two cases that lat_or_lon are to deal with are "lat" and "long".  If lat_or_lon.compare("long") is equal to 0, then we are to take
+the average of the longitudes of the currentStop and followStop and cast it as a float.  Otherwise lat_or_lon.compare("long") should be equal to 0, which will result in the taking of the average of the 
+latitudes of the currentStop and followStop, and that is casted as a float.  The result is returned.  A case is also present for if lat_or_lon.compare is not 0 for either "lat" or "long", which will just 
+return 0.

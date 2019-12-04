@@ -47,8 +47,8 @@ void Bus::UpdateBusData() {
   // if in middle of travel to next stop, go half distance on visual
   if (distance_remaining_ < currentStop->getDistance()) {
     // replace temp with query refactor
-    float x = AvgDistCalc(currentStop, followingStop, "long");
-    float y = AvgDistCalc(currentStop, followingStop, "lat");
+    float x = AvgDistCalc(followingStop, "long");
+    float y = AvgDistCalc(followingStop, "lat");
     // set position attributes
     bPos->x = x;
     bPos->y = y;
@@ -64,16 +64,15 @@ void Bus::UpdateBusData() {
 }
 
 // replace temp with query refactor function
-float Bus::AvgDistCalc(Stop * currStop, Stop * followStop,
-  std::string lat_or_lon) {
+float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
   // if we want to find avg dist between longitudes
   if  (lat_or_lon.compare("long") == 0) {
-    float x = static_cast<float>((currStop->getLong()+
+    float x = static_cast<float>((currentStop->getLong()+
     followStop->getLong())/2.0);
     return x;
   } else if (lat_or_lon.compare("lat") == 0) {
     // if we want to find avg dist between latitudes
-    float y = static_cast<float>((currStop->getLat()+
+    float y = static_cast<float>((currentStop->getLat()+
     followStop->getLat())/2.0);
     return y;
   } else {

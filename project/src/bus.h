@@ -236,10 +236,12 @@ class Bus {
   * This function finds the average distance between the latitudes or
   * longitudes of two stops.
   *
+  * @param[in]: Stop * followingstop of which to take average from
+  * @param[in]: std::string identifier of latitude or longitude
+  *
   * @return float average distance between latitudes or longitudes
   */
-  float AvgDistCalc(Stop * currStop, Stop * followStop,
-    std::string lat_or_long);
+  float AvgDistCalc(Stop * followStop, std::string lat_or_long);
 
  private:
   BusData * bData;
