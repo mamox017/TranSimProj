@@ -35,13 +35,16 @@ int RandomPassengerGenerator::GeneratePassengers(std::ostream& o) {
   int passengers_added = 0;
   std::list<double>::iterator prob_iter;
   std::list<Stop *>::iterator stop_iter;
+
+  // refactored generation probability to 0 for final stop
+  generation_probabilities_.pop_back();
+  generation_probabilities_.push_back(0);
+
   stop_iter = stops_.begin();
   int stop_index = (*stop_iter)->GetId();  // used for passenger generation
   stop_iter = stops_.end();
   stop_iter--;
-  int last_stop_index = (*stop_iter)->GetId();  // commented out
-  // stop_iter--;
-  // int second_to_last_stop_index = (*stop_iter)->GetId();  // last stop 4prob
+  int last_stop_index = (*stop_iter)->GetId();
   // TODO(Staff): check for accuracy
   o << "Time to generate!" << std::endl;
   for (prob_iter = generation_probabilities_.begin(),
@@ -65,9 +68,7 @@ int RandomPassengerGenerator::GeneratePassengers(std::ostream& o) {
         // use the passenger factory to determine the destination
         // return value is 1 if passenger was added, 0 if it wasn't
         Passenger * tmp = PassengerFactory::
-                          Generate(stop_index,
-                                 last_stop_index);  // doesn't try to
-                          // access final stop in route probability here
+                          Generate(stop_index, last_stop_index);
         passengers_added += (*stop_iter)->AddPassengers(tmp);
       }
       // whether you generated or not, square the probability (reducing it)

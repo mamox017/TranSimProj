@@ -62,7 +62,6 @@ Passenger * PassengerFactory::Generate(int curr_stop, int last_stop) {
   //  what stop the passenger will depart the bus
 
   int destination = (dist(e) % (last_stop - curr_stop)) + curr_stop + 1;
-
   return new Passenger(destination, new_name);
 }
 

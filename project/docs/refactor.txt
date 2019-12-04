@@ -11,6 +11,7 @@ IN THE BRANCH refactor/iter3, refactor the code in your iteration3 source code (
 Create a text or web-viewable document called refactor.xxx in the /docs directory, that contains these:
 
 *A list of the files and methods added and/or changed.
+
 	- Method Added: AvgDistCalc(Stop *, Stop *, std::string)
 	- Method Changed: UpdateBusData()
 
