@@ -1,8 +1,10 @@
+Mootii Mamo, mamox017@umn.edu
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~ Replace Temp With Query
 
 
-Look through your code and identify a temporary variable that is referenced multiple times and holds the result of an expression. Create a function that evaluates the expression and replace all references to the temp with this function call. Complete the following tasks:
+Look through your code and identify a temporary variable that is referenced multiple times and holds the result of an expression. Create a
+function that evaluates the expression and replace all references to the temp with this function call. Complete the following tasks:
 
 IN THE BRANCH refactor/iter3, refactor the code in your iteration3 source code (/project/src).
 
@@ -15,7 +17,8 @@ A list of the files and methods added and/or changed.
 
 The code, filename, and line number where the temporary variable was defined.
 
-The temporary variables defined were the average distances between the current stop and following stop that is given to the BusData when it is updated in UpdateBusData during the movement from one stop to another
+The temporary variables defined were the average distances between the current stop and following stop that is given to the BusData when it
+is updated in UpdateBusData during the movement from one stop to another
 
 Filename: bus.cc
 
@@ -54,8 +57,10 @@ float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
   }
 }
 
-The average distance calc function takes in a Stop * called followStop and a std::string called lat_or_lon.  The lat_or_lon identifies whether or not it is the latitudes or longitudes that we want to deal with.  
-We use std::string.compare() to discover which input we are working on, the two cases that lat_or_lon are to deal with are "lat" and "long".  If lat_or_lon.compare("long") is equal to 0, then we are to take
-the average of the longitudes of the currentStop and followStop and cast it as a float.  Otherwise lat_or_lon.compare("long") should be equal to 0, which will result in the taking of the average of the 
-latitudes of the currentStop and followStop, and that is casted as a float.  The result is returned.  A case is also present for if lat_or_lon.compare is not 0 for either "lat" or "long", which will just 
-return 0.
+The average distance calc function takes in a Stop * called followStop and a std::string called lat_or_lon.  The lat_or_lon identifies
+whether or not it is the latitudes or longitudes that we want to deal with.  We use std::string.compare() to discover which input we
+are working on, the two cases that lat_or_lon are to deal with are "lat" and "long".  If lat_or_lon.compare("long") is equal to 0, 
+then we are to take the average of the longitudes of the currentStop and followStop and cast it as a float.  Otherwise 
+lat_or_lon.compare("long") should be equal to 0, which will result in the taking of the average of the latitudes of the currentStop and
+followStop, and that is casted as a float.  The result is returned.  A case is also present for if lat_or_lon.compare is not 0 for either
+"lat" or "long", which will just return 0.
