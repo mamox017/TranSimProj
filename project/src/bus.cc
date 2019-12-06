@@ -28,6 +28,7 @@ int capacity, double speed) {
   passenger_max_capacity_ = capacity;
   speed_ = speed;
   skipcase = false;
+  skipcase2 = false;
   complete = false;
   hasSwitchedRoutes = false;
   currentStop = outgoing_route_->GetFirstStop();
@@ -131,8 +132,12 @@ bool Bus::Move() {
       // Passengers are taken care of
       UnloadPassengers();
       // land at the stop
-      currentStop = currentStop->GetNextStop();
-      currentRoute->NextStop();
+      if (hasSwitchedRoutes == true && skipcase2 == true) {
+        currentStop = incoming_route_->GetFirstStop();
+      } else {
+        currentStop = currentStop->GetNextStop();
+        currentRoute->NextStop();
+      }
 
       if (currentRoute->IsAtEnd() && hasSwitchedRoutes == true) {
         passengers_.clear();
@@ -145,20 +150,23 @@ bool Bus::Move() {
         // currentRoute->NextDestinationStop();
         // UpdateBusData();
         return true;
-      } else if ((currentRoute->IsAtEnd())) {  // switch route case
+      } else if (currentRoute->IsAtEnd()) {  // switch route case
         // empties all first route passengers
         passengers_.clear();
         // switches routes over
         currentRoute = incoming_route_;
         // sets next stop to first of new route
         currentStop->SetNextStop(incoming_route_->GetFirstStop());
+        currentStop->setDistance(0);
         distance_remaining_ = 0;
         hasSwitchedRoutes = true;
+        skipcase2 = true;
       } else {  // general case, in the middle of a route
         // just updates distance remaining for next stop
         distance_remaining_ = currentStop->getDistance();
         currentStop->LoadPassengers(this);
         currentRoute->NextDestinationStop();
+        skipcase2 = false;
       }  // returns true if at a new stop, false if not
       return true;
     }
@@ -205,8 +213,8 @@ void Bus::Report(std::ostream& o) {
   o << "Name: " << name_ << std::endl;
   o << "Speed: " << speed_ << std::endl;
   o << "Distance to next stop: " << distance_remaining_ << std::endl;
-  // o << "CURRENT STOP: " << currentStop->GetId() << std::endl;
-  // o << "NEXT STOP: " << currentStop->GetNextStop()->GetId() << std::endl;
+  o << "CURRENT STOP: " << currentStop->GetId() << std::endl;
+  o << "NEXT STOP: " << currentStop->GetNextStop()->GetId() << std::endl;
   o << "\tPassengers (" << passengers_.size() << "): " << std::endl;
   for (std::list<Passenger *>::iterator it = passengers_.begin();
 it != passengers_.end(); it++) {
