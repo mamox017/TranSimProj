@@ -249,6 +249,7 @@ class Bus {
   Stop * nextStop;
   bool skipcase;
   bool skipcase2;
+  bool firstStop;
   bool hasSwitchedRoutes;
   std::list<Passenger *> passengers_;
   int passenger_max_capacity_;

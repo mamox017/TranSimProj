@@ -60,8 +60,8 @@ For the table below, please specify which aspects were fixed. You should put an 
 
 | Functionality | Complete in it2 | | Fixed in it3 | Still Buggy |
 | -------- | -------- |-| -------- | -------- |
-| segmentation fault on bustimings = 10 |  || x|   |
-| bus is starting at second stop |  || |  x|
+| vis_sim segmentation fault on bustimings = 10 |  || x|   |
+| bus is starting at second stop |  || x|   |
 | config_sim output file input messed up? |  || |  x|
 
 

@@ -30,6 +30,7 @@ int capacity, double speed) {
   skipcase = false;
   skipcase2 = false;
   complete = false;
+  firstStop = true;
   hasSwitchedRoutes = false;
   currentStop = outgoing_route_->GetFirstStop();
   distance_remaining_ = currentStop->getDistance();
@@ -128,7 +129,7 @@ bool Bus::Move() {
     // Distance is corrected with each time step
     distance_remaining_ = distance_remaining_ - speed_;
     // If at stop
-    if (distance_remaining_ <= 0) {
+    if (distance_remaining_ <= 0 && firstStop == false) {
       // Passengers are taken care of
       UnloadPassengers();
       // land at the stop
@@ -167,7 +168,11 @@ bool Bus::Move() {
         currentStop->LoadPassengers(this);
         currentRoute->NextDestinationStop();
         skipcase2 = false;
-      }  // returns true if at a new stop, false if not
+      } // returns true if at a new stop, false if not
+      return true;
+    } else if (firstStop == true) {
+      distance_remaining_ = 0;
+      firstStop = false;
       return true;
     }
     return false;
