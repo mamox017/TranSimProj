@@ -168,9 +168,9 @@ bool Bus::Move() {
         currentStop->LoadPassengers(this);
         currentRoute->NextDestinationStop();
         skipcase2 = false;
-      } // returns true if at a new stop, false if not
+      }  // returns true if at a new stop, false if not
       return true;
-    } else if (firstStop == true) {
+    } else if (firstStop == true) {  // makes the bus start at the first stop
       distance_remaining_ = 0;
       firstStop = false;
       return true;
