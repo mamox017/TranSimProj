@@ -71,7 +71,7 @@ For the table below, please specify which aspects were fixed. You should put an 
 - [x] The mainpage includes a user guide for technical users (updated developers guide from iteration 1).
 - [ ] The mainpage includes a user guide for non-technical users.
 - [x] I commented my code where necessary.
-- [ ] A document named **release_notes.md** specifying names of branch(es) that hold refactoring 1 and 2, and any other assumptions is in project/src directory.
+- [x] A document named **release_notes.md** specifying names of branch(es) that hold refactoring 1 and 2, and any other assumptions is in project/src directory.
 
 ### Linter and Git
 - [x] The code complies with naming conventions for classes, methods, and members.
