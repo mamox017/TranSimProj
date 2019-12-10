@@ -45,10 +45,10 @@
 | File refactor.xxx exists within project/docs/ (where x = pdf or doc or txt or rtf) | x|  |  |  |
 | Refactoring is clearly identified and explained | x|  |  |  |
 | **__Regression Testing__** |
-| Regression testing exercises full breadth of functionality |  |  |  |  |
-| Regression testing is deterministic |  |  |  |  |
-| Regression testing automatically determines if the program behavior is the same or has changed |  |  |  |  |
-| Regression testing requires tester to determine if the output/result is as expected |  |  |  |  |
+| Regression testing exercises full breadth of functionality | x|  |  |  |
+| Regression testing is deterministic | x|  |  |  |
+| Regression testing automatically determines if the program behavior is the same or has changed | x|  |  |  |
+| Regression testing requires tester to determine if the output/result is as expected | x|  |  |  |
 
 <hr>
 
