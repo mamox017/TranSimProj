@@ -59,10 +59,10 @@ Create a text or web-viewable document called refactor.xxx in the /docs director
   }
 
 
-The average distance calc function takes in a Stop * called followStop and a std::string called lat_or_lon.  The lat_or_lon identifies
-whether or not it is the latitudes or longitudes that we want to deal with.  We use std::string.compare() to discover which input we
-are working on, the two cases that lat_or_lon are to deal with are "lat" and "long".  If lat_or_lon.compare("long") is equal to 0, 
-then we are to take the average of the longitudes of the currentStop and followStop and cast it as a float.  Otherwise 
-lat_or_lon.compare("long") should be equal to 0, which will result in the taking of the average of the latitudes of the currentStop and
-followStop, and that is casted as a float.  The result is returned.  A case is also present for if lat_or_lon.compare is not 0 for either
-"lat" or "long", which will just return 0.
+The average distance calc function takes in a std::string called lat_or_lon.  The lat_or_lon identifies
+whether or not it is the latitudes or longitudes that we want to deal with. It also instantiates the following stop as a temporary
+variable, followingStop.  We use std::string.compare() to discover which input we are working on, the two cases that lat_or_lon are
+to deal with are "lat" and "long".  If lat_or_lon.compare("long") is equal to 0, then we are to take the average of the longitudes
+of the currentStop and followingStop and cast it as a float.  Otherwise lat_or_lon.compare("long") should be equal to 0, which will
+result in the taking of the average of the latitudes of the currentStop and followingStop, and that is casted as a float.  The result
+is returned.  A case is also present for if lat_or_lon.compare is not 0 for either "lat" or "long", which will just return 0.
