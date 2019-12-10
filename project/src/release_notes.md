@@ -9,24 +9,26 @@ generating passengers on the last stop.  NEED TO ADD ON REFACTORING SO THAT SIM 
 
 ### Location
 Added lines:
-Lines 40 & 41
+random_passenger_generator.cc, Lines 40 & 41
 ```
 generation_probabilities_.pop_back();
 generation_probabilities_.push_back(0);
 ```
 
 ### Refactoring 2
-This change was done using the Change Temp by Query refactoring method.  It was done in the file,
+This change was done using the Replace Temp with Query refactoring method.  It was done in the file,
 bus.cc, in the UpdateBusData() function.  When the visual simulator accesses a bus's position in between stops, 
 it needs to find the average distance between the two stops it is traveling between.  Originally in my code the
 x and y positions were calculated in the initialization of two temporary variables.  I have replaced this with the
-refactoring method stated above and created a function called AvgDistCalc(Stop * followingStop, std::string lat_or_lon).
-Now when the temporary variables are initialized in UpdateBusData(), they call this function with the arguments of
-the next stop and whether or not the latitude or longitude is being calculated.
+refactoring method stated above and created a function called AvgDistCalc(std::string lat_or_lon).
+Now when the temporary variables are initialized in UpdateBusData(), they call this function with the argument of
+a string that indicates whether the latitude or longitude is being calculated.
 
 ### Location
-Queries (Function calls):
-Line 52 & 54
+Replace Temp with Query (Function calls):
+bus.cc, Lines 52-55
+AvgDistanceCalc function:
+bus.cc, Lines 73-87
 
 Originally:
 ```
@@ -38,25 +40,25 @@ float y = static_cast<float>((currentStop->getLat()+
 
 After Refactoring:
 ```
-float x = AvgDistCalc(followingStop, "long");
-float y = AvgDistCalc(followingStop, "lat");
+float x = AvgDistCalc("long");
+float y = AvgDistCalc("lat");
 ```
 
 AvgDistCalc Function:
 ```
-float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
+float Bus::AvgDistCalc(std::string lat_or_lon) {
+  // retrieves next stop
+  Stop * followingStop = GetNextStop();
   // if we want to find avg dist between longitudes
   if  (lat_or_lon.compare("long") == 0) {
-    float x = static_cast<float>((currentStop->getLong()+
-    followStop->getLong())/2.0);
-    return x;
+    return static_cast<float>((currentStop->getLong()+
+    followingStop->getLong())/2.0);
   } else if (lat_or_lon.compare("lat") == 0) {
     // if we want to find avg dist between latitudes
-    float y = static_cast<float>((currentStop->getLat()+
-    followStop->getLat())/2.0);
-    return y;
+    return static_cast<float>((currentStop->getLat()+
+    followingStop->getLat())/2.0);
   } else {
-   return 0;
+    return 0;
   }
 }
 ```
