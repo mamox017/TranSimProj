@@ -11,8 +11,8 @@ generating passengers on the last stop.  NEED TO ADD ON REFACTORING SO THAT SIM 
 Added lines:
 Lines 40 & 41
 <code>
-generation_probabilities_.pop_back();
-generation_probabilities_.push_back(0);
+$ generation_probabilities_.pop_back();
+$ generation_probabilities_.push_back(0);
 </code>
 
 ### Refactoring 2
