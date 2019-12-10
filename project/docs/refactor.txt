@@ -33,30 +33,31 @@ Create a text or web-viewable document called refactor.xxx in the /docs director
 	- It is located on lines 67-81 of bus.cc
 
 	The temporary variables were now initialized with function calls instead of calculations
-	Line 50:    float x = AvgDistCalc(followingStop, "long");
-	Line 51:    float y = AvgDistCalc(followingStop, "lat");
+	Line 50:    float x = AvgDistCalc("long");
+	Line 51:    float y = AvgDistCalc("lat");
 
 
 *A brief explanation of what behavior this is replacing. What does the new function specifically do? (No more than one paragraph.)
 
 	AvgDistCalc Function:
 
-	// replace temp with query refactor function
-	float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
-	  // if we want to find avg dist between longitudes
-	  if  (lat_or_lon.compare("long") == 0) {
-	    float x = static_cast<float>((currentStop->getLong()+
-	    followStop->getLong())/2.0);
-	    return x;
-	  } else if (lat_or_lon.compare("lat") == 0) {
-	    // if we want to find avg dist between latitudes
-	    float y = static_cast<float>((currentStop->getLat()+
-	    followStop->getLat())/2.0);
-	    return y;
-	  } else {
-	    return 0;
-	  }
-	}
+  // replace temp with query refactor function
+  float Bus::AvgDistCalc(std::string lat_or_lon) {
+    // retrieves next stop
+    Stop * followingStop = GetNextStop();
+    // if we want to find avg dist between longitudes
+    if  (lat_or_lon.compare("long") == 0) {
+      return static_cast<float>((currentStop->getLong()+
+      followingStop->getLong())/2.0);
+    } else if (lat_or_lon.compare("lat") == 0) {
+      // if we want to find avg dist between latitudes
+      return static_cast<float>((currentStop->getLat()+
+      followingStop->getLat())/2.0);
+    } else {
+      return 0;
+    }
+  }
+
 
 The average distance calc function takes in a Stop * called followStop and a std::string called lat_or_lon.  The lat_or_lon identifies
 whether or not it is the latitudes or longitudes that we want to deal with.  We use std::string.compare() to discover which input we

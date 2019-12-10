@@ -241,7 +241,7 @@ class Bus {
   *
   * @return float average distance between latitudes or longitudes
   */
-  float AvgDistCalc(Stop * followStop, std::string lat_or_long);
+  float AvgDistCalc(std::string lat_or_long);
 
  private:
   BusData * bData;
