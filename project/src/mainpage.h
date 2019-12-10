@@ -66,6 +66,22 @@
  *
  * \image html Iteration_2_UML_Diagram.png
  *
+ * \section user_sec User Guide
+ *
+ * <b>How to download TransitSim</b>
+ *
+ * off of github
+ *
+ * <b>Configuring TransitSim</b>
+ *
+ * making it
+ *
+ * <b>How to operate TransitSim</b>
+ *
+ * vis_sim
+ * config_sim
+ * capture_transit_sim
+ *
  * <b>Thanks for reading!</b>
  */
 
