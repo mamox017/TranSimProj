@@ -5,7 +5,7 @@
 
 /*! \mainpage Mootii Mamo, CSCI 3081W, mamox017@umn.edu
  *
- * \section intro_sec Project TransitSim: a Proof-of-Concept Transit System Simulator: Iteration 2
+ * \section intro_sec Project TransitSim: a Proof-of-Concept Transit System Simulator: Iteration 3
  *
  *
  * <b>Introduction</b>
