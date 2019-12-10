@@ -9,14 +9,14 @@
 
 - [ ] I cloned **fresh** from github onto a cselabs machine to test compilation
 - [ ] Submission is on the master branch of the my personal repo "repo-<username>"
-- [ ] _/project folder exists
+- [x] _/project folder exists
 - [x] _/build_ is not in the repo
 - [x] _/html_ is not in _docs_
 - [x] _/latex_ is not in _docs_
 - [x] **__`make` from src completes without error.__**
 - [x] Both executables run without assert or a seg fault
-- [ ] `cpplint-cse.sh *.cc` reports no errors
-- [ ] `cpplint-cse.sh --root=.. *.h` reports no errors
+- [x] `cpplint-cse.sh *.cc` reports no errors
+- [x] `cpplint-cse.sh --root=.. *.h` reports no errors
 - [x] `doxygen Doxyfile` generates the necessary doxygen documentation
 
 ### Primary Functionality
@@ -37,7 +37,7 @@
 | Refactoring 2 is completed | x|  |  |  |
 | Refactoring 2 exists within branch refactor/iter3 | x|  |  |  |
 | Refactorings do not change observable functionality | x|  |  |  |
-| File release_notes.md exists and identifies locations of Refactorings | | | | |
+| File release_notes.md exists and identifies locations of Refactorings | | |x| |
 | **__Refactoring 1__** |
 | Refactoring 1 does not require changes to config file structure | x|  |  |  |
 | Refactoring 1 removes possibility of users changing probability of a route's final stop to be non-zero | x|  |  
