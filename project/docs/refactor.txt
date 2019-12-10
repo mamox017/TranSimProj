@@ -19,7 +19,7 @@ Create a text or web-viewable document called refactor.xxx in the /docs director
 *The code, filename, and line number where the temporary variable was defined.
 
 	The temporary variables defined were the average distances between the current stop and following stop that is given to the BusData
-	when it is updated in UpdateBusData during the movement from one stop to another
+	when it is updated in UpdateBusData() during the movement from one stop to another.
 
 	Filename: bus.cc
 
@@ -30,11 +30,11 @@ Create a text or web-viewable document called refactor.xxx in the /docs director
 *The name of the new method you created and where it is located. Identify clearly also where any changes were made to call the new function.
 
 	- New Method Name: AvgDistCalc
-	- It is located on lines 67-81 of bus.cc
+	- It is located on lines 65-79 of bus.cc
 
 	The temporary variables were now initialized with function calls instead of calculations
-	Line 50:    float x = AvgDistCalc("long");
-	Line 51:    float y = AvgDistCalc("lat");
+	Line 48:    float x = AvgDistCalc("long");
+	Line 49:    float y = AvgDistCalc("lat");
 
 
 *A brief explanation of what behavior this is replacing. What does the new function specifically do? (No more than one paragraph.)
