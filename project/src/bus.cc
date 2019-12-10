@@ -218,8 +218,8 @@ void Bus::Report(std::ostream& o) {
   o << "Name: " << name_ << std::endl;
   o << "Speed: " << speed_ << std::endl;
   o << "Distance to next stop: " << distance_remaining_ << std::endl;
-  o << "CURRENT STOP: " << currentStop->GetId() << std::endl;
-  o << "NEXT STOP: " << currentStop->GetNextStop()->GetId() << std::endl;
+  // o << "CURRENT STOP: " << currentStop->GetId() << std::endl;
+  // o << "NEXT STOP: " << currentStop->GetNextStop()->GetId() << std::endl;
   o << "\tPassengers (" << passengers_.size() << "): " << std::endl;
   for (std::list<Passenger *>::iterator it = passengers_.begin();
 it != passengers_.end(); it++) {
