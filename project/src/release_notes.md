@@ -27,8 +27,6 @@ a string that indicates whether the latitude or longitude is being calculated.
 ### Location
 Replace Temp with Query (Function calls):
 bus.cc, Lines 52-55
-AvgDistanceCalc function:
-bus.cc, Lines 73-87
 
 Originally:
 ```
@@ -45,6 +43,7 @@ float y = AvgDistCalc("lat");
 ```
 
 AvgDistCalc Function:
+bus.cc, Lines 73-87
 ```
 float Bus::AvgDistCalc(std::string lat_or_lon) {
   // retrieves next stop
