@@ -10,10 +10,10 @@ generating passengers on the last stop.  NEED TO ADD ON REFACTORING SO THAT SIM 
 ### Location
 Added lines:
 Lines 40 & 41
-<code>
-$ generation_probabilities_.pop_back();
-$ generation_probabilities_.push_back(0);
-</code>
+```
+generation_probabilities_.pop_back();
+generation_probabilities_.push_back(0);
+```
 
 ### Refactoring 2
 This change was done using the Change Temp by Query refactoring method.  It was done in the file,
@@ -29,21 +29,21 @@ Queries (Function calls):
 Line 52 & 54
 
 Originally:
-<code>
+```
 float x = static_cast<float>((currentStop->getLong()+
   followingStop->getLong())/2.0);
 float y = static_cast<float>((currentStop->getLat()+
   followingStop->getLat())/2.0);
-</code>
+```
 
 After Refactoring:
-<code>
+```
 float x = AvgDistCalc(followingStop, "long");
 float y = AvgDistCalc(followingStop, "lat");
-</code>
+```
 
 AvgDistCalc Function:
-<code>
+```
 float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
   // if we want to find avg dist between longitudes
   if  (lat_or_lon.compare("long") == 0) {
@@ -59,4 +59,4 @@ float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
    return 0;
   }
 }
-</code>
+```
