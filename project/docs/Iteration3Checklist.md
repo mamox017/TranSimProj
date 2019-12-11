@@ -62,14 +62,13 @@ For the table below, please specify which aspects were fixed. You should put an 
 | -------- | -------- |-| -------- | -------- |
 | vis_sim segmentation fault on bustimings = 10 |  || x|   |
 | bus is starting at second stop |  || x|   |
-| config_sim output file input messed up? |  || |  x|
 
 
 ### Documentation
 - [x] _mainpage.h_ or _mainpage.md_ is in the /src folder.
 - [x] I have compiled doxygen and looked at the generated mainpage.
 - [x] The mainpage includes a user guide for technical users (updated developers guide from iteration 1).
-- [ ] The mainpage includes a user guide for non-technical users.
+- [x] The mainpage includes a user guide for non-technical users.
 - [x] I commented my code where necessary.
 - [x] A document named **release_notes.md** specifying names of branch(es) that hold refactoring 1 and 2, and any other assumptions is in project/src directory.
 
