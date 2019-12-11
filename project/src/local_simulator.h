@@ -38,7 +38,7 @@ class LocalSimulator : public Simulator {
   * @return bool = 0, indicates whether simulation successfully starts
   */
   bool Start(std::ostream& o = std::cout) override;
-  /**
+/**
   * @brief The Update function for localsimulator objects.
   * 
   * This function overrides the base class function to update a

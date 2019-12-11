@@ -143,8 +143,8 @@
  *
  * \image html run_vis.png
  *
- * Once the output above is displayed, then the simulator has been compiled and run correctly.
- * It is available through a web browser with the following link:
+ * If the output above is displayed, the simulator has been compiled and run correctly.
+ * It is available through by typing the following link format into a web browser, with <port_number> substituted for the port number you have entered:
  * - http://127.0.0.1:<port_number>/web_graphics/project.html
  *
  * Since the port number is 8088 in the example above, we would navigate to the link:

@@ -3,6 +3,11 @@
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
+
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
+
 #include "src/r_local_simulator.h"
 
 #include <vector>
@@ -12,6 +17,10 @@
 #include "src/stop.h"
 #include "src/route.h"
 #include "src/rtest_passenger_generator.h"
+
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
 
 bool rLocalSimulator::Start(std::ostream &o) {
   simulation_time_elapsed_ = 0;  // init, but also allows restart

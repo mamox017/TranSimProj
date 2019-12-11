@@ -6,13 +6,47 @@
 #ifndef SRC_R_LOCAL_SIMULATOR_H_
 #define SRC_R_LOCAL_SIMULATOR_H_
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
+
 #include <vector>
 #include <string>
 #include "src/simulator.h"
 
+/*******************************************************************************
+ * Class Definitions
+ ******************************************************************************/
+
+/**
+ * @brief The main class for an rlocalsimulator.
+ *
+ * Creates a new instance of an rlocalsimulator object.
+ *  
+ */
 class rLocalSimulator : public Simulator {
  public:
+/**
+  * @brief The Start function for rlocalsimulator objects.
+  * 
+  * This function overrides the base class function to start a
+  *  simulation of given situations.
+  *
+  * @param[in] std::ostream& outputstream of output information
+  *
+  * @return bool = 0, indicates whether simulation successfully starts
+  */
   bool Start(std::ostream &o = std::cout) override;
+/**
+  * @brief The Update function for rlocalsimulator objects.
+  * 
+  * This function overrides the base class function to update a
+  *  simulation of given situations.
+  *
+  * @param[in] std::ostream& outputstream of output information
+  *
+  * @return bool = 0, indicates whether simulation successfully updates
+  */
   bool Update(std::ostream &o = std::cout) override;
  private:
   std::vector<int> bus_counters_;

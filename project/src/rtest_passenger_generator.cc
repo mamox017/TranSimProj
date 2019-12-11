@@ -4,6 +4,10 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
+
 #include "src/rtest_passenger_generator.h"
 
 // Nothing to do here, just pass args along
@@ -17,6 +21,10 @@ RtestPassengerGenerator::RtestPassengerGenerator(std::list<double> probs,
  * out some other way to generate the same number of passengers
  * each time the simulation is run
  */
+
+/*******************************************************************************
+ * Member Functions
+ ******************************************************************************/
 
 int RtestPassengerGenerator::GeneratePassengers(std::ostream &o) {
   int passengers_added = 0;
