@@ -46,6 +46,10 @@
  * - StopData: This object holds a Stop object’s name, position and number of people.  This object is usually held within a StopData list for use by RouteData objects.
  * - RouteData: This object is usually a member variable of Route objects and holds the Route object’s name, as well as a StopData list of the information of each Stop in the Route.
  *
+ * <b>The Regression Testing classes: myRegressionTestSimulator, and RtestPassengerGenerator</b>
+ *
+ * These classes drive regression testing.  myRegressionTestSimulator is relatively similar to LocalSimulator, though it has less stops and each stop has a 1.0 generation probability of passenger generation.  RtestPassengerGenerator is very similar to RandomPassengerGenerator, but it only generates one passenger at a time at each time step.  These classes are to be used by a driver named my_regression_driver in the drivers directory by which regression testing can be performed.
+ *
  * <b>ConfigManager</b>
  *
  * The ConfigManager class is used to read configurations from text files that are given as input.  The ReadConfig(const std::string filename) function takes in a string of a configuration file name and reads the data within it.  Then it parses the information and creates Stop objects from them with given names/IDs, positions, distances, and generation probabilities.  It adds respective stops to lists and creates a Route object with the parsed Stop lists.  This information is held in the ConfigManager object which is later used by ConfigurationSimulator and VisualizationSimulator.
@@ -59,9 +63,6 @@
  * This simulator works similar to ConfigurationSimulator but also provides the data through a webInterface class to display a web based visualization of the simulation.
  * Below is a picture of the simulation output from the driver.
  * \image html vis_sim_picture.png
- *
- * <b>The Regression Testing classes: myRegressionTestSimulator, and RtestPassengerGenerator</b>
- * These classes drive regression testing.  myRegressionTestSimulator is the relatively similar to local simulator, though it has less stops and each stop has a 1.0 generation probability of passenger generation.  RtestPassengerGenerator is very similar to RandomPassengerGenerator, but it only generates one passenger at a time at each time step.  These classes are to be used by a driver named my_regression_driver in the drivers directory by which regression testing can be performed.
  *
  * <b>How it all works together:</b>
  *
