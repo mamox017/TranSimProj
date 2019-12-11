@@ -1,13 +1,30 @@
 ### Release Notes on Refactorings
 The branches in which both refactorings have been completed is refactor/iter3.
+*Note* These refactorings are not in the master branch, only in the refactor/iter3 therefore
+the line numbers referred to, in which the refactorings are done, are for the refactor/iter3 files.
+You will not see the refactorings on the line numbers in the master branch.
+
 
 ### Refactoring 1
 The refactoring completed for this requirement was done in the file, random_passenger_generator.cc.
-The addition to the code were two lines that popped the final stop probability off of the list that
-it was on and pushed on a probability of 0.  This insures that each route has a zero probability of
-generating passengers on the last stop.  NEED TO ADD ON REFACTORING SO THAT SIM DOESNT TRY TO USE/ACCESS
+The for loop in this file was modified so that the simulator does not try to access the probability
+of generation on the last stop.  The condition in which the for loop terminates was changed so that
+it will terminate before it iterates on the final stop.  In addition, added to the code, were two 
+lines that popped the final stop probability off of the list that it was on and pushed on a probability
+of 0.  This insures that each route has a zero probability of generating passengers on the last stop,
+just incase.
 
 ### Location
+Modified lines:
+random_passenger_generator.cc, Line 55
+```
+  for (prob_iter = generation_probabilities_.begin(),
+                          stop_iter = stops_.begin();
+       prob_iter != generation_probabilities_.end()
+                    && (*stop_iter)->GetId() != last_stop_index;    // this is the changed line
+       prob_iter++, stop_iter++) {
+```
+
 Added lines:
 random_passenger_generator.cc, Lines 40 & 41
 ```
