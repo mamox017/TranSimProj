@@ -1,34 +1,35 @@
 /**
- * @file local_simulator.h
+ * @file r_local_simulator.h
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-#ifndef SRC_LOCAL_SIMULATOR_H_
-#define SRC_LOCAL_SIMULATOR_H_
+#ifndef SRC_MY_REGRESSION_TEST_SIMULATOR_H_
+#define SRC_MY_REGRESSION_TEST_SIMULATOR_H_
 
 /*******************************************************************************
  * Includes
  ******************************************************************************/
 
 #include <vector>
-
+#include <string>
 #include "src/simulator.h"
+
 
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
 
 /**
- * @brief The main class for a localsimulator.
+ * @brief The main class for a myRegressionTestSimulator.
  *
- * Creates a new instance of a localsimulator object.
+ * Creates a new instance of a myRegressionTestSimulator object.
  *  
  */
-class LocalSimulator : public Simulator {
+class myRegressionTestSimulator : public Simulator {
  public:
- /**
-  * @brief The Start function for localsimulator objects.
+/**
+  * @brief The Start function for myRegressionTestSimulator objects.
   * 
   * This function overrides the base class function to start a
   *  simulation of given situations.
@@ -37,9 +38,9 @@ class LocalSimulator : public Simulator {
   *
   * @return bool = 0, indicates whether simulation successfully starts
   */
-  bool Start(std::ostream& o = std::cout) override;
+  bool Start(std::ostream &o = std::cout) override;
 /**
-  * @brief The Update function for localsimulator objects.
+  * @brief The Update function for myRegressionTestSimulator objects.
   * 
   * This function overrides the base class function to update a
   *  simulation of given situations.
@@ -48,8 +49,7 @@ class LocalSimulator : public Simulator {
   *
   * @return bool = 0, indicates whether simulation successfully updates
   */
-  bool Update(std::ostream& o = std::cout) override;
-
+  bool Update(std::ostream &o = std::cout) override;
  private:
   std::vector<int> bus_counters_;
   std::vector<int> bus_start_timings_;
@@ -57,4 +57,4 @@ class LocalSimulator : public Simulator {
   int simulation_time_elapsed_;
 };
 
-#endif  // SRC_LOCAL_SIMULATOR_H_
+#endif  // SRC_MY_REGRESSION_TEST_SIMULATOR_H_

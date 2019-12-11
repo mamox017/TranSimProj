@@ -5,7 +5,7 @@
 
 /*! \mainpage Mootii Mamo, CSCI 3081W, mamox017@umn.edu
  *
- * \section intro_sec Project TransitSim: a Proof-of-Concept Transit System Simulator: Iteration 2
+ * \section intro_sec Project TransitSim: a Proof-of-Concept Transit System Simulator: Iteration 3
  *
  *
  * <b>Introduction</b>
@@ -46,13 +46,17 @@
  * - StopData: This object holds a Stop object’s name, position and number of people.  This object is usually held within a StopData list for use by RouteData objects.
  * - RouteData: This object is usually a member variable of Route objects and holds the Route object’s name, as well as a StopData list of the information of each Stop in the Route.
  *
+ * <b>The Regression Testing classes: myRegressionTestSimulator, and RtestPassengerGenerator</b>
+ *
+ * These classes drive regression testing.  myRegressionTestSimulator is relatively similar to LocalSimulator, though it has less stops and each stop has a 1.0 generation probability of passenger generation.  RtestPassengerGenerator is very similar to RandomPassengerGenerator, but it only generates one passenger at a time at each time step.  These classes are to be used by a driver named my_regression_driver in the drivers directory by which regression testing can be performed.
+ *
  * <b>ConfigManager</b>
  *
  * The ConfigManager class is used to read configurations from text files that are given as input.  The ReadConfig(const std::string filename) function takes in a string of a configuration file name and reads the data within it.  Then it parses the information and creates Stop objects from them with given names/IDs, positions, distances, and generation probabilities.  It adds respective stops to lists and creates a Route object with the parsed Stop lists.  This information is held in the ConfigManager object which is later used by ConfigurationSimulator and VisualizationSimulator.
  * 
  * <b>ConfigurationSimulator</b>
  *
- * This simulator class is constructed with a ConfigManager object which holds the Routes for the simulation.  It takes in this information and starts a simulation of a certain length and bus start timings given by arguments to the Start() function and begins a simulation that is output to whatever stream is provided to the Start() function’s third argument.  The Start() function gets the routes from the ConfigManager object member variable and runs Report() and them as well as updating the RouteData objects for each Route object.  Update() increments the time step of the simulation and updates the Bus and Route objects in the simulation. 
+ * This simulator class is constructed with a ConfigManager object which holds the Routes for the simulation.  It takes in this information and starts a simulation of a certain length and bus start timings given by arguments to the Start() function and begins a simulation that is output to whatever stream is provided to the Start() function’s third argument.  The Start() function gets the routes from the ConfigManager object member variable and runs Report() on them as well as updating the RouteData objects for each Route object.  Update() increments the time step of the simulation and updates the Bus and Route objects in the simulation. 
  * 
  * <b>VisualizationSimulator</b>
  *
@@ -64,7 +68,142 @@
  *
  * Below is an image of a UML Diagram
  *
- * \image html Iteration_2_UML_Diagram.png
+ * \image html Iteration_3_UML_Diagram.png
+ *
+ * \section user_sec User Guide
+ *
+ * <b>How to download TransitSim</b>
+ *
+ * The TransitSim files can be found in the following github repo:
+ * - https://github.umn.edu/umn-csci-3081-f19/repo-mamox017
+ * 
+ * Once on the repo, click on the green “Clone or download” button, and click “Download ZIP” from the options that drop down.
+ *
+ * \image html download_pic.png
+ *
+ * Once you have downloaded the .zip file.  Open the folder of the download location, and extract the contents of the .zip file so that the files within it are now accessible.
+ *
+ * \image html extract_pic.png
+ *
+ * Once the files are extracted, open the folder and navigate to the project directory to view the files required for TransitSim.
+ *
+ * \image html proj_files.png
+ *
+ * <b>Configuring TransitSim</b>
+ *
+ * The simulations of TransitSim can be configured to run in three different ways via their respective executables: config_sim, vis_sim, and capture_transit_sim. 
+ *
+ * <b>config_sim and vis_sim:</b>
+ *
+ * The simulators are automatically configured when the “make” command is run on the terminal from the project directory, like so.
+ *
+ * \image html project_make.png
+ *
+ * This creates the executables, config_sim and vis_sim, in the project/build/bin directory.
+ *
+ * <b>capture_transit_sim:</b>
+ *
+ * This executable is built from the same project directory, but with a different command.  Enter “make capture_transit_sim” into the terminal, like so.
+ *
+ * \image html capture_make.png
+ *
+ * This creates the executable, capture_transit_sim, in the project/build/bin directory.
+ *
+ * <b>Configuring Tests</b>
+ *
+ * There also are tests that can be run on TransitSim, which need to be configured also.  The unit tests present are in the project/tests directory, while the regression tests are included in the project/src directory along with a regression test driver in the project/drivers directory.
+ *
+ * <b>Unit tests:</b>
+ *
+ * These tests are in the project/tests directory, they need to be compiled by making the tests with the separate makefile stored in project/tests.  Therefore, it is required to navigate to the project/tests directory with “cd tests” in the terminal.
+ *
+ * \image html cd_tests.png
+ *
+ * Here we run the “make” command.
+ *
+ * \image html make_tests.png
+ *
+ * This creates a unittest executable in the project/build/bin directory.
+ *
+ * <b>Regression tests:</b>
+ *
+ * The files required for the regression tests are stored in the project/src directory.  To create the executable for the regression test scenario, navigate to the project/src directory in the terminal with the “cd src” command.
+ *
+ * \image html cd_src.png
+ *
+ * Once there, run the command: “make my_regression_test”.
+ *
+ * \image html make_reg.png
+ *
+ * This creates the my_regression_test executable in the project/build/bin directory.
+ *
+ * <b>How to operate TransitSim</b>
+ *
+ * Once you have completed the steps above, you will now have the required executables for the simulators and tests contained in this project.  This section covers how to run each simulation in detail.
+ *
+ * <b>vis_sim:</b>
+ *
+ * The visualization simulator is run through a web browser, but needs to be started through the command line.  In the project directory, run the following command with a port number as an argument, in this case it is 8088.
+ *
+ * \image html run_vis.png
+ *
+ * If the output above is displayed, the simulator has been compiled and run correctly.
+ * It is available through by typing the following link format into a web browser, with <port_number> substituted for the port number you have entered:
+ * - http://127.0.0.1:<port_number>/web_graphics/project.html
+ *
+ * Since the port number is 8088 in the example above, we would navigate to the link:
+ * - http://127.0.0.1:8088/web_graphics/project.html
+ *
+ * When this page is open, you should see a simulator with dials to change the number of time steps to run and to change the time steps between the initialization busses.  Once you have adjusted the dials to your liking, press the “Start” button to begin the simulation.
+ *
+ * The simulation should look like this:
+ *
+ * \image html vis_sim_output.png
+ *
+ * <b>config_sim:</b>
+ *
+ * The configuration simulator is run and displayed on the commandline.  Like visualization simulator, it is compiled with the make command in the project directory, the steps for this are detailed above.  However, it is not run in a web browser.  It is run with the command, “./build/bin/config_sim”.
+ *
+ * \image html config_sim_run.png
+ *
+ * Alternatively, if you would like to change settings of the simulation, you can include arguments to this command in the format: ./build/bin/config_sim (config_file.txt) (sim_length) (busStartTimings) (output file).  These arguments change the configuration file, simulation length, and bus timings used along with the name of an output file that the information is sent to.
+ * Below is an example:
+ *
+ * \image html config_sim_run_with_args.png
+ *
+ * The output should look like this, provided that the files are compiled correctly:
+ *
+ * \image html config_sim_output.png
+ *
+ * If an output file is given as an argument, the output will look like this and the file will be stored in the project/build/bin directory.
+ *
+ * \image html config_sim_outputfile.png
+ *
+ * <b>capture_transit_sim:</b>
+ *
+ * For this simulator, you have to navigate to the project/build/bin directory and run the command “./capture_transit_sim (output text file)”
+ *
+ * \image html capture_run.png
+ *
+ * The output will be stored in a text file that has the same name as the argument, and will be also stored in the project/build/bin directory.
+ *
+ * <b>Unit Tests:</b>
+ *
+ * Once you have completed the configuration steps above for the unit tests, you will have a unittest executable in the project/build/bin directory.  Navigate to this directory and run it with the command “./unittest” for the following output.
+ *
+ * \image html tests_screenshot.png
+ *
+ * <b>Regression Test:</b>
+ *
+ * The configuration steps for the regression test yields the executable, “my_regression_test” in the project/build/bin directory.  Navigate to this directory.  A regression test can be performed by running the tests and storing the output into two different files, then comparing the outputs.
+ *
+ * Below is a sample run of the regression test.
+ *
+ * \image html regTest_screenshot.png
+ *
+ * The first and second commands store the regression test output into files named “rtout1” and “rtout2”.
+ * The third command compares the two files, if there is no output from this command, the regression test has successfully passed.
+ *
  *
  * <b>Thanks for reading!</b>
  */

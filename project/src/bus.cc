@@ -28,7 +28,9 @@ int capacity, double speed) {
   passenger_max_capacity_ = capacity;
   speed_ = speed;
   skipcase = false;
+  skipcase2 = false;
   complete = false;
+  firstStop = true;
   hasSwitchedRoutes = false;
   currentStop = outgoing_route_->GetFirstStop();
   distance_remaining_ = currentStop->getDistance();
@@ -46,9 +48,10 @@ void Bus::UpdateBusData() {
 
   // if in middle of travel to next stop, go half distance on visual
   if (distance_remaining_ < currentStop->getDistance()) {
-    double x = static_cast<float>((currentStop->getLong()+
+    // replace temp with query refactor
+    float x = static_cast<float>((currentStop->getLong()+
     followingStop->getLong())/2.0);
-    double y = static_cast<float>((currentStop->getLat()+
+    float y = static_cast<float>((currentStop->getLat()+
     followingStop->getLat())/2.0);
     // set position attributes
     bPos->x = x;
@@ -63,6 +66,27 @@ void Bus::UpdateBusData() {
   bData->num_passengers = static_cast<int>(GetNumPassengers());
   bData->capacity = GetCapacity();
 }
+
+// Refactoring not supposed to be in final submission
+// only in branch refactor/iter3
+// Function not used, it is not updated to work in this branch
+/*
+float Bus::AvgDistCalc(std::string lat_or_lon) {
+  // if we want to find avg dist between longitudes
+  if  (lat_or_lon.compare("long") == 0) {
+    float x = static_cast<float>((currentStop->getLong()+
+    followStop->getLong())/2.0);
+    return x;
+  } else if (lat_or_lon.compare("lat") == 0) {
+    // if we want to find avg dist between latitudes
+    float y = static_cast<float>((currentStop->getLat()+
+    followStop->getLat())/2.0);
+    return y;
+  } else {
+    return 0;
+  }
+}*/
+
 
 // returns next stop of the bus
 Stop * Bus::GetNextStop() {
@@ -107,12 +131,16 @@ bool Bus::Move() {
     // Distance is corrected with each time step
     distance_remaining_ = distance_remaining_ - speed_;
     // If at stop
-    if (distance_remaining_ <= 0) {
+    if (distance_remaining_ <= 0 && firstStop == false) {
       // Passengers are taken care of
       UnloadPassengers();
       // land at the stop
-      currentStop = currentStop->GetNextStop();
-      currentRoute->NextStop();
+      if (hasSwitchedRoutes == true && skipcase2 == true) {
+        currentStop = incoming_route_->GetFirstStop();
+      } else {
+        currentStop = currentStop->GetNextStop();
+        currentRoute->NextStop();
+      }
 
       if (currentRoute->IsAtEnd() && hasSwitchedRoutes == true) {
         passengers_.clear();
@@ -125,21 +153,28 @@ bool Bus::Move() {
         // currentRoute->NextDestinationStop();
         // UpdateBusData();
         return true;
-      } else if ((currentRoute->IsAtEnd())) {  // switch route case
+      } else if (currentRoute->IsAtEnd()) {  // switch route case
         // empties all first route passengers
         passengers_.clear();
         // switches routes over
         currentRoute = incoming_route_;
         // sets next stop to first of new route
         currentStop->SetNextStop(incoming_route_->GetFirstStop());
+        currentStop->setDistance(0);
         distance_remaining_ = 0;
         hasSwitchedRoutes = true;
+        skipcase2 = true;
       } else {  // general case, in the middle of a route
         // just updates distance remaining for next stop
         distance_remaining_ = currentStop->getDistance();
         currentStop->LoadPassengers(this);
         currentRoute->NextDestinationStop();
+        skipcase2 = false;
       }  // returns true if at a new stop, false if not
+      return true;
+    } else if (firstStop == true) {  // makes the bus start at the first stop
+      distance_remaining_ = 0;
+      firstStop = false;
       return true;
     }
     return false;

@@ -164,8 +164,8 @@ Stop * Route::GetLastStop() {
 
 // Getter
 Stop * Route::GetFirstStop() {
-  Stop * first = stops_.front();
-  destination_stop_ = first->GetNextStop();
+  // Stop * first = stops_.front();
+  // destination_stop_ = first->GetNextStop();
   return stops_.front();
 }
 

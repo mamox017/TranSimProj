@@ -1,16 +1,19 @@
 #include <ctime>
 #include <iostream>
+#include <fstream>
 #include <random>
+#include <string>
 
-#include "local_simulator.h"
+#include "my_regression_test_simulator.h"
 
 int main() {
-    
+
   int rounds = 50; //Number of rounds of generation to simulate in test
   
-  srand((long)time(NULL)); //Seed the random number generator...
-  
-  LocalSimulator my_sim;
+  srand((long)1); //Seed the random number generator with the same seed every time!
+
+
+  myRegressionTestSimulator my_sim;
   
   std::cout << "/*************************" << std::endl << std::endl;
   std::cout << "         STARTING" << std::endl;

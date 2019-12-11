@@ -2,6 +2,10 @@
 
 > The iteration 2 code and documentation is due on WEDNESDAY, November 27 at 11:55pm.
 
+> VERSION 3: Added "root" flag to CPPLINT check for .cc files
+
+> VERSION 2: Updated Doxygen requirements to run from within docs/
+
 **__Please copy this file into your project/docs folder__**. Place an 'x' in each of the `[ ]` boxes for items that are complete. Push this completed checklist to github. When it displays on Github, it will show an actual checkbox with a check mark.
 
 _Note: This checklist is not authoratative. If something is missing on the checklist, that does not imply it is not needed or that you don't need to do it. The requirments and rubric are the source-of-truth on what you need to do. This is merely a guide to help walk you through submission._
