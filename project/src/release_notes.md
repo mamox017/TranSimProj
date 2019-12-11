@@ -1,5 +1,6 @@
 ### Release Notes on Refactorings
 The branches in which both refactorings have been completed is refactor/iter3.
+
 *Note* These refactorings are not in the master branch, only in the refactor/iter3 therefore
 the line numbers referred to, in which the refactorings are done, are for the refactor/iter3 files.
 You will not see the refactorings on the line numbers in the master branch.

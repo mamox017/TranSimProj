@@ -32,12 +32,12 @@
 | Functionality | Good | Okay | Help | Time |
 | -------- | -------- | -------- | -------- | --------- |
 | **__Refactoring__** |
-| Refactoring 1 is completed |  | x|  |  |
+| Refactoring 1 is completed |  x|  |  |  |
 | Refactoring 1 exists within either branch refactor/iter3 or branch refactor/iter2 | x|  |  |  |
 | Refactoring 2 is completed | x|  |  |  |
 | Refactoring 2 exists within branch refactor/iter3 | x|  |  |  |
 | Refactorings do not change observable functionality | x|  |  |  |
-| File release_notes.md exists and identifies locations of Refactorings | | |x| |
+| File release_notes.md exists and identifies locations of Refactorings |x| | | |
 | **__Refactoring 1__** |
 | Refactoring 1 does not require changes to config file structure | x|  |  |  |
 | Refactoring 1 removes possibility of users changing probability of a route's final stop to be non-zero | x|  |  
