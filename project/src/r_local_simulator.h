@@ -48,6 +48,7 @@ class rLocalSimulator : public Simulator {
   * @return bool = 0, indicates whether simulation successfully updates
   */
   bool Update(std::ostream &o = std::cout) override;
+
  private:
   std::vector<int> bus_counters_;
   std::vector<int> bus_start_timings_;

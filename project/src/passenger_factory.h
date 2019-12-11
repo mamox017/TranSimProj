@@ -39,6 +39,7 @@ class PassengerFactory {
   * @return Passenger object with name and destination.
   */
   static Passenger * Generate(int, int);
+
  private:
  /**
   * @brief Generation of randomized passenger name from prefix, stems and suffixes.
