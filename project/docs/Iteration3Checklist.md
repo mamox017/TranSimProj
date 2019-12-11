@@ -60,7 +60,7 @@ For the table below, please specify which aspects were fixed. You should put an 
 
 | Functionality | Complete in it2 | | Fixed in it3 | Still Buggy |
 | -------- | -------- |-| -------- | -------- |
-| vis_sim segmentation fault on bustimings = 10 |  || x|   |
+| vis_sim segmentation fault on bustimings = 10 | x|| x|   |
 | bus is starting at second stop |  || x|   |
 
 
