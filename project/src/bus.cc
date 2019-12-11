@@ -68,9 +68,10 @@ void Bus::UpdateBusData() {
 }
 
 // Refactoring not supposed to be in final submission
-// Function not used
-// replace temp with query refactor function
-float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
+// only in branch refactor/iter3
+// Function not used, it is not updated to work in this branch
+/*
+float Bus::AvgDistCalc(std::string lat_or_lon) {
   // if we want to find avg dist between longitudes
   if  (lat_or_lon.compare("long") == 0) {
     float x = static_cast<float>((currentStop->getLong()+
@@ -84,7 +85,8 @@ float Bus::AvgDistCalc(Stop * followStop, std::string lat_or_lon) {
   } else {
     return 0;
   }
-}
+}*/
+
 
 // returns next stop of the bus
 Stop * Bus::GetNextStop() {

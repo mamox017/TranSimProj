@@ -60,11 +60,14 @@
  * Below is a picture of the simulation output from the driver.
  * \image html vis_sim_picture.png
  *
+ * <b>The Regression Testing classes: myRegressionTestSimulator, and RtestPassengerGenerator</b>
+ * These classes drive regression testing.  myRegressionTestSimulator is the relatively similar to local simulator, though it has less stops and each stop has a 1.0 generation probability of passenger generation.  RtestPassengerGenerator is very similar to RandomPassengerGenerator, but it only generates one passenger at a time at each time step.  These classes are to be used by a driver named my_regression_driver in the drivers directory by which regression testing can be performed.
+ *
  * <b>How it all works together:</b>
  *
  * Below is an image of a UML Diagram
  *
- * \image html Iteration_2_UML_Diagram.png
+ * \image html Iteration_3_UML_Diagram.png
  *
  * \section user_sec User Guide
  *
