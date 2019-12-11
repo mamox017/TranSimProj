@@ -46,11 +46,13 @@ int RandomPassengerGenerator::GeneratePassengers(std::ostream& o) {
   stop_iter--;
   int last_stop_index = (*stop_iter)->GetId();
   // TODO(Staff): check for accuracy
+  // Refactored the for loop to stop before last stop
+  // Therefore it won't access the probability of last stop
   o << "Time to generate!" << std::endl;
   for (prob_iter = generation_probabilities_.begin(),
                           stop_iter = stops_.begin();
        prob_iter != generation_probabilities_.end()
-                    && stop_iter != stops_.end();
+                    && (*stop_iter)->GetId() != last_stop_index;
        prob_iter++, stop_iter++) {
     // get this stop's probability
     double initial_generation_probability = *prob_iter;
