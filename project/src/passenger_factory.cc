@@ -12,7 +12,9 @@
  * which may be helpful for regression testing!
  *
 */
-#define CONSTPASS 1
+
+// redefine for regression testing, im just commenting out for final delivery
+// #define CONSTPASS 1
 
 std::random_device dev;
 std::mt19937 e(dev());
