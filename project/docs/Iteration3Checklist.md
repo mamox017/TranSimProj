@@ -7,8 +7,8 @@
 
 ### Compilation and Execution
 
-- [ ] I cloned **fresh** from github onto a cselabs machine to test compilation
-- [ ] Submission is on the master branch of the my personal repo "repo-<username>"
+- [x] I cloned **fresh** from github onto a cselabs machine to test compilation
+- [x] Submission is on the master branch of the my personal repo "repo-<username>"
 - [x] _/project folder exists
 - [x] _/build_ is not in the repo
 - [x] _/html_ is not in _docs_
@@ -86,8 +86,8 @@ For the table below, please specify which aspects were fixed. You should put an 
 
 When everything above is as you want it (or it is 11:50pm on Wednesday), it is time to submit!
 
-- [ ] I pushed this file and any changes resulting from this checklist.
-- [ ] Everything is in the **__master__** branch.
+- [x] I pushed this file and any changes resulting from this checklist.
+- [x] Everything is in the **__master__** branch.
 
 _One more thing -- check that what you think you pushed was really pushed to github on the master branch. Go to your repo on github.umn.edu and look at your files. If you can see it there, we can see it. If you can't, we can't._
 
