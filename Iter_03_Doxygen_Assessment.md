@@ -1,6 +1,6 @@
 ### Iteration 3 - Doxygen Partial Assessment (Graded By: Aakhila Shaheen)
 
-Run on December 14, 18:43:21 PM.
+Run on December 14, 22:48:13 PM.
 
 <hr>
 
@@ -35,4 +35,8 @@ This Partial Assessment indicates a TA has begun grading your Doxygen-generated 
 + Pass: Generating documentation by running doxygen
 
 + Pass: Check that file "html/index.html" exists.
+
++ Pass: Inspecting Doxygen webpages...
+
+
 
