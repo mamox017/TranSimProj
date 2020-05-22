@@ -1,7 +1,9 @@
 # Project TransitSim: a Proof-of-Concept Transit System Simulator: Iteration 3
 This software project is a basic transit simulator of the University of Minnesota - Twin Cities Campus Connector bus routes written in C++.  It is composed of four main classes: Passenger, Bus, Stop, and Route.  There are three classes that help generate passengers: PassengerFactory, PassengerGenerator, and RandomPassengerGenerator.  Two classes also help simulate: LocalSimulator and Simulator.  An additional two simulator classes were added in Iteration 2 to also drive different simulations: ConfigurationSimulator and VisualizationSimulator.  The class, ConfigManager, was also added to help provide functionality to these two simulators.  These simulations can be run in the project directory with:
-- vis_sim (output on web): ./build/bin/vis_sim (port number)
-- config_sim (output to file in build/bin directory): ./build/bin/config_sim (config file) (length of sim) (bus start timings) (output file)
+- vis_sim (output on web): 
+    - ./build/bin/vis_sim (port number)
+- config_sim (output to file in build/bin directory): 
+    - ./build/bin/config_sim (config file) (length of sim) (bus start timings) (output file)
 
 ![Picture](https://i.imgur.com/vIx255Z.png)
 
