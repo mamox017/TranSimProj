@@ -3,6 +3,8 @@ This software project is a basic transit simulator of the University of Minnesot
 - vis_sim (output on web): ./build/bin/vis_sim (port number)
 - config_sim (output to file in build/bin directory): ./build/bin/config_sim (config file) (length of sim) (bus start timings) (output file)
 
+![Picture](https://i.imgur.com/vIx255Z.png)
+
 ## Passenger
 The Passenger object has a number of traits such as a string name_, int destination_stop_id_, int waited_at_stop_, int time_on_bus_, and int id_.  The name_ and destination_stop_id_ of the passenger are randomly generated, whereas both the wait_at_stop_ and time_on_bus_ are both initially 0.  When a passenger is put on a bus, the time_on_bus_ is incremented from 0 to 1, indicating that the passenger has gotten onto the bus.  The wait_at_stop_ is incremented whenever the passenger is at a stop and Update() is called, time_on_bus_ is also incremented when the passenger is already on a bus.  Other functions are various getter and setter methods.
 
